@@ -1,13 +1,32 @@
 <!-- database connection -->
-<?php include "..\data_con.php";?>
-<?php include "..\data_ret.php";?>
+<?php include "../data_con.php"; ?>
+<?php include "../data_ret.php"; ?>
+
 <?php 
 session_start(); 
 if(!isset($_SESSION['user_id'])){ 
     header('Location: ../index.php'); 
     exit;
 }
+
+$user_id = $_SESSION['user_id'];
+
+$user_query = "SELECT * FROM users WHERE id = ?";
+$stmt = mysqli_prepare($conn, $user_query);
+mysqli_stmt_bind_param($stmt, "i", $user_id);
+mysqli_stmt_execute($stmt);
+
+$userresult = mysqli_stmt_get_result($stmt);
+
+while ($row = mysqli_fetch_assoc($userresult)) {
+    $data_user = $row['username'];
+}
+
+mysqli_stmt_close($stmt);
+
+mysqli_close($conn);
 ?>
+
 <!DOCTYPE html>
 <html
   lang="en"
@@ -51,6 +70,7 @@ if(!isset($_SESSION['user_id'])){
     <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
@@ -153,7 +173,6 @@ if(!isset($_SESSION['user_id'])){
                 </li>
               </ul>
             </li> -->
-
 
             <!-- Tables -->
             <li class="menu-item">
@@ -278,7 +297,7 @@ if(!isset($_SESSION['user_id'])){
                     <div class="d-flex align-items-end row">
                       <div class="col-sm-7">
                         <div class="card-body">
-                          <h5 class="card-title text-primary">Hi Username!</h5>
+                          <h5 class="card-title text-primary">Hi <?php echo $data_user; ?>!</h5>
                           <p class="mb-4">
                             You have  <span class="fw-bold" style="color: red;">2</span> notifications  today!  Check details📋 below..
                           </p>
@@ -366,11 +385,31 @@ if(!isset($_SESSION['user_id'])){
                               </div>
                             </div>
                           </div>
-                          <div>
+                          <div id="waterflow">
                               <span class="fw-semibold d-block mb-1">Water Flow</span>
                               <h3 class="card-title mb-2"><?php echo $flowvalue; ?> L/min</h3>
                               <small class="<?php echo $class; ?> fw-semibold"><i class="<?php echo $icon; ?>"></i> <?php echo $flowvalue_comp; ?> L/min</small>
                           </div>
+                          <script>
+                              function updateWaterFlow() {
+                                  $.ajax({
+                                      url: '../includes/flow.php',
+                                      type: 'GET',
+                                      dataType: 'json',
+                                      success: function (data) {
+                                          $('#waterflow .card-title').text(data.flowvalue + ' L/min');
+                                          $('#waterflow small').html('<i class="' + data.icon + '"></i> ' + data.flowvalue_comp + ' L/min');
+                                          $('#waterflow small').removeClass().addClass(data.class + ' fw-semibold');
+                                      },
+                                      error: function (error) {
+                                          console.error('Error updating water flow:', error);
+                                      }
+                                  });
+                              }
+
+                              setInterval(updateWaterFlow, 100);
+                          </script>
+
                         </div>
                       </div>
                     </div>
@@ -427,11 +466,30 @@ if(!isset($_SESSION['user_id'])){
                               </div>
                             </div>
                           </div>
-                          <div>
+                          <div id="waterlevel">
                               <span class="fw-semibold d-block mb-1">Water Level</span>
                               <h3 class="card-title mb-2"><?php echo $levelvalue; ?> m</h3>
                               <small class="<?php echo $levelclass; ?> fw-semibold"><i class="<?php echo $levelicon; ?>"></i> <?php echo $levelvalue_comp; ?> m</small>
                           </div>
+                          <script>
+                              function updateWaterLevel() {
+                                  $.ajax({
+                                      url: '../includes/level.php',
+                                      type: 'GET',
+                                      dataType: 'json',
+                                      success: function (data) {
+                                          $('#waterlevel .card-title').text(data.levelvalue + ' L/min');
+                                          $('#waterlevel small').html('<i class="' + data.levelicon + '"></i> ' + data.levelvalue_comp + ' L/min');
+                                          $('#waterlevel small').removeClass().addClass(data.levelclass + ' fw-semibold');
+                                      },
+                                      error: function (error) {
+                                          console.error('Error updating water flow:', error);
+                                      }
+                                  });
+                              }
+
+                              setInterval(updateWaterLevel, 100);
+                          </script>
                         </div>
                       </div>
                     </div>
@@ -544,9 +602,11 @@ if(!isset($_SESSION['user_id'])){
                               </div>
                             </div>
                           </div>
-                          <span class="d-block mb-1">Acidity</span>
-                          <h5 class="card-title text-nowrap mb-2">pH of 2</h5>
-                          <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -5 pH</small>
+                          <div>
+                              <span class="fw-semibold d-block mb-1">Acidity</span>
+                              <h3 class="card-title mb-2">pH of <?php echo $acidvalue; ?></h3>
+                              <small class="<?php echo $acidclass; ?> fw-semibold"><i class="<?php echo $acidicon; ?>"></i>pH of <?php echo $acidvalue_comp; ?></small>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -601,9 +661,11 @@ if(!isset($_SESSION['user_id'])){
                               </div>
                             </div>
                           </div>
-                          <span class="fw-semibold d-block mb-1">TDS</span>
-                          <p class="card-title mb-2">800 ppm</p>
-                          <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +500 ppm</small>
+                          <div>
+                              <span class="fw-semibold d-block mb-1">TDS</span>
+                              <h4 class="card-title mb-2"><?php echo $tdsvalue; ?> ppm</h4>
+                              <small class="<?php echo $tdsclass; ?> fw-semibold"><i class="<?php echo $tdsicon; ?>"></i><?php echo $tdsvalue_comp; ?> ppm</small>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -616,13 +678,13 @@ if(!isset($_SESSION['user_id'])){
                             <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                               <div class="card-title">
                                 <h5 class="text-nowrap mb-2">Temperature</h5>
-                                <span class="badge bg-label-warning rounded-pill">Date here</span>
+                                <span class="badge bg-label-warning rounded-pill"><?php echo $tempcdate; ?></span>
                               </div>
                               <div class="mt-sm-auto">
-                                <small class="text-success text-nowrap fw-semibold"
-                                  ><i class="bx bx-chevron-up"></i> 10 °C</small
+                                <small class="<?php echo $tempclass; ?> text-nowrap fw-semibold"
+                                  ><i class="<?php echo $tempicon; ?>"></i> <?php echo $tempvalue_comp; ?> °C</small
                                 >
-                                <h3 class="mb-0">34 °C</h3>
+                                <h3 class="mb-0"><?php echo $tempvalue; ?> °C</h3>
                               </div>
                             </div>
                             <div id="profileReportChart"></div>
