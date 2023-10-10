@@ -1,16 +1,16 @@
 <?php
 
-  // $flowquery = "SELECT * FROM waterflow ORDER BY flow_cdate DESC LIMIT 2";
-  // $flowresult = mysqli_query($conn, $flowquery);
-  // while ($row = mysqli_fetch_assoc($flowresult)) {
-  //     $data_flow[] = $row['flow_readings'];
-  // }
+  $flowquery = "SELECT * FROM waterflow ORDER BY flow_cdate DESC LIMIT 2";
+  $flowresult = mysqli_query($conn, $flowquery);
+  while ($row = mysqli_fetch_assoc($flowresult)) {
+      $data_flow[] = $row['flow_readings'];
+  }
 
-  // $levelquery = "SELECT * FROM waterlevel ORDER BY level_cdate DESC LIMIT 2";
-  // $levelresult = mysqli_query($conn, $levelquery);
-  // while ($row = mysqli_fetch_assoc($levelresult)) {
-  //     $data_level[] = $row['level_readings'];
-  // }
+  $levelquery = "SELECT * FROM waterlevel ORDER BY level_cdate DESC LIMIT 2";
+  $levelresult = mysqli_query($conn, $levelquery);
+  while ($row = mysqli_fetch_assoc($levelresult)) {
+      $data_level[] = $row['level_readings'];
+  }
 
   $acidquery = "SELECT * FROM acidity ORDER BY acid_cdate DESC LIMIT 2";
   $acidresult = mysqli_query($conn, $acidquery);
@@ -47,7 +47,7 @@
   }
 ?>
 
-<!-- <?php
+<?php
   $flowvalue = $data_flow[0];
   $flowvalue_prev =  $data_flow[1];
   $flowvalue_comp = $data_flow[0] - $data_flow[1];
@@ -59,9 +59,9 @@
     $class = 'text-success';
     $icon = 'bx bx-up-arrow-alt';
   }
-?> -->
+?>
 
-<!-- <?php
+<?php
   $levelvalue = $data_level[0];
   $levelvalue_prev =  $data_level[1];
   $levelvalue_comp = $data_level[0] - $data_level[1];
@@ -73,7 +73,7 @@
     $levelclass = 'text-success';
     $levelicon = 'bx bx-up-arrow-alt';
   }
-?> -->
+?>
 
 <?php
   $acidvalue = $data_acid[0];

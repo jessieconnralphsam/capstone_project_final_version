@@ -602,11 +602,30 @@ mysqli_close($conn);
                               </div>
                             </div>
                           </div>
-                          <div>
+                          <div id="acidity">
                               <span class="fw-semibold d-block mb-1">Acidity</span>
                               <h3 class="card-title mb-2">pH of <?php echo $acidvalue; ?></h3>
                               <small class="<?php echo $acidclass; ?> fw-semibold"><i class="<?php echo $acidicon; ?>"></i>pH of <?php echo $acidvalue_comp; ?></small>
                           </div>
+                          <script>
+                              function updateAcidity() {
+                                  $.ajax({
+                                      url: '../includes/acid.php',
+                                      type: 'GET',
+                                      dataType: 'json',
+                                      success: function (data) {
+                                          $('#acidity .card-title').text(data.acidvalue + ' L/min');
+                                          $('#acidity small').html('<i class="' + data.acidicon + '"></i> ' + data.acidvalue_comp + ' L/min');
+                                          $('#acidity small').removeClass().addClass(data.acidclass + ' fw-semibold');
+                                      },
+                                      error: function (error) {
+                                          console.error('Error updating water flow:', error);
+                                      }
+                                  });
+                              }
+
+                              setInterval(updateAcidity, 100);
+                          </script>
                         </div>
                       </div>
                     </div>
@@ -661,11 +680,30 @@ mysqli_close($conn);
                               </div>
                             </div>
                           </div>
-                          <div>
+                          <div id="tds">
                               <span class="fw-semibold d-block mb-1">TDS</span>
-                              <h4 class="card-title mb-2"><?php echo $tdsvalue; ?> ppm</h4>
+                              <h5 class="card-title mb-2"><?php echo $tdsvalue; ?> ppm</h5>
                               <small class="<?php echo $tdsclass; ?> fw-semibold"><i class="<?php echo $tdsicon; ?>"></i><?php echo $tdsvalue_comp; ?> ppm</small>
                           </div>
+                          <script>
+                              function updateTds() {
+                                  $.ajax({
+                                      url: '../includes/tds.php',
+                                      type: 'GET',
+                                      dataType: 'json',
+                                      success: function (data) {
+                                          $('#tds .card-title').text(data.tdsvalue + ' L/min');
+                                          $('#tds small').html('<i class="' + data.tdsicon + '"></i> ' + data.tdsvalue_comp + ' L/min');
+                                          $('#tds small').removeClass().addClass(data.tdsclass + ' fw-semibold');
+                                      },
+                                      error: function (error) {
+                                          console.error('Error updating water flow:', error);
+                                      }
+                                  });
+                              }
+
+                              setInterval(updateTds, 100);
+                          </script>
                         </div>
                       </div>
                     </div>
@@ -680,12 +718,35 @@ mysqli_close($conn);
                                 <h5 class="text-nowrap mb-2">Temperature</h5>
                                 <span class="badge bg-label-warning rounded-pill"><?php echo $tempcdate; ?></span>
                               </div>
-                              <div class="mt-sm-auto">
+                              <div class="mt-sm-auto" id="temperature">
                                 <small class="<?php echo $tempclass; ?> text-nowrap fw-semibold"
                                   ><i class="<?php echo $tempicon; ?>"></i> <?php echo $tempvalue_comp; ?> °C</small
                                 >
                                 <h3 class="mb-0"><?php echo $tempvalue; ?> °C</h3>
                               </div>
+                              <script>
+                                  function updateTemperature() {
+                                      $.ajax({
+                                          url: '../includes/temperature.php',
+                                          type: 'GET',
+                                          dataType: 'json',
+                                          success: function (data) {
+                                              var temperatureContent = data.tempvalue + ' °C';
+
+                                              $('#temperature h3').text(temperatureContent);
+
+                                              $('#temperature small').html('<i class="' + data.tempicon + '"></i> ' + data.tempvalue_comp + ' °C');
+
+                                              $('#temperature small').removeClass().addClass(data.tempclass + ' text-nowrap fw-semibold');
+                                          },
+                                          error: function (error) {
+                                              console.error('Error updating water flow:', error);
+                                          }
+                                      });
+                                  }
+
+                                  setInterval(updateTemperature, 100);
+                              </script>
                             </div>
                             <div id="profileReportChart"></div>
                           </div>
