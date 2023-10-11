@@ -60,7 +60,9 @@ if (isset($_GET['temperature'])) {
         $response["status"] = "error";
         $response["message"] = "Error inserting Temperature data: " . $conn->error;
     }
+    
 }
+
 echo json_encode($response);
 ?>
 <!DOCTYPE html>
@@ -76,6 +78,8 @@ echo json_encode($response);
         Acidity: <input type="text" name="acidity"><br>
         TDS: <input type="text" name="tds"><br>
         Temperature: <input type="text" name="temperature"><br>
+        Data: <input type="text" name="data"><br>
+        SMS: <input type="text" name="sms"><br>
         <input type="submit" value="Submit">
     </form>
 </body>

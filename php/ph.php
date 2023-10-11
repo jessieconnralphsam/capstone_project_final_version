@@ -190,16 +190,7 @@ mysqli_close($conn);
             </li>
             <!-- Misc -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Miscellaneous</span></li>
-            <li class="menu-item">
-              <a
-                href="github page here static"
-                target="_blank"
-                class="menu-link"
-              >
-                <i class="menu-icon tf-icons bx bx-mobile"></i>
-                <div data-i18n="Support">GSM</div>
-              </a>
-            </li>
+            
             <li class="menu-item">
               <a
                 href="github page here static"
