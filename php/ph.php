@@ -92,7 +92,7 @@ mysqli_close($conn);
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="ph.php" class="app-brand-link">
               <i class="fas fa-tint"></i> <span class="app-brand-text demo menu-text fw-bolder ms-2"> 
                 <span style="text-transform: uppercase;">H</span>ydroponics</span>
             </a>
@@ -107,7 +107,7 @@ mysqli_close($conn);
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
             <li class="menu-item active">
-              <a href="index.html" class="menu-link">
+              <a href="ph.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
@@ -123,17 +123,17 @@ mysqli_close($conn);
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="pages-account-settings-account.htmls" class="menu-link">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
                     <div data-i18n="Account">Account</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-account-settings-notifications.htmls" class="menu-link">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
                     <div data-i18n="Notifications">Notifications</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-account-settings-connections.htmls" class="menu-link">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
                     <div data-i18n="Connections">Connections</div>
                   </a>
                 </li>
@@ -146,17 +146,17 @@ mysqli_close($conn);
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="auth-login-basic.htmls" class="menu-link" target="_blank">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Login</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="auth-register-basic.htmls" class="menu-link" target="_blank">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Register</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="auth-forgot-password-basic.htmls" class="menu-link" target="_blank">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link" target="_blank">
                     <div data-i18n="Basic">Forgot Password</div>
                   </a>
                 </li>
@@ -183,7 +183,7 @@ mysqli_close($conn);
 
             <!-- Tables -->
             <li class="menu-item">
-              <a href="tables-basic.htmls" class="menu-link">
+              <a href="report.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-book"></i>
                 <div data-i18n="Tables">Report</div>
               </a>
@@ -725,6 +725,28 @@ mysqli_close($conn);
               </div>
             </div>
             <!-- / Content -->
+                        <!-- Footer -->
+                        <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  | Capstonics
+                </div>
+                <div>
+                 
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="footer-link me-4"
+                    >Data & SMS Available: 4gb and 300 SMS</a
+                  >
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
             <div class="content-backdrop fade"></div>
           </div>
           <!-- Content wrapper -->
