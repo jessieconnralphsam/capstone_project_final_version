@@ -1,6 +1,7 @@
 <!-- database connection -->
 <?php include "../data_con.php"; ?>
 <?php include "../data_ret.php"; ?>
+<?php include "../includes/chartdata.php"; ?>
 
 <?php 
 session_start(); 
@@ -26,7 +27,13 @@ mysqli_stmt_close($stmt);
 
 mysqli_close($conn);
 ?>
-
+<style>
+  .chartTable {
+        max-height: 200px;
+        overflow-y: auto;
+        display: block;
+    }
+</style>
 <!DOCTYPE html>
 <html
   lang="en"
@@ -351,37 +358,24 @@ mysqli_close($conn);
                                 <i class="bx bx-dots-vertical-rounded"></i>
                               </button>
                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                <a class="dropdown-item" href="javascript:void(0);" id="view-more-flowlink">
-                                    <h3>Water Flow</h3>
-                                    <table>
-                                      <tr>
-                                        <th>Date</th>
-                                        <th>Time</th>
-                                        <th>Readings</th>
-                                        <th>Evaluation</th>
-                                      </tr>
-                                      <tr>
-                                        <td>10/12/2023</td>
-                                        <td>10 m</td>
-                                        <td>1:19 pm</td>
-                                        <td>normal</td>
-                                      </tr>
-                                      <tr>
-                                        <td>10/12/2023</td>
-                                        <td>0</td>
-                                        <td>1:19 pm</td>
-                                        <td>not normal</td>
-                                      </tr>
-                                      <tr>
-                                        <td>10/12/2023</td>
-                                        <td>10m</td>
-                                        <td>1:19 pm</td>
-                                        <td>normal</td>
-                                      </tr>
-                                      <!-- Add more rows as needed -->
+                                  <a class="dropdown-item" href="javascript:void(0);" id="view-more-flowlink">
+                                      <h3>Water Flow</h3>
+                                      <table class="chartTable">
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Readings</th>
+                                        </tr>
+                                        <?php foreach ($data_fchart as $row): ?>
+                                            <tr>
+                                                <td><?php echo date('m/d/Y', strtotime($row['flow_cdate'])); ?></td>
+                                                <td><?php echo date('h:i a', strtotime($row['flow_cdate'])); ?></td>
+                                                <td><?php echo $row['flow_readings']; ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </table>
-                                </a>
-                                <!-- <a class="dropdown-item" href="javascript:void(0);">Delete</a> -->
+                                  </a>
+                                  <!-- <a class="dropdown-item" href="javascript:void(0);">Delete</a> -->
                               </div>
                             </div>
                           </div>
@@ -438,28 +432,19 @@ mysqli_close($conn);
                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
                                 <a class="dropdown-item" href="javascript:void(0);">
                                     <h3>Water Level</h3>
-                                    <table>
-                                      <tr>
-                                        <th>Date</th>
-                                        <th>Readings</th>
-                                        <th>Evaluation</th>
-                                      </tr>
-                                      <tr>
-                                        <td>10/12/2023</td>
-                                        <td>10 m</td>
-                                        <td>normal</td>
-                                      </tr>
-                                      <tr>
-                                        <td>10/12/2023</td>
-                                        <td>0</td>
-                                        <td>not normal</td>
-                                      </tr>
-                                      <tr>
-                                        <td>10/12/2023</td>
-                                        <td>10m</td>
-                                        <td>normal</td>
-                                      </tr>
-                                      <!-- Add more rows as needed -->
+                                    <table class="chartTable">
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Readings</th>
+                                        </tr>
+                                        <?php foreach ($data_lchart as $row): ?>
+                                            <tr>
+                                                <td><?php echo date('m/d/Y', strtotime($row['level_cdate'])); ?></td>
+                                                <td><?php echo date('h:i a', strtotime($row['level_cdate'])); ?></td>
+                                                <td><?php echo $row['level_readings']; ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </table>
                                 </a>
                                 <!-- <a class="dropdown-item" href="javascript:void(0);">Delete</a> -->
@@ -574,28 +559,19 @@ mysqli_close($conn);
                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
                                 <a class="dropdown-item" href="javascript:void(0);">
                                     <h3>Acidity</h3>
-                                    <table>
-                                      <tr>
-                                        <th>Date</th>
-                                        <th>Readings</th>
-                                        <th>Evaluation</th>
-                                      </tr>
-                                      <tr>
-                                        <td>10/12/2023</td>
-                                        <td>10 m</td>
-                                        <td>normal</td>
-                                      </tr>
-                                      <tr>
-                                        <td>10/12/2023</td>
-                                        <td>0</td>
-                                        <td>not normal</td>
-                                      </tr>
-                                      <tr>
-                                        <td>10/12/2023</td>
-                                        <td>10m</td>
-                                        <td>normal</td>
-                                      </tr>
-                                      <!-- Add more rows as needed -->
+                                    <table class="chartTable">
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Readings</th>
+                                        </tr>
+                                        <?php foreach ($data_achart as $row): ?>
+                                            <tr>
+                                                <td><?php echo date('m/d/Y', strtotime($row['acid_cdate'])); ?></td>
+                                                <td><?php echo date('h:i a', strtotime($row['acid_cdate'])); ?></td>
+                                                <td><?php echo $row['acid_readings']; ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </table>
                                 </a>
                                 <!-- <a class="dropdown-item" href="javascript:void(0);">Delete</a> -->
@@ -652,28 +628,19 @@ mysqli_close($conn);
                               <div class="dropdown-menu" aria-labelledby="cardOpt1">
                                 <a class="dropdown-item" href="javascript:void(0);">
                                     <h3>Total Dissolved Solids</h3>
-                                    <table>
-                                      <tr>
-                                        <th>Date</th>
-                                        <th>Readings</th>
-                                        <th>Evaluation</th>
-                                      </tr>
-                                      <tr>
-                                        <td>10/12/2023</td>
-                                        <td>10 m</td>
-                                        <td>normal</td>
-                                      </tr>
-                                      <tr>
-                                        <td>10/12/2023</td>
-                                        <td>0</td>
-                                        <td>not normal</td>
-                                      </tr>
-                                      <tr>
-                                        <td>10/12/2023</td>
-                                        <td>10m</td>
-                                        <td>normal</td>
-                                      </tr>
-                                      <!-- Add more rows as needed -->
+                                    <table class="chartTable">
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Readings</th>
+                                        </tr>
+                                        <?php foreach ($data_tchart as $row): ?>
+                                            <tr>
+                                                <td><?php echo date('m/d/Y', strtotime($row['tds_cdate'])); ?></td>
+                                                <td><?php echo date('h:i a', strtotime($row['tds_cdate'])); ?></td>
+                                                <td><?php echo $row['tds_readings']; ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </table>
                                 </a>
                                 <!-- <a class="dropdown-item" href="javascript:void(0);">Delete</a> -->
