@@ -134,4 +134,3 @@ monthDropdown.addEventListener("change", function () {
     }
   }, 10);
 });
-

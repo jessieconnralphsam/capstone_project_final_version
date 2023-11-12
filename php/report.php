@@ -90,7 +90,7 @@
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="ph.php" class="app-brand-link">
-              <i class="fas fa-tint"></i> <span class="app-brand-text demo menu-text fw-bolder ms-2"> 
+                <i class="fa-solid fa-droplet fa-bounce fa-2xl" style="color: #095cec;"></i>  <span class="app-brand-text demo menu-text fw-bolder ms-2"> 
                 <span style="text-transform: uppercase;">H</span>ydroponics</span>
             </a>
 
@@ -292,8 +292,8 @@
 
               <!-- Table within card -->
               <div class="container">
-                  <button class="download-button">Download Analytics</button>
-                  <button class="green-button">Print Report</button>
+                  <button class="download-button"><i class="fa-solid fa-download"></i> Download Analytics</button>
+                  <button class="green-button"><i class="fa-solid fa-print fa-shake fa-lg" style="color: #050505;"></i> Print Report</button>
               </div>
               <div class="table-responsive text-nowrap">
                 <table class="table card-table">

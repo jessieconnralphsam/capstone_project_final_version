@@ -74,7 +74,7 @@ if(!isset($_SESSION['user_id'])){
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="ph.php" class="app-brand-link">
-              <i class="fas fa-tint"></i> <span class="app-brand-text demo menu-text fw-bolder ms-2"> 
+                <i class="fa-solid fa-droplet fa-bounce fa-2xl" style="color: #095cec;"></i> <span class="app-brand-text demo menu-text fw-bolder ms-2"> 
                 <span style="text-transform: uppercase;">H</span>ydroponics</span>
             </a>
 
@@ -258,14 +258,14 @@ if(!isset($_SESSION['user_id'])){
                     <div class="d-flex align-items-end row">
                       <div class="col-sm-7">
                         <div class="card-body">
-                          <h5 class="card-title text-primary">Hi user!</h5>
+                          <h5 class="card-title text-primary">Hi Welcome!</h5>
                           <p class="mb-4">
                             You have  <span class="fw-bold" style="color: red;"><?php echo mysqli_num_rows($res); ?></span> notifications  today!  Check details📋 below..
                           </p>
                           <a href="javascript:;" class="btn btn-sm btn-outline-primary"  id="viewBadges">View Notifications</a>
                           <div class="popup" id="popup">
                               <div class="popup-content">
-                                  <h1>Notifications</h1>
+                                  <h3><i class="fa-sharp fa-solid fa-bell fa-shake" style="color: #fd0808;"></i>  notifications</h3>
                                   <ul>
                                       <li class="divider"></li>
                                       <?php
@@ -333,7 +333,7 @@ if(!isset($_SESSION['user_id'])){
                               </button>
                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
                                   <a class="dropdown-item" href="javascript:void(0);" id="view-more-flowlink">
-                                      <h3>Water Flow</h3>
+                                      <h3><i class="fa-solid fa-water fa-beat" style="color: #063fa2;"></i> Water Flow</h3>
                                       <table class="chartTable">
                                         <tr>
                                             <th>Date</th>
@@ -405,7 +405,7 @@ if(!isset($_SESSION['user_id'])){
                               </button>
                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
                                 <a class="dropdown-item" href="javascript:void(0);">
-                                    <h3>Water Level</h3>
+                                    <h3><i class="fa-solid fa-arrow-up-from-ground-water fa-bounce" style="color: #0a42a4;"></i> Water Level</h3>
                                     <table class="chartTable">
                                         <tr>
                                             <th>Date</th>
@@ -475,7 +475,7 @@ if(!isset($_SESSION['user_id'])){
                       </div>                   
                       <div class="col-md-4">
                         <div id="growthChart"></div>
-                        <div class="text-center fw-semibold pt-3 mb-2">Current Water <br> Condition: <?php echo $newdata; ?></div>
+                        <div class="text-center fw-semibold pt-3 mb-2"><i class="fa-solid fa-spinner fa-spin-pulse" style="color: #166bfe;"></i> Current Water <br> Condition: <?php echo $newdata; ?></div>
 
                         <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
                           <div class="d-flex">
@@ -532,7 +532,7 @@ if(!isset($_SESSION['user_id'])){
                               </button>
                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
                                 <a class="dropdown-item" href="javascript:void(0);">
-                                    <h3>Acidity</h3>
+                                    <h3><i class="fa-solid fa-flask fa-shake" style="color: #01e930;"></i> Acidity</h3>
                                     <table class="chartTable">
                                         <tr>
                                             <th>Date</th>
@@ -601,7 +601,7 @@ if(!isset($_SESSION['user_id'])){
                               </button>
                               <div class="dropdown-menu" aria-labelledby="cardOpt1">
                                 <a class="dropdown-item" href="javascript:void(0);">
-                                    <h3>Total Dissolved Solids</h3>
+                                    <h3><i class="fa-solid fa-circle-radiation fa-fade" style="color: #f00000;"></i> Total Dissolved Solids</h3>
                                     <table class="chartTable">
                                         <tr>
                                             <th>Date</th>
@@ -707,7 +707,8 @@ if(!isset($_SESSION['user_id'])){
                   <script>
                     document.write(new Date().getFullYear());
                   </script>
-                  | Capstonics
+                  | Capstonics <i class="fa-brands fa-facebook" style="color: #075ced;"></i>
+                  <i class="fa-brands fa-github"></i>
                 </div>
                 <div>
                  
