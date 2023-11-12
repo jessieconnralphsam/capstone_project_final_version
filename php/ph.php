@@ -10,6 +10,11 @@ if(!isset($_SESSION['user_id'])){
     exit;
 }
 ?>
+
+<!-- Notification-->
+<?php $sql = "SELECT * FROM notifications WHERE status='0' ORDER BY id DESC";
+        $res = mysqli_query($conn, $sql); ?>
+
 <!DOCTYPE html>
 <html
   lang="en"
@@ -255,16 +260,36 @@ if(!isset($_SESSION['user_id'])){
                         <div class="card-body">
                           <h5 class="card-title text-primary">Hi user!</h5>
                           <p class="mb-4">
-                            You have  <span class="fw-bold" style="color: red;">2</span> notifications  today!  Check details📋 below..
+                            You have  <span class="fw-bold" style="color: red;"><?php echo mysqli_num_rows($res); ?></span> notifications  today!  Check details📋 below..
                           </p>
                           <a href="javascript:;" class="btn btn-sm btn-outline-primary"  id="viewBadges">View Notifications</a>
                           <div class="popup" id="popup">
-                            <div class="popup-content">
-                              <h1>Notifications</h1>
-                              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                              </p>
-                              <button id="closePopup" class="close-button"><i class="fa-sharp fa-solid fa-x fa-sm"></i></button>
-                            </div>
+                              <div class="popup-content">
+                                  <h1>Notifications</h1>
+                                  <ul>
+                                      <li class="divider"></li>
+                                      <?php
+                                      if (mysqli_num_rows($res) > 0) {
+                                          foreach ($res as $item) {
+                                              $formatted_date = date("F-d-Y h:i A", strtotime($item["cdate"]));
+                                              ?>
+                                              <li>
+                                                  <span style="color: red;">Critical <?php echo $item["notif_sname"]; ?>! Reading: <?php echo $item["readings"]; ?></span>
+                                                  <?php echo $formatted_date; ?>
+                                              </li>
+                                              <li class="divider"></li>
+                                              <?php
+                                          }
+                                      } else {
+                                          // No notifications
+                                          ?>
+                                          <li>No notifications</li>
+                                          <?php
+                                      }
+                                      ?>
+                                  </ul>
+                                  <button id="closePopup" class="close-button"><i class="fa-sharp fa-solid fa-x fa-sm"></i></button>
+                              </div>
                           </div>
                         </div>
                       </div>
@@ -1659,5 +1684,21 @@ if(!isset($_SESSION['user_id'])){
       })();
 
     </script>
+    <script>
+      $(document).ready(function() {
+        $("#viewBadges").on("click", function() {
+          $.ajax({
+            url: "readNotifications.php",
+            success: function(res) {
+              console.log("Ajax request successful:", res);
+            },
+            error: function(xhr, status, error) {
+              console.error("Ajax request failed:", status, error);
+            }
+          });
+        });
+      });
+    </script>
+
   </body>
 </html>

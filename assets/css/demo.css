@@ -186,6 +186,11 @@ a[title]:hover::after {
   display: block;
 }
 
+.popup-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
 
 
