@@ -9,30 +9,7 @@ if(!isset($_SESSION['user_id'])){
     header('Location: ../index.php'); 
     exit;
 }
-// $user_id = $_SESSION['user_id'];
-
-// $user_query = "SELECT * FROM users WHERE id = ?";
-// $stmt = mysqli_prepare($conn, $user_query);
-// mysqli_stmt_bind_param($stmt, "i", $user_id);
-// mysqli_stmt_execute($stmt);
-
-// $userresult = mysqli_stmt_get_result($stmt);
-
-// while ($row = mysqli_fetch_assoc($userresult)) {
-//     $data_user = $row['username'];
-// }
-
-// mysqli_stmt_close($stmt);
-
-// mysqli_close($conn);
 ?>
-<style>
-  .chartTable {
-        max-height: 200px;
-        overflow-y: auto;
-        display: block;
-    }
-</style>
 <!DOCTYPE html>
 <html
   lang="en"
@@ -161,24 +138,6 @@ if(!isset($_SESSION['user_id'])){
                 </li>
               </ul>
             </li>
-            <!-- <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                <div data-i18n="Misc">Misc</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="pages-misc-error.html" class="menu-link">
-                    <div data-i18n="Error">Error</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
-                    <div data-i18n="Under Maintenance">Under Maintenance</div>
-                  </a>
-                </li>
-              </ul>
-            </li> -->
 
             <!-- Tables -->
             <li class="menu-item">

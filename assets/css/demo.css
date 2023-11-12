@@ -180,6 +180,13 @@ a[title]:hover::after {
   opacity: 1;
 }
 
+.chartTable {
+  max-height: 200px;
+  overflow-y: auto;
+  display: block;
+}
+
+
 
 
 
