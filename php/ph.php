@@ -9,23 +9,22 @@ if(!isset($_SESSION['user_id'])){
     header('Location: ../index.php'); 
     exit;
 }
+// $user_id = $_SESSION['user_id'];
 
-$user_id = $_SESSION['user_id'];
+// $user_query = "SELECT * FROM users WHERE id = ?";
+// $stmt = mysqli_prepare($conn, $user_query);
+// mysqli_stmt_bind_param($stmt, "i", $user_id);
+// mysqli_stmt_execute($stmt);
 
-$user_query = "SELECT * FROM users WHERE id = ?";
-$stmt = mysqli_prepare($conn, $user_query);
-mysqli_stmt_bind_param($stmt, "i", $user_id);
-mysqli_stmt_execute($stmt);
+// $userresult = mysqli_stmt_get_result($stmt);
 
-$userresult = mysqli_stmt_get_result($stmt);
+// while ($row = mysqli_fetch_assoc($userresult)) {
+//     $data_user = $row['username'];
+// }
 
-while ($row = mysqli_fetch_assoc($userresult)) {
-    $data_user = $row['username'];
-}
+// mysqli_stmt_close($stmt);
 
-mysqli_stmt_close($stmt);
-
-mysqli_close($conn);
+// mysqli_close($conn);
 ?>
 <style>
   .chartTable {
@@ -295,7 +294,7 @@ mysqli_close($conn);
                     <div class="d-flex align-items-end row">
                       <div class="col-sm-7">
                         <div class="card-body">
-                          <h5 class="card-title text-primary">Hi <?php echo $data_user; ?>!</h5>
+                          <h5 class="card-title text-primary">Hi user!</h5>
                           <p class="mb-4">
                             You have  <span class="fw-bold" style="color: red;">2</span> notifications  today!  Check details📋 below..
                           </p>
@@ -375,7 +374,7 @@ mysqli_close($conn);
                               <h3 class="card-title mb-2"><?php echo $flowvalue; ?> L/min</h3>
                               <small class="<?php echo $class; ?> fw-semibold"><i class="<?php echo $icon; ?>"></i> <?php echo $flowvalue_comp; ?> L/min</small>
                           </div>
-                          <script>
+                          <!-- <script>
                               function updateWaterFlow() {
                                   $.ajax({
                                       url: '../includes/flow.php',
@@ -393,7 +392,7 @@ mysqli_close($conn);
                               }
 
                               setInterval(updateWaterFlow, 100);
-                          </script>
+                          </script> -->
 
                         </div>
                       </div>
@@ -447,7 +446,7 @@ mysqli_close($conn);
                               <h3 class="card-title mb-2"><?php echo $levelvalue; ?> m</h3>
                               <small class="<?php echo $levelclass; ?> fw-semibold"><i class="<?php echo $levelicon; ?>"></i> <?php echo $levelvalue_comp; ?> m</small>
                           </div>
-                          <script>
+                          <!-- <script>
                               function updateWaterLevel() {
                                   $.ajax({
                                       url: '../includes/level.php',
@@ -465,7 +464,7 @@ mysqli_close($conn);
                               }
 
                               setInterval(updateWaterLevel, 100);
-                          </script>
+                          </script> -->
                         </div>
                       </div>
                     </div>
@@ -574,7 +573,7 @@ mysqli_close($conn);
                               <h3 class="card-title mb-2">pH of <?php echo $acidvalue; ?></h3>
                               <small class="<?php echo $acidclass; ?> fw-semibold"><i class="<?php echo $acidicon; ?>"></i>pH of <?php echo $acidvalue_comp; ?></small>
                           </div>
-                          <script>
+                          <!-- <script>
                               function updateAcidity() {
                                   $.ajax({
                                       url: '../includes/acid.php',
@@ -592,7 +591,7 @@ mysqli_close($conn);
                               }
 
                               setInterval(updateAcidity, 100);
-                          </script>
+                          </script> -->
                         </div>
                       </div>
                     </div>
@@ -643,7 +642,7 @@ mysqli_close($conn);
                               <h5 class="card-title mb-2"><?php echo $tdsvalue; ?> ppm</h5>
                               <small class="<?php echo $tdsclass; ?> fw-semibold"><i class="<?php echo $tdsicon; ?>"></i><?php echo $tdsvalue_comp; ?> ppm</small>
                           </div>
-                          <script>
+                          <!-- <script>
                               function updateTds() {
                                   $.ajax({
                                       url: '../includes/tds.php',
@@ -661,7 +660,7 @@ mysqli_close($conn);
                               }
 
                               setInterval(updateTds, 100);
-                          </script>
+                          </script> -->
                         </div>
                       </div>
                     </div>
@@ -682,7 +681,7 @@ mysqli_close($conn);
                                 >
                                 <h3 class="mb-0"><?php echo $tempvalue; ?> °C</h3>
                               </div>
-                              <script>
+                              <!-- <script>
                                   function updateTemperature() {
                                       $.ajax({
                                           url: '../includes/temperature.php',
@@ -704,7 +703,7 @@ mysqli_close($conn);
                                   }
 
                                   setInterval(updateTemperature, 100);
-                              </script>
+                              </script> -->
                             </div>
                             <div id="profileReportChart"></div>
                           </div>
