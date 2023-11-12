@@ -304,7 +304,7 @@ if(!isset($_SESSION['user_id'])){
                               <h1>Notifications</h1>
                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                               </p>
-                              <button id="closePopup" class="close-button">Close</button>
+                              <button id="closePopup" class="close-button"><i class="fa-sharp fa-solid fa-x fa-sm"></i></button>
                             </div>
                           </div>
                         </div>
@@ -748,14 +748,13 @@ if(!isset($_SESSION['user_id'])){
     </div>
     <!-- / Layout wrapper -->
 
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
     <script src="../assets/vendor/libs/jquery/jquery.js"></script>
     <script src="../assets/vendor/libs/popper/popper.js"></script>
     <script src="../assets/vendor/js/bootstrap.js"></script>
     <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
     <script src="../assets/vendor/js/menu.js"></script>
+    <script src="../assets/vendor/js/core.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->

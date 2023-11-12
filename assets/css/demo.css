@@ -132,12 +132,15 @@
 
 .close-button {
   position: absolute;
-  top: 10px; /* Adjust the value as needed */
-  right: 10px; /* Adjust the value as needed */
+  top: 10px;
+  right: 10px; 
+  border: none; 
+  background: none; 
+  cursor: pointer;
 }
 
 .table-container {
-  max-height: 300px; /* Set the maximum height for the table container */
+  max-height: 300px; 
   overflow-y: auto; 
 }
 
