@@ -67,6 +67,7 @@ $weights_for_acidity= [
 // $wateraverage = $data_flow[0];
 //isset($weights_for_acidity[$wateraverage]) -- check nako if ga exist ang value sa $wateraverage didtoa sa $weights_for_acidity
 //? $weights_for_acidity[$wateraverage] : null;  -- : else if null , if exist newdata = to corresponding value
+//condition ? expression_if_true : expression_if_false;
 $newdata = isset($weights_for_acidity[$data_flow[0]]) ? $weights_for_acidity[$data_flow[0]] : null;
 ?>
 
