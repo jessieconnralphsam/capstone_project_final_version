@@ -475,7 +475,7 @@ if(!isset($_SESSION['user_id'])){
                       </div>                   
                       <div class="col-md-4">
                         <div id="growthChart"></div>
-                        <div class="text-center fw-semibold pt-3 mb-2">Current Water <br> Condition: 50</div>
+                        <div class="text-center fw-semibold pt-3 mb-2">Current Water <br> Condition: <?php echo $newdata; ?></div>
 
                         <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
                           <div class="d-flex">

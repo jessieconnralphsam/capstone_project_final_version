@@ -48,6 +48,29 @@
 ?>
 
 <?php
+$weights_for_acidity= [
+  1 => 10,
+  2 => 20,
+  3 => 30,
+  4 => 60,
+  5 => 80,
+  6 => 90,
+  7 => 100,
+  8 => 90,
+  9 => 80,
+  10 => 60,
+  11 => 40,
+  12 => 30,
+  13 => 20,
+  14 => 10,
+];
+$wateraverage = $data_flow[0];
+//isset($weights_for_acidity[$wateraverage]) -- check nako if ga exist ang value sa $wateraverage didtoa sa $weights_for_acidity
+//? $weights_for_acidity[$wateraverage] : null;  -- : else if null , if exist newdata = to corresponding value
+$newdata = isset($weights_for_acidity[$wateraverage]) ? $weights_for_acidity[$wateraverage] : null;
+?>
+
+<?php
   $flowvalue = $data_flow[0];
   $flowvalue_prev =  $data_flow[1];
   $flowvalue_comp = $data_flow[0] - $data_flow[1];
