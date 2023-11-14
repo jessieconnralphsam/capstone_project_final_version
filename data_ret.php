@@ -48,6 +48,7 @@
 ?>
 
 <?php
+
 $weights_for_acidity= [
   1 => 10,
   2 => 20,
@@ -55,7 +56,7 @@ $weights_for_acidity= [
   4 => 60,
   5 => 80,
   6 => 90,
-  7 => 100,
+  7 => 97,
   8 => 90,
   9 => 80,
   10 => 60,
@@ -64,11 +65,53 @@ $weights_for_acidity= [
   13 => 20,
   14 => 10,
 ];
-// $wateraverage = $data_flow[0];
-//isset($weights_for_acidity[$wateraverage]) -- check nako if ga exist ang value sa $wateraverage didtoa sa $weights_for_acidity
-//? $weights_for_acidity[$wateraverage] : null;  -- : else if null , if exist newdata = to corresponding value
-//condition ? expression_if_true : expression_if_false;
-$newdata = isset($weights_for_acidity[$data_flow[0]]) ? $weights_for_acidity[$data_flow[0]] : null;
+
+$weights_for_label = [];
+
+for ($i = 1; $i <= 100; $i++) {
+    switch (true) {
+        case ($i >= 25 && $i <= 49):
+            $weights_for_label[$i] = 'poor';
+            break;
+        case ($i >= 50 && $i <= 69):
+            $weights_for_label[$i] = 'medium';
+            break;
+        case ($i >= 70 && $i <= 89):
+            $weights_for_label[$i] = 'good';
+            break;
+        case ($i >= 90 && $i <= 100):
+            $weights_for_label[$i] = 'excellent';
+            break;
+        default:
+            $weights_for_label[$i] = 'extremely poor';
+    }
+}
+
+if ($data_tds[0] <= 50) {
+  $tdsdata = 15;
+}else if ($data_tds[0] >= 51 && $data_tds <= 100){
+  $tdsdata = 25;
+}else if ($data_tds[0] >= 101 && $data_tds <= 200){
+  $tdsdata = 30;
+}else if ($data_tds[0] >= 201 && $data_tds <= 300){
+  $tdsdata = 35;
+}
+
+$temperature = 0;
+if ($data_temp[0] <=25){
+  $temperature = 10;
+}
+
+$newdata = isset($weights_for_acidity[$data_acid[0]]) ? $weights_for_acidity[$data_acid[0]] : null;
+$average = round(($newdata + $tdsdata + $temperature) / 3, 2);
+$roundedave = ceil($average);
+$newlabel = isset($weights_for_label[$average]) ? $weights_for_label[$average] : null;
+//instead na e loop else if or switch
+//solution:
+//build og table na average water condition. combination sa acidity, tds, og temperature
+//everytime na maka dawat og data ang sensor table e insert sya using trigger didtoa sa table. so instead
+//na example 7 mahimo syang 100 sa average water quality.
+
 ?>
 
 <?php

@@ -704,7 +704,6 @@
               </div>
               <!--/ Table within card -->
             <!-- / Content -->
-
             <div class="content-backdrop fade"></div>
           </div>
           <!-- Content wrapper -->
