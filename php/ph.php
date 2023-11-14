@@ -2,6 +2,7 @@
 <?php include "../data_con.php"; ?>
 <?php include "../data_ret.php"; ?>
 <?php include "../includes/chartdata.php"; ?>
+<?php include "../chartdata.php"; ?>
 
 <?php 
 session_start(); 
@@ -1621,6 +1622,7 @@ if(!isset($_SESSION['user_id'])){
 
         // Profit Report Line Chart
         // --------------------------------------------------------------------
+
         const profileReportChartEl = document.querySelector('#profileReportChart'),
           profileReportChartConfig = {
             chart: {
@@ -1659,7 +1661,7 @@ if(!isset($_SESSION['user_id'])){
             series: [
               {
                 name: "Readings", 
-                data: [110, 270, 145, 245, 205, 285]
+                data: [<?php echo json_encode($chartdata_temp[0]); ?>, <?php echo json_encode($chartdata_temp[1]); ?>, <?php echo json_encode($chartdata_temp[2]); ?>, <?php echo json_encode($chartdata_temp[3]); ?>, <?php echo json_encode($chartdata_temp[4]); ?>, <?php echo json_encode($chartdata_temp[5]); ?>]
               }
             ],
             xaxis: {

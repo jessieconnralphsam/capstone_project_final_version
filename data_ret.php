@@ -97,7 +97,6 @@ if ($data_tds[0] <= 50) {
   $tdsdata = 35;
 }
 
-$temperature = 0;
 if ($data_temp[0] <=25){
   $temperature = 10;
 }
@@ -106,12 +105,6 @@ $newdata = isset($weights_for_acidity[$data_acid[0]]) ? $weights_for_acidity[$da
 $average = round(($newdata + $tdsdata + $temperature) / 3, 2);
 $roundedave = ceil($average);
 $newlabel = isset($weights_for_label[$average]) ? $weights_for_label[$average] : null;
-//instead na e loop else if or switch
-//solution:
-//build og table na average water condition. combination sa acidity, tds, og temperature
-//everytime na maka dawat og data ang sensor table e insert sya using trigger didtoa sa table. so instead
-//na example 7 mahimo syang 100 sa average water quality.
-
 ?>
 
 <?php

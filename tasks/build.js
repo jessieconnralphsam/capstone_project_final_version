@@ -12,10 +12,6 @@ const log = require('fancy-log');
 const colors = require('ansi-colors');
 const rename = require('gulp-rename');
 
-// add new js code here
-// 26/08/2023
-
-
 module.exports = (conf, srcGlob) => {
   // Build CSS
   // -------------------------------------------------------------------------------
@@ -23,11 +19,9 @@ module.exports = (conf, srcGlob) => {
     return src(srcGlob('**/*.scss', '!**/_*.scss'))
       .pipe(gulpIf(conf.sourcemaps, sourcemaps.init()))
       .pipe(
-        // If sass is installed on your local machine, it will use command line to compile sass else it will use dart sass npm which 3 time slower
         gulpIf(
           localSass,
           exec(
-            // If conf.minify == true, generate compressed style without sourcemap
             gulpIf(
               conf.minify,
               `sass scss:${conf.distPath}/css fonts:${conf.distPath}/fonts libs:${conf.distPath}/libs --style compressed --no-source-map`,
