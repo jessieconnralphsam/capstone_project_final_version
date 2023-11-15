@@ -476,7 +476,7 @@ if(!isset($_SESSION['user_id'])){
                       </div>                   
                       <div class="col-md-4">
                         <div id="growthChart"></div>
-                        <div class="text-center fw-semibold pt-3 mb-2"><i class="fa-solid fa-spinner fa-spin-pulse" style="color: #166bfe;"></i> Current Water <br> Condition: <?php echo $roundedave; ?></div>
+                        <div class="text-center fw-bold pt-3 mb-2"> Current Water <br> Condition: <?php echo $newlabel; ?></div>
 
                         <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
                           <div class="d-flex">
@@ -700,8 +700,8 @@ if(!isset($_SESSION['user_id'])){
               </div>
             </div>
             <!-- / Content -->
-                        <!-- Footer -->
-                        <footer class="content-footer footer bg-footer-theme">
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
               <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                 <div class="mb-2 mb-md-0">
                   ©
@@ -1544,7 +1544,7 @@ if(!isset($_SESSION['user_id'])){
         const growthChartEl = document.querySelector('#growthChart'),
           growthChartOptions = {
             series: [<?php echo $average; ?>],
-            labels: ['<?php echo $newlabel; ?>'],
+            labels: ['<?php echo  $temperaturedate[0]; ?>'],
             chart: {
               height: 240,
               type: 'radialBar'

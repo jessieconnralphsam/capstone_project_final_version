@@ -83,7 +83,7 @@ for ($i = 1; $i <= 100; $i++) {
             $weights_for_label[$i] = 'excellent';
             break;
         default:
-            $weights_for_label[$i] = 'extremely poor';
+            $weights_for_label[$i] = 'critical';
     }
 }
 
@@ -103,6 +103,7 @@ if ($data_temp[0] <=25){
 
 $newdata = isset($weights_for_acidity[$data_acid[0]]) ? $weights_for_acidity[$data_acid[0]] : null;
 $average = round(($newdata + $tdsdata + $temperature) / 3, 2);
+$ave = ($newdata + $tdsdata + $temperature) / 3;
 $roundedave = ceil($average);
 $newlabel = isset($weights_for_label[$average]) ? $weights_for_label[$average] : null;
 ?>

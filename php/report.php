@@ -1,5 +1,6 @@
+<?php include "..\chartdata.php"; ?>
+<?php include "..\data_ret.php"; ?>
 <!DOCTYPE html>
-
 <html
   lang="en"
   class="light-style layout-menu-fixed"
@@ -293,7 +294,7 @@
               <!-- Table within card -->
               <div class="container">
                   <button class="download-button"><i class="fa-solid fa-download"></i> Download Analytics</button>
-                  <button class="green-button"><i class="fa-solid fa-print fa-shake fa-lg" style="color: #050505;"></i> Print Report</button>
+                  <button class="green-button"><i class="fa-solid fa-print fa-lg"></i> Print Report</button>
               </div>
               <div class="table-responsive text-nowrap">
                 <table class="table card-table">
@@ -301,14 +302,71 @@
                     <tr>
                       <th>Time & Date</th>
                       <th>Readings</th>
-                      <th>Average Water Condition</th>
+                      <th>Average</th>
                       <th>Status</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody class="table-border-bottom-0">
                     <tr>
-                      <td><i class= text-danger "></i> <strong>Jan 1, 2023 - 3:00 AM</strong></td>
+                      <td><i class= text-danger "></i> <strong><?php echo $temperaturedate[0]; ?></strong></td>
+                      <td>
+                        <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                          <li
+                            data-bs-toggle="tooltip"
+                            data-popup="tooltip-custom"
+                            data-bs-placement="top"
+                            class="avatar avatar-xs pull-up"
+                            title="Acidity: pH of <?php echo $data_acid[0]; ?>"
+                          >
+                            <img src="../assets/img/icons/unicons/flask.png" alt="sensor" class="rounded-circle" />
+                          </li>
+                          <li
+                            data-bs-toggle="tooltip"
+                            data-popup="tooltip-custom"
+                            data-bs-placement="top"
+                            class="avatar avatar-xs pull-up"
+                            title="Total Dissolved Solids: <?php echo $data_tds[0]; ?> ppm"
+                          >
+                            <img src="../assets/img/icons/unicons/atom.png" alt="sensor" class="rounded-circle" />
+                          </li>
+                          <li
+                            data-bs-toggle="tooltip"
+                            data-popup="tooltip-custom"
+                            data-bs-placement="top"
+                            class="avatar avatar-xs pull-up"
+                            title="Water Temperature: <?php echo $data_temp[0]; ?>°C"
+                          >
+                            <img src="../assets/img/icons/unicons/thermometer.png" alt="sensor" class="rounded-circle" />
+                          </li>
+                          <li
+                            data-bs-toggle="tooltip"
+                            data-popup="tooltip-custom"
+                            data-bs-placement="top"
+                            class="avatar avatar-xs pull-up"
+                            title="Waterflow: <?php echo $data_flow[0]; ?> L/m"
+                          >
+                            <img src="../assets/img/icons/unicons/flow.png" alt="sensor" class="rounded-circle" />
+                          </li>
+                          <li
+                            data-bs-toggle="tooltip"
+                            data-popup="tooltip-custom"
+                            data-bs-placement="top"
+                            class="avatar avatar-xs pull-up"
+                            title="Waterlevel: <?php echo $data_level[0]; ?> m"
+                          >
+                            <img src="../assets/img/icons/unicons/tide.png" alt="sensor" class="rounded-circle" />
+                          </li>
+
+                        
+                        </ul>
+                      </td>
+                      <td><?php echo $ave; ?>%</td>
+                      <td><span class="badge bg-label-primary me-1"><?php echo $newlabel; ?></span></td>
+                      <td>Add Solution & Increase Water Flow</td>
+                    </tr>
+                    <tr>
+                      <td><i class="text-danger"></i> <strong><?php echo $temperaturedate[1]; ?></strong></td>
                       <td>
                         <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                           <li
@@ -364,7 +422,7 @@
                       <td>None</td>
                     </tr>
                     <tr>
-                      <td><i class="text-danger"></i> <strong>Jan 1, 2023 - 3:00 AM</strong></td>
+                      <td><i class="text-danger"></i> <strong><?php echo $temperaturedate[2]; ?></strong></td>
                       <td>
                         <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                           <li
@@ -420,7 +478,7 @@
                       <td>None</td>
                     </tr>
                     <tr>
-                      <td><i class="text-danger "></i> <strong>Jan 1, 2023 - 3:00 AM</strong></td>
+                      <td><i class="text-danger"></i> <strong><?php echo $temperaturedate[3]; ?></strong></td>
                       <td>
                         <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                           <li
@@ -476,7 +534,7 @@
                       <td>None</td>
                     </tr>
                     <tr>
-                      <td><i class=" text-danger "></i> <strong>Jan 1, 2023 - 3:00 AM</strong></td>
+                      <td><i class="text-danger"></i> <strong><?php echo $temperaturedate[4]; ?></strong></td>
                       <td>
                         <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                           <li
@@ -532,7 +590,7 @@
                       <td>None</td>
                     </tr>
                     <tr>
-                      <td><i class=" text-danger "></i> <strong>Jan 1, 2023 - 3:00 AM</strong></td>
+                      <td><i class="text-danger"></i> <strong><?php echo $temperaturedate[5]; ?></strong></td>
                       <td>
                         <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                           <li
@@ -588,7 +646,7 @@
                       <td>None</td>
                     </tr>
                     <tr>
-                      <td><i class=" text-danger "></i> <strong>Jan 1, 2023 - 3:00 AM</strong></td>
+                      <td><i class="text-danger"></i> <strong><?php echo $temperaturedate[6]; ?></strong></td>
                       <td>
                         <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                           <li
@@ -639,12 +697,68 @@
                         
                         </ul>
                       </td>
-                      <td>20%</td>
-                      <td><span class="badge bg-label-warning me-1">extremely poor</span></td>
+                      <td>50%</td>
+                      <td><span class="badge bg-label-success me-1">Normal</span></td>
                       <td>None</td>
                     </tr>
                     <tr>
-                      <td><i class=" text-danger "></i> <strong>Jan 1, 2023 - 3:00 AM</strong></td>
+                      <td><i class="text-danger"></i> <strong><?php echo $temperaturedate[7]; ?></strong></td>
+                      <td>
+                        <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                          <li
+                            data-bs-toggle="tooltip"
+                            data-popup="tooltip-custom"
+                            data-bs-placement="top"
+                            class="avatar avatar-xs pull-up"
+                            title="Acidity: pH of 2"
+                          >
+                            <img src="../assets/img/icons/unicons/flask.png" alt="sensor" class="rounded-circle" />
+                          </li>
+                          <li
+                            data-bs-toggle="tooltip"
+                            data-popup="tooltip-custom"
+                            data-bs-placement="top"
+                            class="avatar avatar-xs pull-up"
+                            title="Total Dissolved Solids: 300 ppm"
+                          >
+                            <img src="../assets/img/icons/unicons/atom.png" alt="sensor" class="rounded-circle" />
+                          </li>
+                          <li
+                            data-bs-toggle="tooltip"
+                            data-popup="tooltip-custom"
+                            data-bs-placement="top"
+                            class="avatar avatar-xs pull-up"
+                            title="Waterflow: 3 L/m"
+                          >
+                            <img src="../assets/img/icons/unicons/flow.png" alt="sensor" class="rounded-circle" />
+                          </li>
+                          <li
+                            data-bs-toggle="tooltip"
+                            data-popup="tooltip-custom"
+                            data-bs-placement="top"
+                            class="avatar avatar-xs pull-up"
+                            title="Waterlevel: 12 m"
+                          >
+                            <img src="../assets/img/icons/unicons/tide.png" alt="sensor" class="rounded-circle" />
+                          </li>
+                          <li
+                            data-bs-toggle="tooltip"
+                            data-popup="tooltip-custom"
+                            data-bs-placement="top"
+                            class="avatar avatar-xs pull-up"
+                            title="Water Temperature: 30°C"
+                          >
+                            <img src="../assets/img/icons/unicons/thermometer.png" alt="sensor" class="rounded-circle" />
+                          </li>
+                        
+                        </ul>
+                      </td>
+                      <td>50%</td>
+                      <td><span class="badge bg-label-success me-1">Normal</span></td>
+                      <td>None</td>
+                    </tr>
+                    <tr>
+                      <td><i class="text-danger"></i> <strong><?php echo $temperaturedate[8]; ?></strong></td>
                       <td>
                         <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                           <li
@@ -704,6 +818,29 @@
               </div>
               <!--/ Table within card -->
             <!-- / Content -->
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  | Capstonics <i class="fa-brands fa-facebook" style="color: #075ced;"></i>
+                  <i class="fa-brands fa-github"></i>
+                </div>
+                <div>
+                 
+                  <a
+                    href="#"
+                    target="_blank"
+                    class="footer-link me-4"
+                    >Data & SMS Available: 4gb and 300 SMS</a
+                  >
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
             <div class="content-backdrop fade"></div>
           </div>
           <!-- Content wrapper -->
