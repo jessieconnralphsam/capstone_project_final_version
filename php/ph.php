@@ -556,7 +556,7 @@ if(!isset($_SESSION['user_id'])){
                           <div id="acidity">
                               <span class="fw-semibold d-block mb-1">Acidity</span>
                               <h3 class="card-title mb-2">pH of <?php echo $acidvalue; ?></h3>
-                              <small class="<?php echo $acidclass; ?> fw-semibold"><i class="<?php echo $acidicon; ?>"></i>pH of <?php echo $acidvalue_comp; ?></small>
+                              <small class="<?php echo $acidclass; ?> fw-semibold"><i class="<?php echo $acidicon; ?>"></i><?php echo $acidvalue_comp; ?> pH</small>
                           </div>
                           <!-- <script>
                               function updateAcidity() {
