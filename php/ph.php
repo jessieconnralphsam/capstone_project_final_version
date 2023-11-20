@@ -261,7 +261,8 @@ if(!isset($_SESSION['user_id'])){
                         <div class="card-body">
                           <h5 class="card-title text-primary">Hi Welcome!</h5>
                           <p class="mb-4">
-                            You have  <span class="fw-bold" style="color: red;"><?php echo mysqli_num_rows($res); ?></span> notifications  today!  Check details📋 below..
+                            You have  <span class="fw-bold" style="color: red;"><?php echo mysqli_num_rows($res); ?></span> notifications  today! Check details📋 below. If you want to check analytics <a href="../analytics/analytics.php" style="color: blue;" target="_blank">click here...</a>
+
                           </p>
                           <a href="javascript:;" class="btn btn-sm btn-outline-primary"  id="viewBadges">View Notifications</a>
                           <div class="popup" id="popup">
@@ -334,7 +335,7 @@ if(!isset($_SESSION['user_id'])){
                               </button>
                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
                                   <a class="dropdown-item" href="javascript:void(0);" id="view-more-flowlink">
-                                      <h3><i class="fa-solid fa-water fa-beat" style="color: #063fa2;"></i> Water Flow</h3>
+                                      <h3>Water Flow</h3>
                                       <table class="chartTable">
                                         <tr>
                                             <th>Date</th>
@@ -406,7 +407,7 @@ if(!isset($_SESSION['user_id'])){
                               </button>
                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
                                 <a class="dropdown-item" href="javascript:void(0);">
-                                    <h3><i class="fa-solid fa-arrow-up-from-ground-water fa-bounce" style="color: #0a42a4;"></i> Water Level</h3>
+                                    <h3>Water Level</h3>
                                     <table class="chartTable">
                                         <tr>
                                             <th>Date</th>
@@ -533,7 +534,7 @@ if(!isset($_SESSION['user_id'])){
                               </button>
                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
                                 <a class="dropdown-item" href="javascript:void(0);">
-                                    <h3><i class="fa-solid fa-flask fa-shake" style="color: #01e930;"></i> Acidity</h3>
+                                    <h3>Acidity</h3>
                                     <table class="chartTable">
                                         <tr>
                                             <th>Date</th>
@@ -602,7 +603,7 @@ if(!isset($_SESSION['user_id'])){
                               </button>
                               <div class="dropdown-menu" aria-labelledby="cardOpt1">
                                 <a class="dropdown-item" href="javascript:void(0);">
-                                    <h3><i class="fa-solid fa-circle-radiation fa-fade" style="color: #f00000;"></i> Total Dissolved Solids</h3>
+                                    <h3>Total Dissolved Solids</h3>
                                     <table class="chartTable">
                                         <tr>
                                             <th>Date</th>

@@ -51,12 +51,12 @@
 		  <button type="submit" 
 		          class="btn btn-primary">LOGIN
 		  </button>
-		  <button type="submit" 
+		  <!-- <button type="submit" 
 		          class="btn btn-success">REGISTER
 		  </button>
 		  <button type="submit" 
 		          class="btn btn-danger">FORGOT PASSWORD
-		  </button>
+		  </button> -->
 		</form>
 	  </div>
 <script>

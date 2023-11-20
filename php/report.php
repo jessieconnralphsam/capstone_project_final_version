@@ -293,7 +293,7 @@
 
               <!-- Table within card -->
               <div class="container">
-                  <button class="download-button"><i class="fa-solid fa-download"></i> Download Analytics</button>
+                  <button class="download-button"><i class="fa-solid fa-download"></i> Download CSV</button>
                   <button class="green-button"><i class="fa-solid fa-print fa-lg"></i> Print Report</button>
               </div>
               <div class="table-responsive text-nowrap">
