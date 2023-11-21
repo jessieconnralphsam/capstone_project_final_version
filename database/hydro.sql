@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2023 at 08:07 AM
+-- Generation Time: Nov 21, 2023 at 05:54 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -76,7 +76,18 @@ INSERT INTO `acidity` (`acid_id`, `sensor_name`, `acid_cdate`, `acid_readings`, 
 (62, 'Acidity', '2023-11-14 06:58:40', 2, 0),
 (63, 'Acidity', '2023-11-15 11:07:17', 10, 0),
 (64, 'Acidity', '2023-11-15 11:33:55', 7, 0),
-(65, 'Acidity', '2023-11-15 11:36:07', 3, 0);
+(65, 'Acidity', '2023-11-15 11:36:07', 3, 0),
+(66, 'Acidity', '2023-11-20 18:53:28', 7, 0),
+(67, 'Acidity', '2023-11-20 19:12:14', 7, 0),
+(68, 'Acidity', '2023-11-20 19:28:14', 7, 0),
+(69, 'Acidity', '2023-11-20 19:32:32', 7, 0),
+(70, 'Acidity', '2023-11-20 19:32:41', 7, 0),
+(71, 'Acidity', '2023-11-20 19:33:27', 2, 0),
+(72, 'Acidity', '2023-11-20 19:37:19', 7, 0),
+(73, 'Acidity', '2023-11-20 20:45:35', 1, 0),
+(74, 'Acidity', '2023-11-20 21:02:02', 7, 0),
+(75, 'Acidity', '2023-11-20 21:16:19', 2, 0),
+(76, 'Acidity', '2023-11-21 11:26:45', 7, 0);
 
 --
 -- Triggers `acidity`
@@ -113,6 +124,21 @@ CREATE TABLE `average` (
   `tds` int(11) NOT NULL,
   `temperature` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `combined_readings_view`
+-- (See below for the actual view)
+--
+CREATE TABLE `combined_readings_view` (
+`reading_id` int(11)
+,`sensor_name` varchar(12)
+,`reading_cdate` datetime
+,`reading_value` int(11)
+,`reading_type` varchar(22)
+,`weighted_value` int(2)
+);
 
 -- --------------------------------------------------------
 
@@ -216,7 +242,29 @@ INSERT INTO `notifications` (`id`, `notif_sname`, `cdate`, `readings`, `status`)
 (128, 'Conductivity', '2023-11-15 11:33:55', 100, 1),
 (129, 'waterlevel', '2023-11-15 11:36:07', 3, 1),
 (130, 'Acidity', '2023-11-15 11:36:07', 3, 1),
-(131, 'Conductivity', '2023-11-15 11:36:07', 50, 1);
+(131, 'Conductivity', '2023-11-15 11:36:07', 50, 1),
+(132, 'waterlevel', '2023-11-20 18:53:28', 3, 1),
+(133, 'Conductivity', '2023-11-20 18:53:28', 50, 1),
+(134, 'waterlevel', '2023-11-20 19:12:14', 5, 1),
+(135, 'waterlevel', '2023-11-20 19:28:14', 3, 1),
+(136, 'waterlevel', '2023-11-20 19:32:32', 3, 1),
+(137, 'waterlevel', '2023-11-20 19:32:41', 2, 1),
+(138, 'Temperature', '2023-11-20 19:32:41', 100, 1),
+(139, 'waterlevel', '2023-11-20 19:33:27', 3, 1),
+(140, 'Acidity', '2023-11-20 19:33:27', 2, 1),
+(141, 'Conductivity', '2023-11-20 19:33:27', 900, 1),
+(142, 'Temperature', '2023-11-20 19:33:27', 100, 1),
+(143, 'waterlevel', '2023-11-20 19:37:19', 4, 1),
+(144, 'waterlevel', '2023-11-20 20:45:35', 3, 1),
+(145, 'Acidity', '2023-11-20 20:45:35', 1, 1),
+(146, 'Conductivity', '2023-11-20 20:45:35', 900, 1),
+(147, 'Temperature', '2023-11-20 20:45:35', 30, 1),
+(148, 'waterlevel', '2023-11-20 21:02:02', 3, 1),
+(149, 'waterlevel', '2023-11-20 21:16:19', 3, 1),
+(150, 'Acidity', '2023-11-20 21:16:19', 2, 1),
+(151, 'Conductivity', '2023-11-20 21:16:19', 50, 1),
+(152, 'Temperature', '2023-11-20 21:16:19', 30, 1),
+(153, 'waterlevel', '2023-11-21 11:26:45', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -269,7 +317,18 @@ INSERT INTO `temperature` (`temp_id`, `sensor_name`, `temp_cdate`, `temp_reading
 (51, 'Temperature', '2023-11-14 06:58:40', 25, 0),
 (52, 'Temperature', '2023-11-15 11:07:17', 5, 0),
 (53, 'Temperature', '2023-11-15 11:33:55', 25, 0),
-(54, 'Temperature', '2023-11-15 11:36:07', 25, 0);
+(54, 'Temperature', '2023-11-15 11:36:07', 25, 0),
+(55, 'Temperature', '2023-11-20 18:53:28', 25, 0),
+(56, 'Temperature', '2023-11-20 19:12:14', 25, 0),
+(57, 'Temperature', '2023-11-20 19:28:14', 18, 0),
+(58, 'Temperature', '2023-11-20 19:32:32', 18, 0),
+(59, 'Temperature', '2023-11-20 19:32:41', 100, 0),
+(60, 'Temperature', '2023-11-20 19:33:27', 100, 0),
+(61, 'Temperature', '2023-11-20 19:37:19', 25, 0),
+(62, 'Temperature', '2023-11-20 20:45:35', 30, 0),
+(63, 'Temperature', '2023-11-20 21:02:02', 25, 0),
+(64, 'Temperature', '2023-11-20 21:16:19', 30, 0),
+(65, 'Temperature', '2023-11-21 11:26:45', 25, 0);
 
 --
 -- Triggers `temperature`
@@ -335,7 +394,18 @@ INSERT INTO `total_dissolved_solids` (`tds_id`, `sensor_name`, `tds_cdate`, `tds
 (36, 'Conductivity', '2023-11-14 06:58:40', 50, 0),
 (37, 'Conductivity', '2023-11-15 11:07:17', 20, 0),
 (38, 'Conductivity', '2023-11-15 11:33:55', 100, 0),
-(39, 'Conductivity', '2023-11-15 11:36:07', 50, 0);
+(39, 'Conductivity', '2023-11-15 11:36:07', 50, 0),
+(40, 'Conductivity', '2023-11-20 18:53:28', 50, 0),
+(41, 'Conductivity', '2023-11-20 19:12:14', 300, 0),
+(42, 'Conductivity', '2023-11-20 19:28:14', 300, 0),
+(43, 'Conductivity', '2023-11-20 19:32:32', 300, 0),
+(44, 'Conductivity', '2023-11-20 19:32:41', 300, 0),
+(45, 'Conductivity', '2023-11-20 19:33:27', 900, 0),
+(46, 'Conductivity', '2023-11-20 19:37:19', 500, 0),
+(47, 'Conductivity', '2023-11-20 20:45:35', 900, 0),
+(48, 'Conductivity', '2023-11-20 21:02:02', 500, 0),
+(49, 'Conductivity', '2023-11-20 21:16:19', 50, 0),
+(50, 'Conductivity', '2023-11-21 11:26:45', 500, 0);
 
 --
 -- Triggers `total_dissolved_solids`
@@ -430,7 +500,18 @@ INSERT INTO `waterflow` (`flow_id`, `sensor_name`, `flow_cdate`, `flow_readings`
 (40, 'waterflow', '2023-11-14 06:58:40', 3, 0),
 (41, 'waterflow', '2023-11-15 11:07:17', 4, 0),
 (42, 'waterflow', '2023-11-15 11:33:55', 2, 0),
-(43, 'waterflow', '2023-11-15 11:36:07', 3, 0);
+(43, 'waterflow', '2023-11-15 11:36:07', 3, 0),
+(44, 'waterflow', '2023-11-20 18:53:28', 3, 0),
+(45, 'waterflow', '2023-11-20 19:12:14', 5, 0),
+(46, 'waterflow', '2023-11-20 19:28:14', 3, 0),
+(47, 'waterflow', '2023-11-20 19:32:32', 3, 0),
+(48, 'waterflow', '2023-11-20 19:32:41', 3, 0),
+(49, 'waterflow', '2023-11-20 19:33:27', 3, 0),
+(50, 'waterflow', '2023-11-20 19:37:19', 3, 0),
+(51, 'waterflow', '2023-11-20 20:45:35', 3, 0),
+(52, 'waterflow', '2023-11-20 21:02:02', 3, 0),
+(53, 'waterflow', '2023-11-20 21:16:19', 3, 0),
+(54, 'waterflow', '2023-11-21 11:26:45', 3, 0);
 
 --
 -- Triggers `waterflow`
@@ -496,7 +577,18 @@ INSERT INTO `waterlevel` (`level_id`, `sensor_name`, `level_cdate`, `level_readi
 (40, 'waterlevel', '2023-11-14 06:58:40', 5, 0),
 (41, 'waterlevel', '2023-11-15 11:07:17', 5, 0),
 (42, 'waterlevel', '2023-11-15 11:33:55', 3, 0),
-(43, 'waterlevel', '2023-11-15 11:36:07', 3, 0);
+(43, 'waterlevel', '2023-11-15 11:36:07', 3, 0),
+(44, 'waterlevel', '2023-11-20 18:53:28', 3, 0),
+(45, 'waterlevel', '2023-11-20 19:12:14', 5, 0),
+(46, 'waterlevel', '2023-11-20 19:28:14', 3, 0),
+(47, 'waterlevel', '2023-11-20 19:32:32', 3, 0),
+(48, 'waterlevel', '2023-11-20 19:32:41', 2, 0),
+(49, 'waterlevel', '2023-11-20 19:33:27', 3, 0),
+(50, 'waterlevel', '2023-11-20 19:37:19', 4, 0),
+(51, 'waterlevel', '2023-11-20 20:45:35', 3, 0),
+(52, 'waterlevel', '2023-11-20 21:02:02', 3, 0),
+(53, 'waterlevel', '2023-11-20 21:16:19', 3, 0),
+(54, 'waterlevel', '2023-11-21 11:26:45', 3, 0);
 
 --
 -- Triggers `waterlevel`
@@ -510,6 +602,15 @@ CREATE TRIGGER `insert_into_level_notif_table` AFTER INSERT ON `waterlevel` FOR 
 END
 $$
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `combined_readings_view`
+--
+DROP TABLE IF EXISTS `combined_readings_view`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `combined_readings_view`  AS SELECT `total_dissolved_solids`.`tds_id` AS `reading_id`, `total_dissolved_solids`.`sensor_name` AS `sensor_name`, `total_dissolved_solids`.`tds_cdate` AS `reading_cdate`, `total_dissolved_solids`.`tds_readings` AS `reading_value`, 'Total Dissolved Solids' AS `reading_type`, CASE WHEN `total_dissolved_solids`.`tds_readings` <= 50 THEN 15 WHEN `total_dissolved_solids`.`tds_readings` >= 51 AND `total_dissolved_solids`.`tds_readings` <= 100 THEN 38 WHEN `total_dissolved_solids`.`tds_readings` >= 101 AND `total_dissolved_solids`.`tds_readings` <= 200 THEN 49 WHEN `total_dissolved_solids`.`tds_readings` >= 201 AND `total_dissolved_solids`.`tds_readings` <= 300 THEN 56 WHEN `total_dissolved_solids`.`tds_readings` >= 301 AND `total_dissolved_solids`.`tds_readings` <= 400 THEN 73 WHEN `total_dissolved_solids`.`tds_readings` >= 401 AND `total_dissolved_solids`.`tds_readings` <= 500 THEN 86 WHEN `total_dissolved_solids`.`tds_readings` >= 501 AND `total_dissolved_solids`.`tds_readings` <= 600 THEN 93 WHEN `total_dissolved_solids`.`tds_readings` >= 601 AND `total_dissolved_solids`.`tds_readings` <= 650 THEN 96 WHEN `total_dissolved_solids`.`tds_readings` >= 651 AND `total_dissolved_solids`.`tds_readings` <= 710 THEN 95 ELSE 17 END AS `weighted_value` FROM `total_dissolved_solids`union all select `acidity`.`acid_id` AS `reading_id`,`acidity`.`sensor_name` AS `sensor_name`,`acidity`.`acid_cdate` AS `reading_cdate`,`acidity`.`acid_readings` AS `reading_value`,'Acidity' AS `reading_type`,case when `acidity`.`acid_readings` = 1 then 10 when `acidity`.`acid_readings` = 2 then 20 when `acidity`.`acid_readings` = 3 then 30 when `acidity`.`acid_readings` = 4 then 60 when `acidity`.`acid_readings` = 5 then 80 when `acidity`.`acid_readings` = 6 then 90 when `acidity`.`acid_readings` = 7 then 97 when `acidity`.`acid_readings` = 8 then 90 when `acidity`.`acid_readings` = 9 then 80 when `acidity`.`acid_readings` = 10 then 60 when `acidity`.`acid_readings` = 11 then 40 when `acidity`.`acid_readings` = 12 then 30 when `acidity`.`acid_readings` = 13 then 20 when `acidity`.`acid_readings` = 14 then 10 else 0 end AS `weighted_value` from `acidity` union all select `temperature`.`temp_id` AS `reading_id`,`temperature`.`sensor_name` AS `sensor_name`,`temperature`.`temp_cdate` AS `reading_cdate`,`temperature`.`temp_readings` AS `reading_value`,'Temperature' AS `reading_type`,case when `temperature`.`temp_readings` = 25 then 95 when `temperature`.`temp_readings` >= 21 and `temperature`.`temp_readings` < 25 then 90 when `temperature`.`temp_readings` >= 18 and `temperature`.`temp_readings` < 21 then 75 when `temperature`.`temp_readings` > 15 and `temperature`.`temp_readings` <= 18 then 35 when `temperature`.`temp_readings` < 15 then 15 when `temperature`.`temp_readings` >= 26 and `temperature`.`temp_readings` <= 30 then 92 when `temperature`.`temp_readings` >= 31 and `temperature`.`temp_readings` <= 35 then 87 when `temperature`.`temp_readings` >= 36 and `temperature`.`temp_readings` <= 40 then 45 else 14 end AS `weighted_value` from `temperature`  ;
 
 --
 -- Indexes for dumped tables
@@ -571,7 +672,7 @@ ALTER TABLE `waterlevel`
 -- AUTO_INCREMENT for table `acidity`
 --
 ALTER TABLE `acidity`
-  MODIFY `acid_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `acid_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `average`
@@ -583,19 +684,19 @@ ALTER TABLE `average`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- AUTO_INCREMENT for table `temperature`
 --
 ALTER TABLE `temperature`
-  MODIFY `temp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `temp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `total_dissolved_solids`
 --
 ALTER TABLE `total_dissolved_solids`
-  MODIFY `tds_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `tds_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -607,13 +708,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `waterflow`
 --
 ALTER TABLE `waterflow`
-  MODIFY `flow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `flow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `waterlevel`
 --
 ALTER TABLE `waterlevel`
-  MODIFY `level_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `level_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

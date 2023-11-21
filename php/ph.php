@@ -3,6 +3,7 @@
 <?php include "../data_ret.php"; ?>
 <?php include "../includes/chartdata.php"; ?>
 <?php include "../chartdata.php"; ?>
+<?php include "../average.php"; ?>
 
 <?php 
 session_start(); 
@@ -261,7 +262,7 @@ if(!isset($_SESSION['user_id'])){
                         <div class="card-body">
                           <h5 class="card-title text-primary">Hi Welcome!</h5>
                           <p class="mb-4">
-                            You have  <span class="fw-bold" style="color: red;"><?php echo mysqli_num_rows($res); ?></span> notifications  today! Check details📋 below. If you want to check analytics <a href="../analytics/analytics.php" style="color: blue;" target="_blank">click here...</a>
+                            You have  <span class="fw-bold" style="color: red;"><?php echo mysqli_num_rows($res); ?></span> notifications  today! Check details📋 below. If you want to check analytics <a href="../analytics/analytics.php" style="color: blue;">click here...</a>
 
                           </p>
                           <a href="javascript:;" class="btn btn-sm btn-outline-primary"  id="viewBadges">View Notifications</a>
@@ -462,8 +463,8 @@ if(!isset($_SESSION['user_id'])){
                     <div class="row row-bordered g-0">
                       <div class="col-md-8">
                         <h5 class="card-header m-0 me-2 pb-3">
-                          <label for="monthDropdown">Average Water Condition</label>
-                          <select id="monthDropdown">
+                          <p class="card-title text-primary">Average Water Condition<p/>
+                          <select id="monthDropdown" class="form-select form-select-sm"" >
                               <option value="Day">Four-hourly</option>
                               <option value="Month">Quarterly</option>
                               <option value="Year">Yearly</option>
@@ -477,7 +478,7 @@ if(!isset($_SESSION['user_id'])){
                       </div>                   
                       <div class="col-md-4">
                         <div id="growthChart"></div>
-                        <div class="text-center fw-bold pt-3 mb-2"> Current Water <br> Condition: <?php echo $newlabel; ?></div>
+                        <div class="text-center fw-bold pt-3 mb-2"> Current Water <br> Condition: <?php echo $averages[0]['label']; ?></div>
 
                         <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
                           <div class="d-flex">
@@ -778,7 +779,7 @@ if(!isset($_SESSION['user_id'])){
               }
             ],
             chart: {
-              height: 300,
+              height: 250,
               stacked: true,
               type: 'bar',
               toolbar: { show: false }
@@ -1029,12 +1030,12 @@ if(!isset($_SESSION['user_id'])){
           totalRevenueChartOptions2 = {
             series: [
               {
-                name: 'Average Water Condition',
-                data: [18, 7, 15, 29]
+                name: 'Water Condition',
+                data: [<?php echo round($averages[0]['average']); ?>, <?php echo round($averages[1]['average']); ?>, <?php echo round($averages[2]['average']); ?>, <?php echo round($averages[3]['average']); ?>]
               }
             ],
             chart: {
-              height: 300,
+              height: 250,
               stacked: true,
               type: 'bar',
               toolbar: { show: false }
@@ -1085,7 +1086,7 @@ if(!isset($_SESSION['user_id'])){
               }
             },
             xaxis: {
-              categories: ['7:30 AM', '11:30 AM', '3:30 PM', '7:30 PM'],
+              categories: ['<?php echo date("h:i A", strtotime($averages[0]['date'])); ?>', '<?php echo date("h:i A", strtotime($averages[1]['date'])); ?>', '<?php echo date("h:i A", strtotime($averages[2]['date'])); ?>', '<?php echo date("h:i A", strtotime($averages[3]['date'])); ?>'],
               labels: {
                 style: {
                   fontSize: '13px',
@@ -1291,7 +1292,7 @@ if(!isset($_SESSION['user_id'])){
           }
         ],
         chart: {
-          height: 300,
+          height: 250,
           stacked: true,
           type: 'bar',
           toolbar: { show: false }
@@ -1544,10 +1545,10 @@ if(!isset($_SESSION['user_id'])){
         // --------------------------------------------------------------------
         const growthChartEl = document.querySelector('#growthChart'),
           growthChartOptions = {
-            series: [<?php echo $average; ?>],
-            labels: ['<?php echo  $temperaturedate[0]; ?>'],
+            series: [<?php echo round($averages[0]['average']); ?>],
+            labels: ['<?php echo date("F j, Y g:i A", strtotime($averages[0]['date'])); ?>'],
             chart: {
-              height: 240,
+              height: 300,
               type: 'radialBar'
             },
             plotOptions: {
@@ -1591,7 +1592,7 @@ if(!isset($_SESSION['user_id'])){
                 inverseColors: true,
                 opacityFrom: 1,
                 opacityTo: 0.6,
-                stops: [30, 70, 100]
+                stops: [30, 70, 95]
               }
             },
             stroke: {
@@ -1627,7 +1628,7 @@ if(!isset($_SESSION['user_id'])){
         const profileReportChartEl = document.querySelector('#profileReportChart'),
           profileReportChartConfig = {
             chart: {
-              height: 80,
+              height: 150,
               // width: 175,
               type: 'line',
               toolbar: {

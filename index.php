@@ -90,6 +90,6 @@ document.addEventListener("DOMContentLoaded", function() {
 </html>
 <?php 
 }else {
-   header("Location: ../php/ph.php");
+   header("Location: php/ph.php");
 }
  ?>

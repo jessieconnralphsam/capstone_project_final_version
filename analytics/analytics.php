@@ -37,7 +37,8 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li><a href="#" class="btn btn-success btn-sm" ><i class="fas fa-print"></i> Print Report</a></li>
+                            <li><a href="#" class="btn btn-success btn-sm" onclick="printPage()"><i class="fas fa-print"></i> Print Report</a></li>
+                            <li><a href="../php/ph.php" class="btn btn-primary btn-sm" ><i class="fas fa-home"></i> Home</a></li>
                         </ol>
                         <input type="file" id="fileInput" style="display: none;">
                     </div>
@@ -195,6 +196,11 @@
           });
         });
       </script>
+      <script>
+            function printPage() {
+                window.print();
+            }
+       </script>
       <script type="text/javascript" src="js/jquery.vmap.js"></script>
       <!--  Chart js -->
       <script src="js/Chart.bundle.min.js"></script>
