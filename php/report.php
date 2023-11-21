@@ -184,7 +184,13 @@
             <li class="menu-item">
               <a href="report.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-book"></i>
-                <div data-i18n="Tables">Report</div>
+                <div data-i18n="Tables">Log Book</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="../analytics/analytics.php" class="menu-link" target="_blank">
+                <i class="menu-icon tf-icons bx bx-line-chart"></i>
+                <div data-i18n="Tables">Analytics</div>
               </a>
             </li>
             <!-- Misc -->
@@ -291,11 +297,8 @@
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hydroponics /</span> Reports</h4>
-
-              <!-- Table within card -->
-              <div class="container">
-                  <button class="download-button"><i class="fa-solid fa-download"></i> Download CSV</button>
-                  <button class="green-button"><i class="fa-solid fa-print fa-lg"></i> Print Report</button>
+              <div style="padding-bottom: 10px;">
+                <button id="downloadBtn" class="btn btn-md btn-primary"><i class="fa-solid fa-download"></i> Download CSV</button>
               </div>
               <div class="table-responsive text-nowrap">
                 <table class="table card-table">
@@ -879,5 +882,11 @@
 
     <!-- Page JS -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            // Trigger the download by making a request to the PHP script
+            window.location.href = '../download.php';
+        });
+    </script>
   </body>
 </html>
