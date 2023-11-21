@@ -62,7 +62,7 @@
                     <div class="col-lg-6">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="mb-3">Water Temperature vs Acidity</h4>
+                                <h4 class="mb-3">Water Temperature vs Average Water Condition</h4>
                                 <canvas id="sales-chart"></canvas>
                             </div>
                         </div>
@@ -80,9 +80,8 @@
                     <div class="col-lg-6">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="mb-3">Outlier Detection</h4>
-                                <!-- <canvas id="lineChart"></canvas> -->
-                                <div id="scatterchart_material" style="width: 900px; height: 530px;"></div>
+                                <h4 class="mb-3">Quarterly Water Quality</h4>
+                                <canvas id="barChart"></canvas>
                             </div>
                         </div>
                     </div>
@@ -90,21 +89,22 @@
                     <!-- make function for Predictions -->
                     <div class="col-lg-6">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body" >
                                 <h4 class="mb-3">Prediction</h4>
                                 <canvas id="team-chart"></canvas>
                             </div>
                         </div>
                     </div>
-
                     <div class="col-lg-6">
                         <div class="card">
-                            <div class="card-body">
-                                <h4 class="mb-3">Quarterly Water Quality</h4>
-                                <canvas id="barChart"></canvas>
+                            <div class="card-body" >
+                                <h4 class="mb-3">Chart unta or infos</h4>
+                                <canvas id="line-chart"></canvas>
                             </div>
                         </div>
                     </div>
+
+                    
 
                 </div>
 
@@ -112,90 +112,12 @@
         </div>
     </div>
       <!-- <script src="js/tensorflow.js"></script> -->
-      <script type="text/javascript">
-        google.charts.load('current', {'packages':['scatter']});
-        google.charts.setOnLoadCallback(drawChart);
-  
-        function drawChart () {
-  
-          var data = new google.visualization.DataTable();
-          data.addColumn('number', 'Ambot');
-          data.addColumn('number', 'AWQ');
-  
-          data.addRows([
-            [0, 67], [1, 88], [2, 77],
-            [3, 93], [4, 85], [5, 91],
-            [6, 71], [7, 78], [8, 93],
-            [9, 80], [10, 82],[0, 75],
-            [5, 80], [3, 90], [1, 72],
-            [5, 75], [6, 68], [7, 98],
-            [3, 82], [9, 94], [2, 79],
-            [2, 95], [2, 86], [3, 67],
-            [4, 60], [2, 80], [6, 92],
-            [2, 81], [8, 79], [9, 83],
-            [3, 75], [1, 80], [3, 71],
-            [3, 89], [4, 92], [5, 85],
-            [6, 92], [7, 78], [6, 95],
-            [3, 81], [0, 64], [4, 85],
-            [2, 83], [3, 96], [4, 77],
-            [5, 89], [4, 89], [7, 84],
-            [4, 92], [9, 98]
-          ]);
-  
-          var options = {
-            width: 600,
-            height: 500,
-            chart: {
-              // title: 'Students\' Final Grades',
-              // subtitle: 'based on hours studied'
-            },
-            hAxis: {title: 'Ambot'},
-            vAxis: {title: 'Ambot'}
-          };
-  
-          var chart = new google.charts.Scatter(document.getElementById('scatterchart_material'));
-  
-          chart.draw(data, google.charts.Scatter.convertOptions(options));
-        }
-      </script>
+ 
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
       <script src="js/main.js"></script>
       <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-      <script>
-        jQuery(document).ready(function () {
-          var infoDiv = jQuery('<div id="infoDiv"></div>');
-          infoDiv.css({
-            position: 'fixed',
-            top: '40%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            padding: '15px',
-            background: '#fff',
-            border: '1px solid #ccc',
-            borderRadius: '1px',
-            zIndex: '1000',
-            display: 'none'
-          });
-      
-          jQuery('body').append(infoDiv);
-      
-          jQuery('#vmap').vectorMap({
-            map: 'usa_en',
-            onRegionClick: function (element, code, region) {
-              var message = 'Data here! ' + region + ' code: ' + code.toUpperCase();
-
-              infoDiv.text(message);
-              infoDiv.fadeIn();
-              
-              setTimeout(function () {
-                infoDiv.fadeOut();
-              }, 5000);
-            }
-          });
-        });
-      </script>
       <script>
             function printPage() {
                 window.print();
