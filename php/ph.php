@@ -470,7 +470,7 @@ if(!isset($_SESSION['user_id'])){
                     <div class="row row-bordered g-0">
                       <div class="col-md-8">
                         <h5 class="card-header m-0 me-2 pb-3">
-                          <p class="card-title text-primary">Average Water Condition<p/>
+                          <p class="card-title text-primary">Overall Water Conditions</p>
                           <select id="monthDropdown" class="form-select form-select-sm"" >
                               <option value="Day">Four-hourly</option>
                               <option value="Month">Quarterly</option>

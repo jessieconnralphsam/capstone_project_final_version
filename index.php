@@ -64,9 +64,9 @@ if (isset($_SESSION['registration_success']) && $_SESSION['registration_success'
 		  <button type="button" 
 		  		  class="btn btn-primary btn-sm" onclick="redirectToPage()">REGISTER 
 		  </button>
-		  <button type="button" 
+		  <!-- <button type="button" 
 		  		  class="btn btn-danger btn-sm" onclick="redirectToForgotPassword()">FORGOT PASSWORD
-		  </button>
+		  </button> -->
 		</form>
 	  </div>
 
