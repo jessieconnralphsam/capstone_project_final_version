@@ -1,30 +1,30 @@
 <?php
 
-  $flowquery = "SELECT * FROM waterflow ORDER BY flow_cdate DESC LIMIT 9";
+  $flowquery = "SELECT * FROM waterflow ORDER BY flow_cdate DESC ";
   $flowresult = mysqli_query($conn, $flowquery);
   while ($row = mysqli_fetch_assoc($flowresult)) {
       $data_flow[] = $row['flow_readings'];
   }
 
-  $levelquery = "SELECT * FROM waterlevel ORDER BY level_cdate DESC LIMIT 9";
+  $levelquery = "SELECT * FROM waterlevel ORDER BY level_cdate DESC";
   $levelresult = mysqli_query($conn, $levelquery);
   while ($row = mysqli_fetch_assoc($levelresult)) {
       $data_level[] = $row['level_readings'];
   }
 
-  $acidquery = "SELECT * FROM acidity ORDER BY acid_cdate DESC LIMIT 9";
+  $acidquery = "SELECT * FROM acidity ORDER BY acid_cdate DESC";
   $acidresult = mysqli_query($conn, $acidquery);
   while ($row = mysqli_fetch_assoc($acidresult)) {
       $data_acid[] = $row['acid_readings'];
   }
 
-  $tdsquery = "SELECT * FROM total_dissolved_solids ORDER BY tds_cdate DESC LIMIT 9";
+  $tdsquery = "SELECT * FROM total_dissolved_solids ORDER BY tds_cdate DESC";
   $tdsresult = mysqli_query($conn, $tdsquery);
   while ($row = mysqli_fetch_assoc($tdsresult)) {
       $data_tds[] = $row['tds_readings'];
   }
 
-  $tempquery = "SELECT * FROM temperature ORDER BY temp_cdate DESC LIMIT 9";
+  $tempquery = "SELECT * FROM temperature ORDER BY temp_cdate DESC";
   $tempresult = mysqli_query($conn, $tempquery);
   while ($row = mysqli_fetch_assoc($tempresult)) {
       $data_temp[] = $row['temp_readings'];

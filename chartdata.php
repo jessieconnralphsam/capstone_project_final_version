@@ -13,7 +13,6 @@ $chartdate_temp = [];
 
 while ($row = mysqli_fetch_assoc($result)) {
     $chartdata_temp[] = $row['temp_readings'];
-    // $chartdate_temp[] = $row['temp_cdate'];
     $temperaturedate[] = date("F j - h:i A", strtotime($row['temp_cdate']));
 }
 

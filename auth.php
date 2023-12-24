@@ -31,13 +31,13 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 					header("Location: php/ph.php");
 
 				}else {
-					header("Location: index.php?error=Incorect User name or password&email=$email");
+					header("Location: index.php?error=Incorect username or password&email=$email");
 				}
 			}else {
-				header("Location: index.php?error=Incorect User name or password&email=$email");
+				header("Location: index.php?error=Incorect username or password&email=$email");
 			}
 		}else {
-			header("Location: index.php?error=Incorect User name or password&email=$email");
+			header("Location: index.php?error=Incorect username or password&email=$email");
 		}
 	}
 }

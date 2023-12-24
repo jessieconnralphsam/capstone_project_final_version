@@ -1,4 +1,3 @@
-<!-- database connection -->
 <?php include "../data_con.php"; ?>
 <?php include "../data_ret.php"; ?>
 <?php include "../includes/chartdata.php"; ?>
@@ -1596,10 +1595,10 @@ if(!isset($_SESSION['user_id'])){
                 shade: 'dark',
                 shadeIntensity: 0.5,
                 gradientToColors: [config.colors.primary],
-                inverseColors: true,
+                inverseColors: false,
                 opacityFrom: 1,
                 opacityTo: 0.6,
-                stops: [30, 70, 95]
+                stops: [30, 70, 100]
               }
             },
             stroke: {

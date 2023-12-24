@@ -40,7 +40,7 @@ if (isset($_SESSION['registration_success']) && $_SESSION['registration_success'
 			</div>
 		    <?php } ?>
 
-		  <div class="mb-3">
+		  <div class="mb-4">
 			<br>
 			<br>
 		    <input type="email" 
@@ -51,7 +51,7 @@ if (isset($_SESSION['registration_success']) && $_SESSION['registration_success'
 		           id="exampleInputEmail1" aria-describedby="emailHelp">
 		  </div>
 		  
-		  <div class="mb-3">
+		  <div class="mb-4">
 		    <input type="password" 
 		           class="form-control" 
 		           name="password" 
@@ -59,10 +59,10 @@ if (isset($_SESSION['registration_success']) && $_SESSION['registration_success'
 		           id="exampleInputPassword1">
 		  </div>
 		  <button type="submit" 
-		          class="btn btn-primary btn-sm">LOGIN
+		          class="btn btn-primary btn-md">LOGIN
 		  </button>
 		  <button type="button" 
-		  		  class="btn btn-primary btn-sm" onclick="redirectToPage()">REGISTER 
+		  		  class="btn btn-primary btn-md" onclick="redirectToPage()">REGISTER 
 		  </button>
 		  <!-- <button type="button" 
 		  		  class="btn btn-danger btn-sm" onclick="redirectToForgotPassword()">FORGOT PASSWORD
