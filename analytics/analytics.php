@@ -28,6 +28,7 @@ if(!isset($_SESSION['user_id'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="css/jqvmap.css" media="screen" rel="stylesheet" type="text/css"/>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
 </head>
 
@@ -120,8 +121,8 @@ if(!isset($_SESSION['user_id'])){
             </div>
         </div>
     </div>
+
       <!-- <script src="js/tensorflow.js"></script> -->
- 
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
@@ -133,6 +134,7 @@ if(!isset($_SESSION['user_id'])){
             }
        </script>
       <script type="text/javascript" src="js/jquery.vmap.js"></script>
+      
       <!--  Chart js -->
       <script src="js/Chart.bundle.min.js"></script>
       <script src="js/chartjs-init.js"></script>    

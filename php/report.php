@@ -296,7 +296,7 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hydroponics /</span> Reports</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hydroponics /</span> Overall Water Condition</h4>
               <div style="padding-bottom: 10px;">
                 <button id="downloadBtn" class="btn btn-md btn-primary"><i class="fa-solid fa-download"></i> Download CSV</button>
               </div>
@@ -831,27 +831,7 @@
               <!--/ Table within card -->
             <!-- / Content -->
             <!-- Footer -->
-            <footer class="content-footer footer bg-footer-theme">
-              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                <div class="mb-2 mb-md-0">
-                  ©
-                  <script>
-                    document.write(new Date().getFullYear());
-                  </script>
-                  | Capstonics <i class="fa-brands fa-facebook" style="color: #075ced;"></i>
-                  <i class="fa-brands fa-github"></i>
-                </div>
-                <div>
-                 
-                  <a
-                    href="#"
-                    target="_blank"
-                    class="footer-link me-4"
-                    >Data & SMS Available: 4gb and 300 SMS</a
-                  >
-                </div>
-              </div>
-            </footer>
+            
             <!-- / Footer -->
             <div class="content-backdrop fade"></div>
           </div>

@@ -2,6 +2,17 @@
   session_start();
   if (!isset($_SESSION['user_id']) && !isset($_SESSION['user_email'])) { 
 ?>
+<?php
+if (isset($_SESSION['registration_success']) && $_SESSION['registration_success'] === true) {
+	echo '<div id="registrationSuccess" class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top: 20px; max-width: 400px; margin-left: auto; margin-right: auto;">
+            <strong>Success!</strong> Registration completed successfully.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>';
+    unset($_SESSION['registration_success']);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +33,7 @@
 					<img src="assets/img/backgrounds/hydroponicslogo.jpeg" alt="Description of the image" width="100" height="100">
 				</div>
 			</div>
-			<h5 class="text-center text-blue">NFT HYDROPONICS DECISION SUPPORT SYSTEM</h5>
-	  		<h5 class="text-center">LOGIN</h5>
+			<h5 class="text-center">NFT HYDROPONICS DECISION SUPPORT SYSTEM</h5>
 	  		<?php if (isset($_GET['error'])) { ?>
 	  		<div class="alert alert-danger" role="alert">
 			  <?=htmlspecialchars($_GET['error'])?>
@@ -49,47 +59,31 @@
 		           id="exampleInputPassword1">
 		  </div>
 		  <button type="submit" 
-		          class="btn btn-primary">LOGIN
+		          class="btn btn-primary btn-sm">LOGIN
 		  </button>
-		  <!-- <button type="submit" 
-		          class="btn btn-success">REGISTER
+		  <button type="button" 
+		  		  class="btn btn-primary btn-sm" onclick="redirectToPage()">REGISTER 
 		  </button>
-		  <button type="submit" 
-		          class="btn btn-danger">FORGOT PASSWORD
-		  </button> -->
+		  <button type="button" 
+		  		  class="btn btn-danger btn-sm" onclick="redirectToForgotPassword()">FORGOT PASSWORD
+		  </button>
 		</form>
 	  </div>
+
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const textElement = document.querySelector(".text-blue");
-  const text = "NFT HYDROPONICS SYSTEM";
-
-  function typeText() {
-    let index = 0;
-
-    function updateText() {
-      textElement.textContent = text.slice(0, index);
-      index++;
-
-      if (index <= text.length) {
-        setTimeout(updateText, 100);
-      } else {
-        index = 0; 
-        setTimeout(updateText, 1000);
-      }
-    }
-
-    updateText();
-  }
-
-  typeText();
-});
+function redirectToPage() {
+    window.location.href = "register.php";
+}
+function redirectToForgotPassword() {
+    window.location.href = "forgot.php";
+}
 </script>
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
 <?php 
 }else {
    header("Location: php/ph.php");
 }
- ?>
+?>

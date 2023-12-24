@@ -49,7 +49,7 @@ foreach ($sums as $date => $sum) {
     $count = $counts[$date];
     $average = $sum / $count;
 
-    $label_index = intval($average); // Assuming $average is between 1 and 100
+    $label_index = intval($average); 
     $label = $weights_for_label[$label_index];
 
     $averages[] = array(
