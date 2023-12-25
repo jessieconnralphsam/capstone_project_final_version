@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2023 at 05:54 AM
+-- Generation Time: Dec 25, 2023 at 07:22 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -447,7 +447,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `full_name`, `email`, `password`) VALUES
-(1, 'Jessie Conn Ralph M. Sam', 'jessiesam@gmail.com', '$2y$10$Nqq/y251QX2Ccvb1Ax7hUuMqQSkG3yRLCxN2KPdetnSP3oaXVH70a');
+(1, 'Jessie Conn Ralph M. Sam', 'jessiesam@gmail.com', '$2y$10$Nqq/y251QX2Ccvb1Ax7hUuMqQSkG3yRLCxN2KPdetnSP3oaXVH70a'),
+(6, 'sample', 'sample@gmail.com', '$2y$10$.uIjDB3CBBgmvcfkQ0hHO.QIpWzAck81Ms5SY.AC2XArwxoIXFRCG'),
+(7, 'dianne', 'dianne@gmail.com', '$2y$10$EhyqbPNpWYDIhv1VXzFEiuO7/EuQV1/e5Ta1KeOLiG0M2oWAFHvAi');
 
 -- --------------------------------------------------------
 
@@ -702,7 +704,7 @@ ALTER TABLE `total_dissolved_solids`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `waterflow`
