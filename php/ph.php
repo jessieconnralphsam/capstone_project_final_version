@@ -100,57 +100,51 @@ if(!isset($_SESSION['user_id'])){
             </li>
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-cog"></i>
-                <div data-i18n="Account Settings">Account Settings</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
-                    <div data-i18n="Account">Account</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
-                    <div data-i18n="Notifications">Notifications</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
-                    <div data-i18n="Connections">Connections</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                <div data-i18n="Authentications">Authentications</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link" target="_blank">
-                    <div data-i18n="Basic">Login</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link" target="_blank">
-                    <div data-i18n="Basic">Register</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link" target="_blank">
-                    <div data-i18n="Basic">Forgot Password</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-
-            <!-- Tables -->
-            <li class="menu-item">
-              <a href="report.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-book"></i>
-                <div data-i18n="Tables">Log Book</div>
+                <div data-i18n="Account Settings">Logs</div>
               </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="report.php" class="menu-link">
+                    <div data-i18n="Account">Fourly Readings</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                    <div data-i18n="Notifications">Quarterly Readings</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                    <div data-i18n="Connections">Yearly Readings</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                    <div data-i18n="Connections">Water Flow</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                    <div data-i18n="Connections">Water Level </div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                    <div data-i18n="Connections">Acidity</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                    <div data-i18n="Connections">Temperature</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                    <div data-i18n="Connections">Total Dissolved Solids</div>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="menu-item">
               <a href="../analytics/analytics.php" class="menu-link" target="_blank">
@@ -1294,7 +1288,7 @@ if(!isset($_SESSION['user_id'])){
         series: [
           {
             name: 'Average Water Condition',
-            data: [18, 7, 15, 29]
+            data: [<?php echo round($averageOfAveragesyearly); ?>]
           }
         ],
         chart: {
@@ -1349,7 +1343,7 @@ if(!isset($_SESSION['user_id'])){
           }
         },
         xaxis: {
-          categories: ['2020', '2021', '2022', '2023'],
+          categories: ['2023'],
           labels: {
             style: {
               fontSize: '13px',

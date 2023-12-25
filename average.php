@@ -59,6 +59,18 @@ foreach ($sums as $date => $sum) {
     );
 }
 
+$yearlyAverage = 0;
+$numAverages = count($averages);
+
+foreach ($averages as $data) {
+    $yearlyAverage += $data['average'];
+}
+
+if ($numAverages > 0) {
+    $averageOfAveragesyearly = $yearlyAverage / $numAverages;
+} else {
+    echo "No averages to calculate.";
+}
 // echo "Date: " . $averages[0]['date'] . " Reading: " . $averages[0]['average'] . " Label: " . $averages[0]['label'] . '<br>';
 // echo "Date: " . $averages[1]['date'] . " Reading: " . $averages[1]['average'] . " Label: " . $averages[1]['label'] . '<br>';
 ?>
