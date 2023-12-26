@@ -22,4 +22,10 @@
     while ($row = mysqli_fetch_assoc($tchartresult)) {
         $data_tchart[] = $row;
     }
+
+    $tempchartquery = "SELECT * FROM temperature ORDER BY temp_cdate DESC";
+    $tempchartresult = mysqli_query($conn, $tempchartquery);
+    while ($row = mysqli_fetch_assoc($tempchartresult)) {
+        $data_tempchart[] = $row;
+    }
 ?>

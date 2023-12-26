@@ -110,37 +110,27 @@ if(!isset($_SESSION['user_id'])){
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
-                    <div data-i18n="Notifications">Quarterly Readings</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
-                    <div data-i18n="Connections">Yearly Readings</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                  <a href="waterflow.php" class="menu-link">
                     <div data-i18n="Connections">Water Flow</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                  <a href="waterlevel.php" class="menu-link">
                     <div data-i18n="Connections">Water Level </div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                  <a href="acidity.php" class="menu-link">
                     <div data-i18n="Connections">Acidity</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                  <a href="temperature.php" class="menu-link">
                     <div data-i18n="Connections">Temperature</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                  <a href="tds.php" class="menu-link">
                     <div data-i18n="Connections">Total Dissolved Solids</div>
                   </a>
                 </li>
@@ -324,7 +314,7 @@ if(!isset($_SESSION['user_id'])){
                               />
                             </div>
                             <div class="dropdown">
-                              <button
+                              <!-- <button
                                 class="btn p-0"
                                 type="button"
                                 id="cardOpt3"
@@ -333,8 +323,8 @@ if(!isset($_SESSION['user_id'])){
                                 aria-expanded="false"
                               >
                                 <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                              </button> -->
+                              <!-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
                                   <a class="dropdown-item" href="javascript:void(0);" id="view-more-flowlink">
                                       <h3>Water Flow</h3>
                                       <table class="chartTable">
@@ -352,8 +342,8 @@ if(!isset($_SESSION['user_id'])){
                                         <?php endforeach; ?>
                                     </table>
                                   </a>
-                                  <!-- <a class="dropdown-item" href="javascript:void(0);">Delete</a> -->
-                              </div>
+                                  <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                              </div> -->
                             </div>
                           </div>
                           <div id="waterflow">
@@ -396,7 +386,7 @@ if(!isset($_SESSION['user_id'])){
                               />
                             </div>
                             <div class="dropdown">
-                              <button
+                              <!-- <button
                                 class="btn p-0"
                                 type="button"
                                 id="cardOpt6"
@@ -405,8 +395,8 @@ if(!isset($_SESSION['user_id'])){
                                 aria-expanded="false"
                               >
                                 <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                              </button> -->
+                              <!-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
                                 <a class="dropdown-item" href="javascript:void(0);">
                                     <h3>Water Level</h3>
                                     <table class="chartTable">
@@ -424,8 +414,8 @@ if(!isset($_SESSION['user_id'])){
                                         <?php endforeach; ?>
                                     </table>
                                 </a>
-                                <!-- <a class="dropdown-item" href="javascript:void(0);">Delete</a> -->
-                              </div>
+                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                              </div> -->
                             </div>
                           </div>
                           <div id="waterlevel">
@@ -523,7 +513,7 @@ if(!isset($_SESSION['user_id'])){
                               </a>                              
                             </div>
                             <div class="dropdown">
-                              <button
+                              <!-- <button
                                 class="btn p-0"
                                 type="button"
                                 id="cardOpt4"
@@ -532,8 +522,8 @@ if(!isset($_SESSION['user_id'])){
                                 aria-expanded="false"
                               >
                                 <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
+                              </button> -->
+                              <!-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
                                 <a class="dropdown-item" href="javascript:void(0);">
                                     <h3>Acidity</h3>
                                     <table class="chartTable">
@@ -551,8 +541,8 @@ if(!isset($_SESSION['user_id'])){
                                         <?php endforeach; ?>
                                     </table>
                                 </a>
-                                <!-- <a class="dropdown-item" href="javascript:void(0);">Delete</a> -->
-                              </div>
+                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                              </div> -->
                             </div>
                           </div>
                           <div id="acidity">
@@ -592,7 +582,7 @@ if(!isset($_SESSION['user_id'])){
                               </a>
                             </div>
                             <div class="dropdown">
-                              <button
+                              <!-- <button
                                 class="btn p-0"
                                 type="button"
                                 id="cardOpt1"
@@ -601,8 +591,8 @@ if(!isset($_SESSION['user_id'])){
                                 aria-expanded="false"
                               >
                                 <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu" aria-labelledby="cardOpt1">
+                              </button> -->
+                              <!-- <div class="dropdown-menu" aria-labelledby="cardOpt1">
                                 <a class="dropdown-item" href="javascript:void(0);">
                                     <h3>Total Dissolved Solids</h3>
                                     <table class="chartTable">
@@ -620,8 +610,8 @@ if(!isset($_SESSION['user_id'])){
                                         <?php endforeach; ?>
                                     </table>
                                 </a>
-                                <!-- <a class="dropdown-item" href="javascript:void(0);">Delete</a> -->
-                              </div>
+                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                              </div> -->
                             </div>
                           </div>
                           <div id="tds">

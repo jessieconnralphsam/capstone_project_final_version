@@ -1,6 +1,7 @@
 <?php include "../chartdata.php"; ?>
 <?php include "../data_ret.php"; ?>
 <?php include "../average.php"; ?>
+<?php include "../includes/chartdata.php"; ?>
 <!DOCTYPE html>
 <html
   lang="en"
@@ -21,10 +22,7 @@
 
     <meta name="description" content="" />
 
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="" />
-
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,20 +30,12 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
-
-    <!-- Core CSS -->
     <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
     <link rel="stylesheet" href="../assets/css/demo.css" />
-
-    <!-- Vendors CSS -->
     <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-
-    <!-- Page CSS -->
-
-    <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
     <script src="../assets/js/config.js"></script>
     <style>
@@ -85,11 +75,8 @@
   </head>
 
   <body>
-    <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
-        <!-- Menu -->
-
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="ph.php" class="app-brand-link">
@@ -105,7 +92,6 @@
           <div class="menu-inner-shadow"></div>
 
           <ul class="menu-inner py-1">
-            <!-- Dashboard -->
             <li class="menu-item active">
               <a href="ph.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home"></i>
@@ -160,7 +146,6 @@
                 <div data-i18n="Tables">Analytics</div>
               </a>
             </li>
-            <!-- Misc -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Miscellaneous</span></li>
             
             <li class="menu-item">
@@ -185,12 +170,7 @@
             </li>
           </ul>
         </aside>
-        <!-- / Menu -->
-
-        <!-- Layout container -->
         <div class="layout-page">
-          <!-- Navbar -->
-
           <nav
             class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
             id="layout-navbar"
@@ -200,9 +180,7 @@
                 <i class="bx bx-menu bx-sm"></i>
               </a>
             </div>
-
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-              <!-- Search -->
               <div class="navbar-nav align-items-center">
                 <div class="nav-item d-flex align-items-center">
                   <i class="bx bx-search fs-4 lh-0"></i>
@@ -214,10 +192,7 @@
                   />
                 </div>
               </div>
-              <!-- /Search -->
-
               <ul class="navbar-nav flex-row align-items-center ms-auto">
-                <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
@@ -244,7 +219,6 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <!-- <a class="dropdown-item" href="auth-login-basic.html"></a> -->
                       <a class="dropdown-item" href="../logout.php">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
@@ -252,88 +226,40 @@
                     </li>
                   </ul>
                 </li>
-                <!--/ User -->
               </ul>
             </div>
           </nav>
-          <!-- / Navbar -->
-
-          <!-- Content wrapper -->
           <div class="content-wrapper">
-            <!-- Content -->
-
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hydroponics /</span> Fourly Water Condition</h4>
-              <div style="padding-bottom: 10px;">
-                <button id="downloadBtn" class="btn btn-md btn-primary"><i class="fa-solid fa-download"></i> Download CSV</button>
-              </div>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hydroponics /</span> Fourly Water Flow Readings</h4>
               <div class="table-responsive text-nowrap">
-                <table id="datatable" class="table card-table">
+                <table id="datatables" class="table card-table">
                   <thead>
                     <tr>
                       <th>Date & Time</th>
                       <th>Readings</th>
-                      <th>Average</th>
-                      <th>Status</th>
-                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody class="table-border-bottom-0">
-
                     <?php                   
                     foreach ($temperaturedate as $index => $date) {
                         echo '<tr>';
                         echo '<td><i class="text-danger"></i> <strong>' . $date . '</strong></td>';
-
-                        echo '<td>';
-                        echo '<ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">';
-
-                        $sensorTypeToData = [
-                            'Acidity' => $data_acid,
-                            'Total Dissolved Solids' => $data_tds,
-                            'Water Temperature' => $data_temp,
-                            'Waterflow' => $data_flow,
-                            'Waterlevel' => $data_level,
-                        ];
-
-                        foreach ($sensorTypeToData as $sensorType => $sensorDataArray) {
-                            echo '<li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up"';
-                            echo 'title="' . $sensorType . ': ' . $sensorDataArray[$index] . '">';
-                            echo '<img src="../assets/img/icons/unicons/';
-                            
-                            $sensorTypeToIcon = [
-                                'Acidity' => 'flask.png',
-                                'Total Dissolved Solids' => 'atom.png',
-                                'Water Temperature' => 'thermometer.png',
-                                'Waterflow' => 'flow.png',
-                                'Waterlevel' => 'tide.png',
-                            ];
-
-                            echo $sensorTypeToIcon[$sensorType] . '" alt="sensor" class="rounded-circle" />';
-                            echo '</li>';
+                        if (isset($data_tchart[$index])) {
+                          echo '<td>' . $data_tchart[$index]['tds_readings'] . '</td>';
+                        } else {
+                          echo '<td>N/A</td>';
                         }
-
-                        echo '</ul>';
-                        echo '</td>';
-                        echo '<td>' . round($averages[$index]['average']) . '%</td>';
-                        echo '<td><span class="badge bg-label-primary me-1">' . $averages[$index]['label'] . '</span></td>';
-                        echo '<td>action here</td>';
                         echo '</tr>';
                     }
                     ?>
                   </tbody>
                 </table>
               </div>
-              <!--/ Table within card -->
-            <!-- / Content -->
             <div class="content-backdrop fade"></div>
           </div>
-          <!-- Content wrapper -->
         </div>
-        <!-- / Layout page -->
       </div>
-
-      <!-- Overlay -->
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <script src="../assets/vendor/libs/jquery/jquery.js"></script>
@@ -343,15 +269,10 @@
     <script src="../assets/vendor/js/menu.js"></script>
     <script src="../assets/js/report-main.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script>
-        document.getElementById('downloadBtn').addEventListener('click', function() {
-            window.location.href = '../download.php';
-        });
-    </script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script>
-        new DataTable('#datatable');
+        new DataTable('#datatables');
     </script>
   </body>
 </html>
