@@ -246,7 +246,7 @@
                         echo '<tr>';
                         echo '<td><i class="text-danger"></i> <strong>' . $date . '</strong></td>';
                         if (isset($data_fchart[$index])) {
-                          echo '<td>' . $data_fchart[$index]['flow_readings'] . '</td>';
+                          echo '<td>' . $data_fchart[$index]['flow_readings'] . ' L/min' .'</td>';
                         } else {
                           echo '<td>N/A</td>';
                         }

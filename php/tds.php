@@ -246,7 +246,7 @@
                         echo '<tr>';
                         echo '<td><i class="text-danger"></i> <strong>' . $date . '</strong></td>';
                         if (isset($data_tchart[$index])) {
-                          echo '<td>' . $data_tchart[$index]['tds_readings'] . '</td>';
+                          echo '<td>' . $data_tchart[$index]['tds_readings'] . ' ppm'.'</td>';
                         } else {
                           echo '<td>N/A</td>';
                         }

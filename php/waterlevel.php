@@ -246,7 +246,7 @@
                         echo '<tr>';
                         echo '<td><i class="text-danger"></i> <strong>' . $date . '</strong></td>';
                         if (isset($data_lchart[$index])) {
-                          echo '<td>' . $data_lchart[$index]['level_readings'] . '</td>';
+                          echo '<td>' . $data_lchart[$index]['level_readings'] . ' m'.'</td>';
                         } else {
                           echo '<td>N/A</td>';
                         }

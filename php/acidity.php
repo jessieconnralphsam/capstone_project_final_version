@@ -246,7 +246,7 @@
                         echo '<tr>';
                         echo '<td><i class="text-danger"></i> <strong>' . $date . '</strong></td>';
                         if (isset($data_achart[$index])) {
-                          echo '<td>' . $data_achart[$index]['acid_readings'] . '</td>';
+                          echo '<td>'. 'pH of ' . $data_achart[$index]['acid_readings'] . '</td>';
                         } else {
                           echo '<td>N/A</td>';
                         }

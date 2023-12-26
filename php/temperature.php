@@ -246,7 +246,7 @@
                         echo '<tr>';
                         echo '<td><i class="text-danger"></i> <strong>' . $date . '</strong></td>';
                         if (isset($data_tempchart[$index])) {
-                          echo '<td>' . $data_tempchart[$index]['temp_readings'] . '</td>';
+                          echo '<td>' . $data_tempchart[$index]['temp_readings'] . ' °C'.'</td>';
                         } else {
                           echo '<td>N/A</td>';
                         }
