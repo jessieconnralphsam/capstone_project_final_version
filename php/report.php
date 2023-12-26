@@ -41,6 +41,7 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 
     <!-- Page CSS -->
 
@@ -277,7 +278,7 @@
                 <button id="downloadBtn" class="btn btn-md btn-primary"><i class="fa-solid fa-download"></i> Download CSV</button>
               </div>
               <div class="table-responsive text-nowrap">
-                <table class="table card-table">
+                <table id="datatable" class="table card-table">
                   <thead>
                     <tr>
                       <th>Date & Time</th>
@@ -356,6 +357,11 @@
         document.getElementById('downloadBtn').addEventListener('click', function() {
             window.location.href = '../download.php';
         });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script>
+        new DataTable('#datatable');
     </script>
   </body>
 </html>
