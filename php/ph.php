@@ -260,15 +260,16 @@ if(!isset($_SESSION['user_id'])){
                               <div class="popup-content col-sm-3 text-center text-sm-left">
                                   <h3><i class="fa-regular fa-bell"></i> notifications!</h3>
                                   <hr>
-                                  <ul>
+                                  <ul  style="max-height: 200px; overflow-y: auto;">
                                       <?php
                                       if (mysqli_num_rows($res) > 0) {
                                           foreach ($res as $item) {
                                               $formatted_date = date("F-d-Y h:i A", strtotime($item["cdate"]));
                                               ?>
                                               <li>
-                                                  <span style="color: red;">Critical <?php echo $item["notif_sname"]; ?>! Reading: <?php echo $item["readings"]; ?></span>
+                                                  <span style="color: red;">Critical <?php echo $item["notif_sname"]; ?>! <span style="color: blue;">Reading:</span> <?php echo $item["readings"]; ?></span>
                                                   <?php echo $formatted_date; ?>
+                                                  <?php echo '<hr>'; ?>
                                               </li>
                                               
                                               <?php
