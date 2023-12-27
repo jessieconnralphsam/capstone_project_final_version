@@ -257,8 +257,9 @@ if(!isset($_SESSION['user_id'])){
                           
                           <a href="javascript:;" class="btn btn-sm btn-outline-primary"  id="viewBadges">View Notifications</a>
                           <div class="popup" id="popup">
-                              <div class="popup-content">
-                                  <h3>Notifications</h3>
+                              <div class="popup-content col-sm-3 text-center text-sm-left">
+                                  <h3><i class="fa-regular fa-bell"></i> notifications!</h3>
+                                  <hr>
                                   <ul>
                                       <?php
                                       if (mysqli_num_rows($res) > 0) {
@@ -273,10 +274,8 @@ if(!isset($_SESSION['user_id'])){
                                               <?php
                                           }
                                       } else {
-                                          // No notifications
-                                          ?>
-                                          
-                                          <li>No notifications</li>
+                                          ?>                                         
+                                          <li><i class="fa-sharp fa-solid fa-circle-exclamation fa-sm"></i> no notifications</li>
                                           <?php
                                       }
                                       ?>
