@@ -252,7 +252,6 @@ if(!isset($_SESSION['user_id'])){
                           <h5 class="card-title text-primary">Hi Welcome!</h5>
                           <p class="mb-4">
                             You have  <span class="fw-bold" style="color: red;"><?php echo mysqli_num_rows($res); ?></span> notifications  today! Check details📋 below...</a>
-
                           </p>
                           
                           <a href="javascript:;" class="btn btn-sm btn-outline-primary"  id="viewBadges">View Notifications</a>
