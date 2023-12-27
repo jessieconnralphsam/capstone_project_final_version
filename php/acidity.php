@@ -238,6 +238,7 @@
                     <tr>
                       <th>Date & Time</th>
                       <th>Readings</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody class="table-border-bottom-0">
@@ -250,6 +251,7 @@
                         } else {
                           echo '<td>N/A</td>';
                         }
+                        echo '<td>' . $data_achart[$index]['action'] . '</td>';
                         echo '</tr>';
                     }
                     ?>
