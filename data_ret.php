@@ -16,6 +16,7 @@
   $acidresult = mysqli_query($conn, $acidquery);
   while ($row = mysqli_fetch_assoc($acidresult)) {
       $data_acid[] = $row['acid_readings'];
+      $data_acid_action[] = $row['action'];
   }
 
   $tdsquery = "SELECT * FROM total_dissolved_solids ORDER BY tds_cdate DESC";

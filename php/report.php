@@ -317,7 +317,7 @@
                         echo '</td>';
                         echo '<td>' . round($averages[$index]['average']) . '%</td>';
                         echo '<td><span class="badge bg-label-primary me-1">' . $averages[$index]['label'] . '</span></td>';
-                        echo '<td>action here</td>';
+                        echo '<td>' . $data_acid_action[$index] . '</td>';
                         echo '</tr>';
                     }
                     ?>
