@@ -8,6 +8,6 @@ make the logbook as dropdown /check
 analytics - descriptive analytics
 design notifications  
 add color to current water condition corresponding label and colors
-action for logbook must be specific mixture
+action for logbook must be specific mixture /check
 support
 documentation
