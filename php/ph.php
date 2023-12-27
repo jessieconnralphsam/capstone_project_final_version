@@ -281,7 +281,7 @@ if(!isset($_SESSION['user_id'])){
                                       }
                                       ?>
                                   </ul>
-                                  <button id="closePopup" class="close-button"><i class="fa-sharp fa-solid fa-x fa-sm"></i></button>
+                                  <button id="closePopup" class="close-button"><i class="fa-sharp fa-regular fa-x fa-md"></i></button>
                               </div>
                           </div>
                         </div>
