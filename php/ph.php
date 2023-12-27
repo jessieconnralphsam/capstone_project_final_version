@@ -468,7 +468,7 @@ if(!isset($_SESSION['user_id'])){
                       </div>                   
                       <div class="col-md-4">
                         <div id="growthChart"></div>
-                        <div class="text-center fw-bold pt-3 mb-2"> Overall Water <br> Condition as of <span class="text-primary"><?php echo date("F j, Y g:i A", strtotime($averages[0]['date'])); ?></span>: <?php echo $averages[0]['label']; ?></div>
+                        <div class="text-center fw-bold pt-3 mb-2"> Overall Water <br> Condition as of <span class="text-primary"><?php echo date("F j, Y g:i A", strtotime($averages[0]['date'])); ?></span>: <span class="text-success"><?php echo $averages[0]['label']; ?></span></div>
 
                         <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
                           <div class="d-flex">
@@ -488,11 +488,11 @@ if(!isset($_SESSION['user_id'])){
                               
                             </div>
                             <div class="d-flex flex-column">
-                              <h6 class="mb-0">extremely poor</h6>
-                              <h6 class="mb-0">poor</h6>
-                              <h6 class="mb-0">medium</h6>
-                              <h6 class="mb-0">good</h6>
-                              <h6 class="mb-0">excellent</h6>
+                              <h6 class="mb-0 text-danger">extremely poor</h6>
+                              <h6 class="mb-0 text-danger">poor</h6>
+                              <h6 class="mb-0 text-success">medium</h6>
+                              <h6 class="mb-0 text-success">good</h6>
+                              <h6 class="mb-0 text-success">excellent</h6>
                             </div>
                           </div>
                         </div>
@@ -649,7 +649,7 @@ if(!isset($_SESSION['user_id'])){
                           <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
                             <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
                               <div class="card-title">
-                                <h5 class="text-nowrap mb-2">Temperature</h5>
+                                <h5 class="text-nowrap mb-3">Temperature</h5>
                                 <span class="badge bg-label-primary rounded-pill"><?php echo $tempcdate; ?></span>
                               </div>
                               <div class="mt-sm-auto" id="temperature">
@@ -764,7 +764,7 @@ if(!isset($_SESSION['user_id'])){
           totalRevenueChartOptions = {
             series: [
               {
-                name: 'Average Water Condition',
+                name: 'Average Water Condition(%)',
                 data: [18, 7, 15, 29]
               }
             ],
@@ -1020,7 +1020,7 @@ if(!isset($_SESSION['user_id'])){
           totalRevenueChartOptions2 = {
             series: [
               {
-                name: 'Water Condition',
+                name: 'Water Condition(%)',
                 data: [<?php echo round($averages[0]['average']); ?>, <?php echo round($averages[1]['average']); ?>, <?php echo round($averages[2]['average']); ?>, <?php echo round($averages[3]['average']); ?>]
               }
             ],
@@ -1277,7 +1277,7 @@ if(!isset($_SESSION['user_id'])){
       totalRevenueChartOptions3 = {
         series: [
           {
-            name: 'Average Water Condition',
+            name: 'Average Water Condition(%)',
             data: [<?php echo round($averageOfAveragesyearly); ?>]
           }
         ],
@@ -1572,13 +1572,13 @@ if(!isset($_SESSION['user_id'])){
                 }
               }
             },
-            colors: [config.colors.primary],
+            colors: [config.colors.success],
             fill: {
               type: 'gradient',
               gradient: {
                 shade: 'dark',
                 shadeIntensity: 0.5,
-                gradientToColors: [config.colors.primary],
+                gradientToColors: [config.colors.danger],
                 inverseColors: false,
                 opacityFrom: 1,
                 opacityTo: 0.6,
@@ -1618,7 +1618,7 @@ if(!isset($_SESSION['user_id'])){
         const profileReportChartEl = document.querySelector('#profileReportChart'),
           profileReportChartConfig = {
             chart: {
-              height: 150,
+              height: 170,
               // width: 175,
               type: 'line',
               toolbar: {
