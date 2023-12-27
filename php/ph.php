@@ -257,7 +257,7 @@ if(!isset($_SESSION['user_id'])){
                           <a href="javascript:;" class="btn btn-sm btn-outline-primary"  id="viewBadges">View Notifications</a>
                           <div class="popup" id="popup">
                               <div class="popup-content col-sm-3 text-center text-sm-left">
-                                  <h5><i class="fa-regular fa-bell fa-shake"></i> NOTIFICATIONS!</h5>
+                                  <h5><i class="fa-regular fa-bell"></i> NOTIFICATIONS!</h5>
                                   <hr>
                                   <ul  style="max-height: 200px; overflow-y: auto;">
                                       <?php

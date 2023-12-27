@@ -265,7 +265,7 @@
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hydroponics /</span> Fourly Water Condition</h4>
               <div style="padding-bottom: 10px;">
-                <button id="downloadBtn" class="btn btn-md btn-primary"><i class="fa-solid fa-download"></i> Download CSV</button>
+                <button id="downloadBtn" class="btn btn-md btn-success"><i class="fa-solid fa-download"></i> Download CSV</button>
               </div>
               <div class="table-responsive text-nowrap">
                 <table id="datatable" class="table card-table">
