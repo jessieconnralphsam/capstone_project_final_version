@@ -5,7 +5,6 @@ forgot password
 data for div(waterflow, waterlevel, acidity, tds, temperature) in log book /check
 add filter in logbook(dropdown calendar) /check
 make the logbook as dropdown /check
-analytics - descriptive analytics
 design notifications  /check
 add color to current water condition corresponding label and colors
 action for logbook must be specific mixture /check
