@@ -23,6 +23,7 @@
   $tdsresult = mysqli_query($conn, $tdsquery);
   while ($row = mysqli_fetch_assoc($tdsresult)) {
       $data_tds[] = $row['tds_readings'];
+      $data_tds_action[] = $row['action'];
   }
 
   $tempquery = "SELECT * FROM temperature ORDER BY temp_cdate DESC";

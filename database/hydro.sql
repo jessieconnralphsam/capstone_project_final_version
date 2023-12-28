@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2023 at 06:12 AM
+-- Generation Time: Dec 28, 2023 at 04:44 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -96,7 +96,18 @@ INSERT INTO `acidity` (`acid_id`, `sensor_name`, `acid_cdate`, `acid_readings`, 
 (81, 'Acidity', '2023-12-27 12:07:16', 7, 0, 'No Action'),
 (82, 'Acidity', '2023-12-27 12:07:38', 8, 0, 'Added 2ml of pH-Down Solution'),
 (83, 'Acidity', '2023-12-27 12:07:53', 8, 0, 'Added 2ml of pH-Down Solution'),
-(84, 'Acidity', '2023-12-27 12:08:11', 7, 0, 'No Action');
+(84, 'Acidity', '2023-12-27 12:08:11', 7, 0, 'No Action'),
+(85, 'Acidity', '2023-12-27 14:33:17', 4, 0, 'Added 2ml of pH-Up Solution'),
+(86, 'Acidity', '2023-12-27 14:35:06', 4, 0, 'Added 2ml of pH-Up Solution'),
+(87, 'Acidity', '2023-12-27 14:36:11', 4, 0, 'Added 2ml of pH-Up Solution'),
+(88, 'Acidity', '2023-12-27 14:40:00', 4, 0, 'Added 2ml of pH-Up Solution'),
+(89, 'Acidity', '2023-12-27 14:40:09', 4, 0, 'Added 2ml of pH-Up Solution'),
+(90, 'Acidity', '2023-12-27 14:40:50', 4, 0, 'Added 2ml of pH-Up Solution'),
+(91, 'Acidity', '2023-12-27 14:40:58', 4, 0, 'Added 2ml of pH-Up Solution'),
+(92, 'Acidity', '2023-12-27 14:43:15', 4, 0, 'Added 2ml of pH-Up Solution'),
+(93, 'Acidity', '2023-12-27 14:44:01', 4, 0, 'Added 2ml of pH-Up Solution'),
+(94, 'Acidity', '2023-12-28 09:32:25', 7, 0, 'No Action'),
+(95, 'Acidity', '2023-12-28 09:32:59', 4, 0, 'Added 2ml of pH-Up Solution');
 
 --
 -- Triggers `acidity`
@@ -302,7 +313,39 @@ INSERT INTO `notifications` (`id`, `notif_sname`, `cdate`, `readings`, `status`)
 (167, 'Acidity', '2023-12-27 12:07:53', 8, 1),
 (168, 'Conductivity', '2023-12-27 12:07:53', 100, 1),
 (169, 'waterlevel', '2023-12-27 12:08:11', 1, 1),
-(170, 'Conductivity', '2023-12-27 12:08:11', 100, 1);
+(170, 'Conductivity', '2023-12-27 12:08:11', 100, 1),
+(171, 'waterlevel', '2023-12-27 14:33:17', 1, 1),
+(172, 'Acidity', '2023-12-27 14:33:17', 4, 1),
+(173, 'Conductivity', '2023-12-27 14:33:17', 100, 1),
+(174, 'waterlevel', '2023-12-27 14:35:06', 1, 1),
+(175, 'Acidity', '2023-12-27 14:35:06', 4, 1),
+(176, 'Conductivity', '2023-12-27 14:35:06', 100, 1),
+(177, 'waterlevel', '2023-12-27 14:36:11', 1, 1),
+(178, 'Acidity', '2023-12-27 14:36:11', 4, 1),
+(179, 'Conductivity', '2023-12-27 14:36:11', 100, 1),
+(180, 'waterlevel', '2023-12-27 14:40:00', 1, 1),
+(181, 'Acidity', '2023-12-27 14:40:00', 4, 1),
+(182, 'Conductivity', '2023-12-27 14:40:00', 100, 1),
+(183, 'waterlevel', '2023-12-27 14:40:09', 1, 1),
+(184, 'Acidity', '2023-12-27 14:40:09', 4, 1),
+(185, 'Conductivity', '2023-12-27 14:40:09', 100, 1),
+(186, 'waterlevel', '2023-12-27 14:40:50', 1, 1),
+(187, 'Acidity', '2023-12-27 14:40:50', 4, 1),
+(188, 'Conductivity', '2023-12-27 14:40:50', 100, 1),
+(189, 'waterlevel', '2023-12-27 14:40:58', 1, 1),
+(190, 'Acidity', '2023-12-27 14:40:58', 4, 1),
+(191, 'Conductivity', '2023-12-27 14:40:58', 100, 1),
+(192, 'waterlevel', '2023-12-27 14:43:15', 1, 1),
+(193, 'Acidity', '2023-12-27 14:43:15', 4, 1),
+(194, 'Conductivity', '2023-12-27 14:43:15', 100, 1),
+(195, 'waterlevel', '2023-12-27 14:44:01', 1, 1),
+(196, 'Acidity', '2023-12-27 14:44:01', 4, 1),
+(197, 'Conductivity', '2023-12-27 14:44:01', 100, 1),
+(198, 'waterlevel', '2023-12-28 09:32:25', 1, 1),
+(199, 'Conductivity', '2023-12-28 09:32:25', 100, 1),
+(200, 'Acidity', '2023-12-28 09:32:59', 4, 1),
+(201, 'Conductivity', '2023-12-28 09:32:59', 800, 1),
+(202, 'Temperature', '2023-12-28 09:32:59', 35, 1);
 
 -- --------------------------------------------------------
 
@@ -373,7 +416,18 @@ INSERT INTO `temperature` (`temp_id`, `sensor_name`, `temp_cdate`, `temp_reading
 (69, 'Temperature', '2023-12-27 12:07:16', 19, 0),
 (70, 'Temperature', '2023-12-27 12:07:38', 19, 0),
 (71, 'Temperature', '2023-12-27 12:07:53', 19, 0),
-(72, 'Temperature', '2023-12-27 12:08:11', 19, 0);
+(72, 'Temperature', '2023-12-27 12:08:11', 19, 0),
+(73, 'Temperature', '2023-12-27 14:33:17', 19, 0),
+(74, 'Temperature', '2023-12-27 14:35:06', 3, 0),
+(75, 'Temperature', '2023-12-27 14:36:11', 19, 0),
+(76, 'Temperature', '2023-12-27 14:40:00', 19, 0),
+(77, 'Temperature', '2023-12-27 14:40:09', 19, 0),
+(78, 'Temperature', '2023-12-27 14:40:50', 19, 0),
+(79, 'Temperature', '2023-12-27 14:40:58', 19, 0),
+(80, 'Temperature', '2023-12-27 14:43:15', 19, 0),
+(81, 'Temperature', '2023-12-27 14:44:01', 19, 0),
+(82, 'Temperature', '2023-12-28 09:32:25', 19, 0),
+(83, 'Temperature', '2023-12-28 09:32:59', 35, 0);
 
 --
 -- Triggers `temperature`
@@ -399,65 +453,77 @@ CREATE TABLE `total_dissolved_solids` (
   `sensor_name` varchar(12) NOT NULL DEFAULT 'Conductivity',
   `tds_cdate` datetime NOT NULL DEFAULT current_timestamp(),
   `tds_readings` int(11) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 0
+  `status` int(11) NOT NULL DEFAULT 0,
+  `action` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `total_dissolved_solids`
 --
 
-INSERT INTO `total_dissolved_solids` (`tds_id`, `sensor_name`, `tds_cdate`, `tds_readings`, `status`) VALUES
-(7, 'Conductivity', '2023-08-19 15:37:48', 5, 1),
-(8, 'Conductivity', '2023-08-19 15:37:58', 9, 1),
-(9, 'Conductivity', '2023-08-19 15:38:38', 6, 1),
-(10, 'Conductivity', '2023-08-19 15:38:50', 8, 1),
-(11, 'Conductivity', '2023-08-19 15:39:01', 5, 1),
-(12, 'Conductivity', '2023-08-19 15:42:12', 8, 1),
-(13, 'Conductivity', '2023-08-19 15:44:01', 1000, 1),
-(14, 'Conductivity', '2023-08-19 15:50:10', 950, 0),
-(15, 'Conductivity', '2023-08-19 16:22:29', 2, 0),
-(16, 'Conductivity', '2023-08-19 16:24:32', 0, 0),
-(17, 'Conductivity', '2023-08-19 16:34:06', 0, 0),
-(18, 'Conductivity', '2023-08-19 16:35:27', 400, 0),
-(19, 'Conductivity', '2023-08-19 17:01:44', 450, 0),
-(20, 'Conductivity', '2023-08-19 17:24:36', 500, 0),
-(21, 'Conductivity', '2023-08-19 17:26:32', 1000, 0),
-(22, 'Conductivity', '2023-08-19 17:27:54', 1000, 0),
-(23, 'Conductivity', '2023-08-20 08:10:49', 1000, 0),
-(24, 'Conductivity', '2023-08-20 08:11:48', 1000, 0),
-(25, 'Conductivity', '2023-08-20 08:15:04', 1000, 0),
-(26, 'Conductivity', '2023-08-20 08:26:57', 1000, 0),
-(27, 'Conductivity', '2023-08-20 08:27:07', 1000, 0),
-(28, 'Conductivity', '2023-08-20 08:27:37', 1000, 0),
-(29, 'Conductivity', '2023-08-20 08:56:08', 1000, 0),
-(30, 'Conductivity', '2023-08-20 08:56:34', 800, 0),
-(31, 'Conductivity', '2023-08-20 09:08:26', 1000, 0),
-(32, 'Conductivity', '2023-08-20 09:08:55', 800, 0),
-(33, 'Conductivity', '2023-08-20 09:09:10', 1000, 0),
-(34, 'Conductivity', '2023-11-13 09:59:35', 6, 0),
-(35, 'Conductivity', '2023-11-13 09:59:50', 6, 0),
-(36, 'Conductivity', '2023-11-14 06:58:40', 50, 0),
-(37, 'Conductivity', '2023-11-15 11:07:17', 20, 0),
-(38, 'Conductivity', '2023-11-15 11:33:55', 100, 0),
-(39, 'Conductivity', '2023-11-15 11:36:07', 50, 0),
-(40, 'Conductivity', '2023-11-20 18:53:28', 50, 0),
-(41, 'Conductivity', '2023-11-20 19:12:14', 300, 0),
-(42, 'Conductivity', '2023-11-20 19:28:14', 300, 0),
-(43, 'Conductivity', '2023-11-20 19:32:32', 300, 0),
-(44, 'Conductivity', '2023-11-20 19:32:41', 300, 0),
-(45, 'Conductivity', '2023-11-20 19:33:27', 900, 0),
-(46, 'Conductivity', '2023-11-20 19:37:19', 500, 0),
-(47, 'Conductivity', '2023-11-20 20:45:35', 900, 0),
-(48, 'Conductivity', '2023-11-20 21:02:02', 500, 0),
-(49, 'Conductivity', '2023-11-20 21:16:19', 50, 0),
-(50, 'Conductivity', '2023-11-21 11:26:45', 500, 0),
-(51, 'Conductivity', '2023-12-26 18:46:57', 100, 0),
-(52, 'Conductivity', '2023-12-27 12:05:19', 100, 0),
-(53, 'Conductivity', '2023-12-27 12:06:54', 100, 0),
-(54, 'Conductivity', '2023-12-27 12:07:16', 100, 0),
-(55, 'Conductivity', '2023-12-27 12:07:38', 100, 0),
-(56, 'Conductivity', '2023-12-27 12:07:53', 100, 0),
-(57, 'Conductivity', '2023-12-27 12:08:11', 100, 0);
+INSERT INTO `total_dissolved_solids` (`tds_id`, `sensor_name`, `tds_cdate`, `tds_readings`, `status`, `action`) VALUES
+(7, 'Conductivity', '2023-08-19 15:37:48', 5, 1, ''),
+(8, 'Conductivity', '2023-08-19 15:37:58', 9, 1, ''),
+(9, 'Conductivity', '2023-08-19 15:38:38', 6, 1, ''),
+(10, 'Conductivity', '2023-08-19 15:38:50', 8, 1, ''),
+(11, 'Conductivity', '2023-08-19 15:39:01', 5, 1, ''),
+(12, 'Conductivity', '2023-08-19 15:42:12', 8, 1, ''),
+(13, 'Conductivity', '2023-08-19 15:44:01', 1000, 1, ''),
+(14, 'Conductivity', '2023-08-19 15:50:10', 950, 0, ''),
+(15, 'Conductivity', '2023-08-19 16:22:29', 2, 0, ''),
+(16, 'Conductivity', '2023-08-19 16:24:32', 0, 0, ''),
+(17, 'Conductivity', '2023-08-19 16:34:06', 0, 0, ''),
+(18, 'Conductivity', '2023-08-19 16:35:27', 400, 0, ''),
+(19, 'Conductivity', '2023-08-19 17:01:44', 450, 0, ''),
+(20, 'Conductivity', '2023-08-19 17:24:36', 500, 0, ''),
+(21, 'Conductivity', '2023-08-19 17:26:32', 1000, 0, ''),
+(22, 'Conductivity', '2023-08-19 17:27:54', 1000, 0, ''),
+(23, 'Conductivity', '2023-08-20 08:10:49', 1000, 0, ''),
+(24, 'Conductivity', '2023-08-20 08:11:48', 1000, 0, ''),
+(25, 'Conductivity', '2023-08-20 08:15:04', 1000, 0, ''),
+(26, 'Conductivity', '2023-08-20 08:26:57', 1000, 0, ''),
+(27, 'Conductivity', '2023-08-20 08:27:07', 1000, 0, ''),
+(28, 'Conductivity', '2023-08-20 08:27:37', 1000, 0, ''),
+(29, 'Conductivity', '2023-08-20 08:56:08', 1000, 0, ''),
+(30, 'Conductivity', '2023-08-20 08:56:34', 800, 0, ''),
+(31, 'Conductivity', '2023-08-20 09:08:26', 1000, 0, ''),
+(32, 'Conductivity', '2023-08-20 09:08:55', 800, 0, ''),
+(33, 'Conductivity', '2023-08-20 09:09:10', 1000, 0, ''),
+(34, 'Conductivity', '2023-11-13 09:59:35', 6, 0, ''),
+(35, 'Conductivity', '2023-11-13 09:59:50', 6, 0, ''),
+(36, 'Conductivity', '2023-11-14 06:58:40', 50, 0, ''),
+(37, 'Conductivity', '2023-11-15 11:07:17', 20, 0, ''),
+(38, 'Conductivity', '2023-11-15 11:33:55', 100, 0, ''),
+(39, 'Conductivity', '2023-11-15 11:36:07', 50, 0, ''),
+(40, 'Conductivity', '2023-11-20 18:53:28', 50, 0, ''),
+(41, 'Conductivity', '2023-11-20 19:12:14', 300, 0, ''),
+(42, 'Conductivity', '2023-11-20 19:28:14', 300, 0, ''),
+(43, 'Conductivity', '2023-11-20 19:32:32', 300, 0, ''),
+(44, 'Conductivity', '2023-11-20 19:32:41', 300, 0, ''),
+(45, 'Conductivity', '2023-11-20 19:33:27', 900, 0, ''),
+(46, 'Conductivity', '2023-11-20 19:37:19', 500, 0, ''),
+(47, 'Conductivity', '2023-11-20 20:45:35', 900, 0, ''),
+(48, 'Conductivity', '2023-11-20 21:02:02', 500, 0, ''),
+(49, 'Conductivity', '2023-11-20 21:16:19', 50, 0, ''),
+(50, 'Conductivity', '2023-11-21 11:26:45', 500, 0, ''),
+(51, 'Conductivity', '2023-12-26 18:46:57', 100, 0, ''),
+(52, 'Conductivity', '2023-12-27 12:05:19', 100, 0, ''),
+(53, 'Conductivity', '2023-12-27 12:06:54', 100, 0, ''),
+(54, 'Conductivity', '2023-12-27 12:07:16', 100, 0, ''),
+(55, 'Conductivity', '2023-12-27 12:07:38', 100, 0, ''),
+(56, 'Conductivity', '2023-12-27 12:07:53', 100, 0, ''),
+(57, 'Conductivity', '2023-12-27 12:08:11', 100, 0, ''),
+(58, 'Conductivity', '2023-12-27 14:33:17', 100, 0, ''),
+(59, 'Conductivity', '2023-12-27 14:35:06', 100, 0, ''),
+(60, 'Conductivity', '2023-12-27 14:36:11', 100, 0, ''),
+(61, 'Conductivity', '2023-12-27 14:40:00', 100, 0, ''),
+(62, 'Conductivity', '2023-12-27 14:40:09', 100, 0, ''),
+(63, 'Conductivity', '2023-12-27 14:40:50', 100, 0, ''),
+(64, 'Conductivity', '2023-12-27 14:40:58', 100, 0, ''),
+(65, 'Conductivity', '2023-12-27 14:43:15', 100, 0, ''),
+(66, 'Conductivity', '2023-12-27 14:44:01', 100, 0, ''),
+(67, 'Conductivity', '2023-12-28 09:32:25', 100, 0, 'Nutrient Solution Added'),
+(68, 'Conductivity', '2023-12-28 09:32:59', 800, 0, 'No action');
 
 --
 -- Triggers `total_dissolved_solids`
@@ -477,6 +543,16 @@ CREATE TRIGGER `insert_into_tds_notif_table` AFTER INSERT ON `total_dissolved_so
     INSERT INTO notifications (notif_sname, cdate, readings, status) 
     VALUES (NEW.sensor_name, NEW.tds_cdate, NEW.tds_readings, NEW.status);
   END IF;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `tds_action` BEFORE INSERT ON `total_dissolved_solids` FOR EACH ROW BEGIN
+    IF NEW.tds_readings >= 800 THEN
+        SET NEW.action = 'No action';
+    ELSE
+        SET NEW.action = 'Nutrient Solution Added';
+    END IF;
 END
 $$
 DELIMITER ;
@@ -572,7 +648,18 @@ INSERT INTO `waterflow` (`flow_id`, `sensor_name`, `flow_cdate`, `flow_readings`
 (58, 'waterflow', '2023-12-27 12:07:16', 3, 0),
 (59, 'waterflow', '2023-12-27 12:07:38', 3, 0),
 (60, 'waterflow', '2023-12-27 12:07:53', 3, 0),
-(61, 'waterflow', '2023-12-27 12:08:11', 3, 0);
+(61, 'waterflow', '2023-12-27 12:08:11', 3, 0),
+(62, 'waterflow', '2023-12-27 14:33:17', 3, 0),
+(63, 'waterflow', '2023-12-27 14:35:06', 3, 0),
+(64, 'waterflow', '2023-12-27 14:36:11', 3, 0),
+(65, 'waterflow', '2023-12-27 14:40:00', 3, 0),
+(66, 'waterflow', '2023-12-27 14:40:09', 3, 0),
+(67, 'waterflow', '2023-12-27 14:40:50', 3, 0),
+(68, 'waterflow', '2023-12-27 14:40:58', 2, 0),
+(69, 'waterflow', '2023-12-27 14:43:15', 3, 0),
+(70, 'waterflow', '2023-12-27 14:44:01', 3, 0),
+(71, 'waterflow', '2023-12-28 09:32:25', 3, 0),
+(72, 'waterflow', '2023-12-28 09:32:59', 3, 0);
 
 --
 -- Triggers `waterflow`
@@ -656,7 +743,18 @@ INSERT INTO `waterlevel` (`level_id`, `sensor_name`, `level_cdate`, `level_readi
 (58, 'waterlevel', '2023-12-27 12:07:16', 1, 0),
 (59, 'waterlevel', '2023-12-27 12:07:38', 1, 0),
 (60, 'waterlevel', '2023-12-27 12:07:53', 1, 0),
-(61, 'waterlevel', '2023-12-27 12:08:11', 1, 0);
+(61, 'waterlevel', '2023-12-27 12:08:11', 1, 0),
+(62, 'waterlevel', '2023-12-27 14:33:17', 1, 0),
+(63, 'waterlevel', '2023-12-27 14:35:06', 1, 0),
+(64, 'waterlevel', '2023-12-27 14:36:11', 1, 0),
+(65, 'waterlevel', '2023-12-27 14:40:00', 1, 0),
+(66, 'waterlevel', '2023-12-27 14:40:09', 1, 0),
+(67, 'waterlevel', '2023-12-27 14:40:50', 1, 0),
+(68, 'waterlevel', '2023-12-27 14:40:58', 1, 0),
+(69, 'waterlevel', '2023-12-27 14:43:15', 1, 0),
+(70, 'waterlevel', '2023-12-27 14:44:01', 1, 0),
+(71, 'waterlevel', '2023-12-28 09:32:25', 1, 0),
+(72, 'waterlevel', '2023-12-28 09:32:59', 22, 0);
 
 --
 -- Triggers `waterlevel`
@@ -740,7 +838,7 @@ ALTER TABLE `waterlevel`
 -- AUTO_INCREMENT for table `acidity`
 --
 ALTER TABLE `acidity`
-  MODIFY `acid_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `acid_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `average`
@@ -752,19 +850,19 @@ ALTER TABLE `average`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 
 --
 -- AUTO_INCREMENT for table `temperature`
 --
 ALTER TABLE `temperature`
-  MODIFY `temp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `temp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `total_dissolved_solids`
 --
 ALTER TABLE `total_dissolved_solids`
-  MODIFY `tds_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `tds_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -776,13 +874,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `waterflow`
 --
 ALTER TABLE `waterflow`
-  MODIFY `flow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `flow_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `waterlevel`
 --
 ALTER TABLE `waterlevel`
-  MODIFY `level_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `level_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

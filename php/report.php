@@ -154,12 +154,6 @@
                 </li>
               </ul>
             </li>
-            <li class="menu-item">
-              <a href="../analytics/analytics.php" class="menu-link" target="_blank">
-                <i class="menu-icon tf-icons bx bx-line-chart"></i>
-                <div data-i18n="Tables">Analytics</div>
-              </a>
-            </li>
             <!-- Misc -->
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Miscellaneous</span></li>
             
@@ -275,7 +269,8 @@
                       <th>Readings</th>
                       <th>Average</th>
                       <th>Status</th>
-                      <th>Actions</th>
+                      <th>Actions for acidity</th>
+                      <th>Actions for tds</th>
                     </tr>
                   </thead>
                   <tbody class="table-border-bottom-0">
@@ -317,7 +312,8 @@
                         echo '</td>';
                         echo '<td>' . round($averages[$index]['average']) . '%</td>';
                         echo '<td><span class="badge bg-label-primary me-1">' . $averages[$index]['label'] . '</span></td>';
-                        echo '<td>' . $data_acid_action[$index] . '</td>';
+                        echo '<td>' . $data_acid_action[$index].'</td>';
+                        echo '<td>' . $data_tds_action[$index].'</td>';
                         echo '</tr>';
                     }
                     ?>
