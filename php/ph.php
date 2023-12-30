@@ -75,7 +75,7 @@ if(!isset($_SESSION['user_id'])){
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="ph.php" class="app-brand-link">
-                <i class="fa-solid fa-droplet fa-bounce fa-2xl" style="color: #095cec;"></i> <span class="app-brand-text demo menu-text fw-bolder ms-2"> 
+                <i class="fa-solid fa-droplet fa-2xl" style="color: #095cec;"></i> <span class="app-brand-text demo menu-text fw-bolder ms-2"> 
                 <span style="text-transform: uppercase;">H</span>ydroponics</span>
             </a>
 
@@ -301,7 +301,7 @@ if(!isset($_SESSION['user_id'])){
                           <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="avatar flex-shrink-0">
                               <img
-                                src="../assets/img/icons/unicons/flow.png"
+                                src="../assets/img/icons/unicons/sink.gif"
                                 alt="chart success"
                                 class="rounded"
                               />
@@ -373,7 +373,7 @@ if(!isset($_SESSION['user_id'])){
                           <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="avatar flex-shrink-0">
                               <img
-                                src="../assets/img/icons/unicons/tide.png"
+                                src="../assets/img/icons/unicons/ruler.gif"
                                 alt="Credit Card"
                                 class="rounded"
                               />
@@ -502,7 +502,7 @@ if(!isset($_SESSION['user_id'])){
                           <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="avatar flex-shrink-0">
                               <a href="https://www.htgsupply.com/wp-content/uploads/2019/05/PH-SCALE-EXAMPLES.jpg" target="_blank" title="Click me for conversion">
-                                <img src="../assets/img/icons/unicons/flask.png" alt="Credit Card" class="rounded" />
+                                <img src="../assets/img/icons/unicons/potion.gif" alt="Credit Card" class="rounded" />
                               </a>                              
                             </div>
                             <div class="dropdown">
@@ -539,7 +539,7 @@ if(!isset($_SESSION['user_id'])){
                             </div>
                           </div>
                           <div id="acidity">
-                              <span class="fw-semibold d-block mb-1">Acidity</span>
+                              <span class="fw-semibold d-block mb-1">Water <br> Acidity</span>
                               <h3 class="card-title mb-2">pH of <?php echo $acidvalue; ?></h3>
                               <small class="<?php echo $acidclass; ?> fw-semibold"><i class="<?php echo $acidicon; ?>"></i><?php echo $acidvalue_comp; ?> pH</small>
                           </div>
@@ -571,7 +571,7 @@ if(!isset($_SESSION['user_id'])){
                           <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="avatar flex-shrink-0">
                               <a href="https://www.ro-system.org/wp-content/uploads/2021/07/total-dissolved-solids-chart.jpg" target="_blank" title="Click me for conversion">
-                                <img src="../assets/img/icons/unicons/atom.png" alt="Credit Card" class="rounded" />
+                                <img src="../assets/img/icons/unicons/water.gif" alt="Credit Card" class="rounded" />
                               </a>
                             </div>
                             <div class="dropdown">
@@ -608,7 +608,7 @@ if(!isset($_SESSION['user_id'])){
                             </div>
                           </div>
                           <div id="tds">
-                              <span class="fw-semibold d-block mb-1">TDS</span>
+                              <span class="fw-semibold d-block mb-1">Dissolved <br>Solids</span>
                               <h5 class="card-title mb-2"><?php echo $tdsvalue; ?> ppm</h5>
                               <small class="<?php echo $tdsclass; ?> fw-semibold"><i class="<?php echo $tdsicon; ?>"></i><?php echo $tdsvalue_comp; ?> ppm</small>
                           </div>
@@ -1611,7 +1611,7 @@ if(!isset($_SESSION['user_id'])){
         const profileReportChartEl = document.querySelector('#profileReportChart'),
           profileReportChartConfig = {
             chart: {
-              height: 170,
+              height: 155,
               // width: 175,
               type: 'line',
               toolbar: {
