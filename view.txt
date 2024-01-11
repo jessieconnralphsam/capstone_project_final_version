@@ -1,0 +1,32 @@
+SELECT
+    `hydro`.`total_dissolved_solids`.`tds_id` AS `reading_id`,
+    `hydro`.`total_dissolved_solids`.`sensor_name` AS `sensor_name`,
+    `hydro`.`total_dissolved_solids`.`tds_cdate` AS `reading_cdate`,
+    `hydro`.`total_dissolved_solids`.`tds_readings` AS `reading_value`,
+    'Total Dissolved Solids' AS `reading_type`,
+    CASE WHEN `hydro`.`total_dissolved_solids`.`tds_readings` <= 50 THEN 15 WHEN `hydro`.`total_dissolved_solids`.`tds_readings` >= 51 AND `hydro`.`total_dissolved_solids`.`tds_readings` <= 100 THEN 38 WHEN `hydro`.`total_dissolved_solids`.`tds_readings` >= 101 AND `hydro`.`total_dissolved_solids`.`tds_readings` <= 200 THEN 49 WHEN `hydro`.`total_dissolved_solids`.`tds_readings` >= 201 AND `hydro`.`total_dissolved_solids`.`tds_readings` <= 300 THEN 56 WHEN `hydro`.`total_dissolved_solids`.`tds_readings` >= 301 AND `hydro`.`total_dissolved_solids`.`tds_readings` <= 400 THEN 73 WHEN `hydro`.`total_dissolved_solids`.`tds_readings` >= 401 AND `hydro`.`total_dissolved_solids`.`tds_readings` <= 500 THEN 86 WHEN `hydro`.`total_dissolved_solids`.`tds_readings` >= 501 AND `hydro`.`total_dissolved_solids`.`tds_readings` <= 600 THEN 93 WHEN `hydro`.`total_dissolved_solids`.`tds_readings` >= 601 AND `hydro`.`total_dissolved_solids`.`tds_readings` <= 650 THEN 96 WHEN `hydro`.`total_dissolved_solids`.`tds_readings` >= 651 AND `hydro`.`total_dissolved_solids`.`tds_readings` <= 710 THEN 95 ELSE 17
+END AS `weighted_value`
+FROM
+    `hydro`.`total_dissolved_solids`
+UNION ALL
+SELECT
+    `hydro`.`acidity`.`acid_id` AS `reading_id`,
+    `hydro`.`acidity`.`sensor_name` AS `sensor_name`,
+    `hydro`.`acidity`.`acid_cdate` AS `reading_cdate`,
+    `hydro`.`acidity`.`acid_readings` AS `reading_value`,
+    'Acidity' AS `reading_type`,
+    CASE WHEN `hydro`.`acidity`.`acid_readings` = 1 THEN 10 WHEN `hydro`.`acidity`.`acid_readings` = 2 THEN 20 WHEN `hydro`.`acidity`.`acid_readings` = 3 THEN 30 WHEN `hydro`.`acidity`.`acid_readings` = 4 THEN 60 WHEN `hydro`.`acidity`.`acid_readings` = 5 THEN 80 WHEN `hydro`.`acidity`.`acid_readings` = 6 THEN 90 WHEN `hydro`.`acidity`.`acid_readings` = 7 THEN 97 WHEN `hydro`.`acidity`.`acid_readings` = 8 THEN 90 WHEN `hydro`.`acidity`.`acid_readings` = 9 THEN 80 WHEN `hydro`.`acidity`.`acid_readings` = 10 THEN 60 WHEN `hydro`.`acidity`.`acid_readings` = 11 THEN 40 WHEN `hydro`.`acidity`.`acid_readings` = 12 THEN 30 WHEN `hydro`.`acidity`.`acid_readings` = 13 THEN 20 WHEN `hydro`.`acidity`.`acid_readings` = 14 THEN 10 ELSE 0
+END AS `weighted_value`
+FROM
+    `hydro`.`acidity`
+UNION ALL
+SELECT
+    `hydro`.`temperature`.`temp_id` AS `reading_id`,
+    `hydro`.`temperature`.`sensor_name` AS `sensor_name`,
+    `hydro`.`temperature`.`temp_cdate` AS `reading_cdate`,
+    `hydro`.`temperature`.`temp_readings` AS `reading_value`,
+    'Temperature' AS `reading_type`,
+    CASE WHEN `hydro`.`temperature`.`temp_readings` = 25 THEN 95 WHEN `hydro`.`temperature`.`temp_readings` >= 21 AND `hydro`.`temperature`.`temp_readings` < 25 THEN 90 WHEN `hydro`.`temperature`.`temp_readings` >= 18 AND `hydro`.`temperature`.`temp_readings` < 21 THEN 75 WHEN `hydro`.`temperature`.`temp_readings` > 15 AND `hydro`.`temperature`.`temp_readings` <= 18 THEN 35 WHEN `hydro`.`temperature`.`temp_readings` < 15 THEN 15 WHEN `hydro`.`temperature`.`temp_readings` >= 26 AND `hydro`.`temperature`.`temp_readings` <= 30 THEN 92 WHEN `hydro`.`temperature`.`temp_readings` >= 31 AND `hydro`.`temperature`.`temp_readings` <= 35 THEN 87 WHEN `hydro`.`temperature`.`temp_readings` >= 36 AND `hydro`.`temperature`.`temp_readings` <= 40 THEN 45 ELSE 14
+END AS `weighted_value`
+FROM
+    `hydro`.`temperature`
