@@ -461,7 +461,7 @@ if(!isset($_SESSION['user_id'])){
                       </div>                   
                       <div class="col-md-4">
                         <div id="growthChart"></div>
-                        <div class="text-center fw-bold pt-3 mb-2"> Current Water <br> Condition as of <span class="text-primary"><?php echo date("F j, Y g:i A", strtotime($averages[0]['date'])); ?></span>: <span><?php echo $averages[0]['label']; ?></span></div>
+                        <div class="text-center fw-bold pt-3 mb-2"> Current Water Condition<br><span class="text-primary">(<?php echo date("F j, Y g:i A", strtotime($averages[0]['date'])); ?>)</span><br><span><?php echo $averages[0]['label']; ?></span></div>
 
                         <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
                           <div class="d-flex">
@@ -696,7 +696,7 @@ if(!isset($_SESSION['user_id'])){
                   | Capstonics <i class="fa-brands fa-facebook" style="color: #075ced;"></i>
                   <i class="fa-brands fa-github"></i>
                 </div>
-                <div>
+                <!-- <div>
                  
                   <a
                     href="#"
@@ -704,7 +704,7 @@ if(!isset($_SESSION['user_id'])){
                     class="footer-link me-4"
                     >Data & SMS Available: 4gb and 300 SMS</a
                   >
-                </div>
+                </div> -->
               </div>
             </footer>
             <!-- / Footer -->

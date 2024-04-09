@@ -42,7 +42,13 @@
     <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-
+    <style>
+    @media print {
+        #contentToPrint {
+            display: block !important;
+        }
+    }
+    </style>
     <!-- Page CSS -->
 
     <!-- Helpers -->
@@ -260,6 +266,107 @@
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hydroponics /</span> Four-hourly Water Condition</h4>
               <div style="padding-bottom: 10px;">
                 <button id="downloadBtn" class="btn btn-md btn-success"><i class="fa-solid fa-download"></i> Download CSV</button>
+                <button id="printButton" class="btn btn-md btn-primary"><i class="fas fa-print"></i> Print</button>
+              </div>
+              <div id="contentToPrint" style="display:none;">
+                  <h3 class="text-center mt-5">Republic of the Philippines</h3>
+                  <h5 class="text-center mt-2">NFT Hydroponics System</h5>
+                  <h5 class="text-center mt-2 mb-5">Report</h5>
+                  <div class="row mt-5">
+                    <div class="col">
+                        <h3><strong>Temperature Report</strong></h3>
+                        <p>Highest Temperature: </p>
+                        <p>Lowest temperature: </p>
+                        <p>Average temperature:</p>
+                    </div>
+                    <div class="col">
+                        <h3><strong>Acidity Report</strong></h3>
+                        <p>Acidity at Highest Temperature: </p>
+                        <p>Acidity at Lowest temperature: </p>
+                        <p>Average Acidity:</p>
+                    </div>
+                    <div class="col">
+                        <h3><strong>Total Dissolved Solids Report</strong></h3>
+                        <p>TDS at Highest Temperature: </p>
+                        <p>TDS at Lowest temperature: </p>
+                        <p>Average Total Dissolved Solids:</p>
+                    </div>
+                  </div>
+                  <div class="row mt-5">
+                    <div class="col">
+                        <h3><strong>Water Flow Report</strong></h3>
+                        <p>Waterflow at Highest Temperature: </p>
+                        <p>Waterflow at Lowest temperature: </p>
+                        <p>Average Waterflow:</p>
+                    </div>
+                    <div class="col mb-5">
+                        <h3><strong>Water Level Report</strong></h3>
+                        <p>Highest Water Level: </p>
+                        <p>Lowest Water Level: </p>
+                        <p>Average Water Level:</p>
+                    </div>
+                  </div>
+                  <div style="margin: 6rem;"></div>
+                  <div>
+                    <h3 class="text-center mt-5"><strong>Water Quality Summary</strong></h3>
+                  </div>
+                  <div class="row mt-5">
+                    <div class="col">
+                        <h3>Four-Hourly</h3>
+                        <p>Highest Water Condition: </p>
+                        <p>Lowest Water Condition: </p>
+                        <p>Average Water Condition:</p>
+                    </div>
+                    <div class="col">
+                        <h3>Quarterly</h3>
+                        <p>Highest Water Condition: </p>
+                        <p>Lowest Water Condition: </p>
+                        <p>Average Water Condition:</p>
+                    </div>
+                    <div class="col">
+                        <h3>Yearly</h3>
+                        <p>Highest Water Condition: </p>
+                        <p>Lowest Water Condition: </p>
+                        <p>Average Water Condition:</p>
+                    </div>
+                  </div>
+                  <div style="margin: 2rem;"></div>
+                  <h3><strong>Overall Water Quality Monitoring Table</strong></h3>
+                  <table class="table card-table">
+                      <thead>
+                        <tr>
+                          <th>Date & Time</th>
+                          <th>Acidity</th>
+                          <th>TDS</th>
+                          <th>Temp</th>
+                          <th>Waterflow</th>
+                          <th>Waterlevel</th>
+                          <th>Average</th>
+                          <th>Status</th>
+                          <th>Actions for acidity</th>
+                          <th>Actions for tds</th>
+                        </tr>
+                      </thead>
+                      <tbody class="table-border-bottom-0">
+
+                        <?php                   
+                        foreach ($temperaturedate as $index => $date) {
+                            echo '<tr>';
+                            echo '<td><i class="text-danger"></i> <strong>' . $date . '</strong></td>';
+                            echo '<td> pH of ' . $data_acid[$index] . '</td>';
+                            echo '<td>' . $data_tds[$index] . 'ppm</td>';
+                            echo '<td>' . $data_temp[$index] . '°C</td>';
+                            echo '<td>' . $data_flow[$index] . ' L/m</td>';
+                            echo '<td>' . $data_level[$index] . 'm</td>';
+                            echo '<td>' . round($averages[$index]['average']) . '%</td>';
+                            echo '<td><span class="badge bg-label-primary me-1">' . $averages[$index]['label'] . '</span></td>';
+                            echo '<td>' . $data_acid_action[$index].'</td>';
+                            echo '<td>' . $data_tds_action[$index].'</td>';
+                            echo '</tr>';
+                        }
+                        ?>
+                      </tbody>
+                  </table>
               </div>
               <div class="table-responsive text-nowrap">
                 <table id="datatable" class="table card-table">
@@ -349,5 +456,20 @@
     <script>
         new DataTable('#datatable');
     </script>
+    <script>
+    document.getElementById("printButton").addEventListener("click", function() {
+        printDiv("contentToPrint");
+    });
+
+    function printDiv(divId) {
+        var printContents = document.getElementById(divId).innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+    </script>
+
+
   </body>
 </html>
