@@ -482,7 +482,6 @@ if(!isset($_SESSION['user_id'])){
                       <div class="col-md-4">
                         <div id="growthChart"></div>
                         <div class="text-center fw-bold pt-3 mb-2"> Current Water Condition<br><span class="text-primary">(<?php echo date("F j, Y g:i A", strtotime($averages[0]['date'])); ?>)</span><br><span><?php echo $averages[0]['label']; ?></span></div>
-
                         <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
                           <div class="d-flex">
                             <div class="me-2">
