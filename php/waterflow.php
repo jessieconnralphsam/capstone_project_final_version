@@ -2,6 +2,20 @@
 <?php include "../data_ret.php"; ?>
 <?php include "../average.php"; ?>
 <?php include "../includes/chartdata.php"; ?>
+<?php
+$chart_flow_data = array();
+$chart_categories = array();
+
+foreach ($temperaturedate as $index => $date) {
+    $chart_categories[] = $date;
+    if (isset($data_fchart[$index])) {
+        $chart_flow_data[] = $data_fchart[$index]['flow_readings'];
+    } else {
+        $chart_flow_data[] = 'N/A';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html
   lang="en"
@@ -230,13 +244,13 @@
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hydroponics /</span> Four-hourly Water Flow Readings</h4>
               <select id="monthDropdown" class="form-select form-select-sm mb-5" >
                               <option value="Day">Four-hourly</option>
-                              <option value="Month">Quarterly</option>
+                              <option value="Month">Monthly</option>
                               <option value="Year">Yearly</option>
               </select>
               <div id="chartContainer" class="px-2">
-                          <div id="totalRevenueChart2" class="px-2"></div>
-                          <div class="px-2" id="totalRevenueChart" style="display: none;"></div>
-                          <div class="px-2" id="totalRevenueChart3" style="display: none;"></div>
+                  <div id="totalRevenueChart2" class="px-2"></div>
+                  <div class="px-2" id="totalRevenueChart" style="display: none;"></div>
+                  <div class="px-2" id="totalRevenueChart3" style="display: none;"></div>
               </div>
               <div class="table-responsive text-nowrap">
                 <table id="datatables" class="table card-table">
@@ -322,267 +336,11 @@
             series: [
               {
                 name: 'Average Water Condition(%)',
-                data: [18, 7, 15, 29]
+                data: []
               }
             ],
             chart: {
               height: 250,
-              stacked: true,
-              type: 'bar',
-              toolbar: { show: false }
-            },
-            plotOptions: {
-              bar: {
-                horizontal: false,
-                columnWidth: '33%',
-                borderRadius: 12,
-                startingShape: 'rounded',
-                endingShape: 'rounded'
-              }
-            },
-            colors: [config.colors.primary, config.colors.info],
-            dataLabels: {
-              enabled: false
-            },
-            stroke: {
-              curve: 'smooth',
-              width: 6,
-              lineCap: 'round',
-              colors: [cardColor]
-            },
-            legend: {
-              show: true,
-              horizontalAlign: 'left',
-              position: 'top',
-              markers: {
-                height: 8,
-                width: 8,
-                radius: 12,
-                offsetX: -3
-              },
-              labels: {
-                colors: axisColor
-              },
-              itemMargin: {
-                horizontal: 10
-              }
-            },
-            grid: {
-              borderColor: borderColor,
-              padding: {
-                top: 0,
-                bottom: -8,
-                left: 20,
-                right: 20
-              }
-            },
-            xaxis: {
-              categories: ['Jan - Mar', 'Apr - Jun', 'Jul - Sep', 'Oct - Dec'],
-              labels: {
-                style: {
-                  fontSize: '13px',
-                  colors: axisColor
-                }
-              },
-              axisTicks: {
-                show: false
-              },
-              axisBorder: {
-                show: false
-              }
-            },
-            yaxis: {
-              labels: {
-                style: {
-                  fontSize: '13px',
-                  colors: axisColor
-                }
-              }
-            },
-            responsive: [
-              {
-                breakpoint: 1700,
-                options: {
-                  plotOptions: {
-                    bar: {
-                      borderRadius: 10,
-                      columnWidth: '32%'
-                    }
-                  }
-                }
-              },
-              {
-                breakpoint: 1580,
-                options: {
-                  plotOptions: {
-                    bar: {
-                      borderRadius: 10,
-                      columnWidth: '35%'
-                    }
-                  }
-                }
-              },
-              {
-                breakpoint: 1440,
-                options: {
-                  plotOptions: {
-                    bar: {
-                      borderRadius: 10,
-                      columnWidth: '42%'
-                    }
-                  }
-                }
-              },
-              {
-                breakpoint: 1300,
-                options: {
-                  plotOptions: {
-                    bar: {
-                      borderRadius: 10,
-                      columnWidth: '48%'
-                    }
-                  }
-                }
-              },
-              {
-                breakpoint: 1200,
-                options: {
-                  plotOptions: {
-                    bar: {
-                      borderRadius: 10,
-                      columnWidth: '40%'
-                    }
-                  }
-                }
-              },
-              {
-                breakpoint: 1040,
-                options: {
-                  plotOptions: {
-                    bar: {
-                      borderRadius: 11,
-                      columnWidth: '48%'
-                    }
-                  }
-                }
-              },
-              {
-                breakpoint: 991,
-                options: {
-                  plotOptions: {
-                    bar: {
-                      borderRadius: 10,
-                      columnWidth: '30%'
-                    }
-                  }
-                }
-              },
-              {
-                breakpoint: 840,
-                options: {
-                  plotOptions: {
-                    bar: {
-                      borderRadius: 10,
-                      columnWidth: '35%'
-                    }
-                  }
-                }
-              },
-              {
-                breakpoint: 768,
-                options: {
-                  plotOptions: {
-                    bar: {
-                      borderRadius: 10,
-                      columnWidth: '28%'
-                    }
-                  }
-                }
-              },
-              {
-                breakpoint: 640,
-                options: {
-                  plotOptions: {
-                    bar: {
-                      borderRadius: 10,
-                      columnWidth: '32%'
-                    }
-                  }
-                }
-              },
-              {
-                breakpoint: 576,
-                options: {
-                  plotOptions: {
-                    bar: {
-                      borderRadius: 10,
-                      columnWidth: '37%'
-                    }
-                  }
-                }
-              },
-              {
-                breakpoint: 480,
-                options: {
-                  plotOptions: {
-                    bar: {
-                      borderRadius: 10,
-                      columnWidth: '45%'
-                    }
-                  }
-                }
-              },
-              {
-                breakpoint: 420,
-                options: {
-                  plotOptions: {
-                    bar: {
-                      borderRadius: 10,
-                      columnWidth: '52%'
-                    }
-                  }
-                }
-              },
-              {
-                breakpoint: 380,
-                options: {
-                  plotOptions: {
-                    bar: {
-                      borderRadius: 10,
-                      columnWidth: '60%'
-                    }
-                  }
-                }
-              }
-            ],
-            states: {
-              hover: {
-                filter: {
-                  type: 'none'
-                }
-              },
-              active: {
-                filter: {
-                  type: 'none'
-                }
-              }
-            }
-          };
-        if (typeof totalRevenueChartEl !== undefined && totalRevenueChartEl !== null) {
-          const totalRevenueChart = new ApexCharts(totalRevenueChartEl, totalRevenueChartOptions);
-          totalRevenueChart.render();
-        }
-      //------------------------------------------------------------------------------------------------
-        const totalRevenueChartEl2 = document.querySelector('#totalRevenueChart2'),
-          totalRevenueChartOptions2 = {
-            series: [
-              {
-                name: 'Water Condition(%)',
-                data: [1,2,3,4,5,6,7,8,9,10,11,12]
-              }
-            ],
-            chart: {
-              height: 300,
               stacked: true,
               type: 'bar',
               toolbar: { show: false }
@@ -824,6 +582,262 @@
               }
             }
           };
+        if (typeof totalRevenueChartEl !== undefined && totalRevenueChartEl !== null) {
+          const totalRevenueChart = new ApexCharts(totalRevenueChartEl, totalRevenueChartOptions);
+          totalRevenueChart.render();
+        }
+      //------------------------------------------------------------------------------------------------
+        const totalRevenueChartEl2 = document.querySelector('#totalRevenueChart2'),
+          totalRevenueChartOptions2 = {
+            series: [
+              {
+                name: 'Water Condition(%)',
+                data: <?php echo json_encode($chart_flow_data); ?>
+              }
+            ],
+            chart: {
+              height: 300,
+              stacked: true,
+              type: 'bar',
+              toolbar: { show: false }
+            },
+            plotOptions: {
+              bar: {
+                horizontal: false,
+                columnWidth: '33%',
+                borderRadius: 12,
+                startingShape: 'rounded',
+                endingShape: 'rounded'
+              }
+            },
+            colors: [config.colors.primary, config.colors.info],
+            dataLabels: {
+              enabled: false
+            },
+            stroke: {
+              curve: 'smooth',
+              width: 6,
+              lineCap: 'round',
+              colors: [cardColor]
+            },
+            legend: {
+              show: true,
+              horizontalAlign: 'left',
+              position: 'top',
+              markers: {
+                height: 8,
+                width: 8,
+                radius: 12,
+                offsetX: -3
+              },
+              labels: {
+                colors: axisColor
+              },
+              itemMargin: {
+                horizontal: 10
+              }
+            },
+            grid: {
+              borderColor: borderColor,
+              padding: {
+                top: 0,
+                bottom: -8,
+                left: 20,
+                right: 20
+              }
+            },
+            xaxis: {
+              categories: <?php echo json_encode($chart_categories); ?>,
+              labels: {
+                style: {
+                  fontSize: '13px',
+                  colors: axisColor
+                }
+              },
+              axisTicks: {
+                show: false
+              },
+              axisBorder: {
+                show: false
+              }
+            },
+            yaxis: {
+              labels: {
+                style: {
+                  fontSize: '13px',
+                  colors: axisColor
+                }
+              }
+            },
+            responsive: [
+              {
+                breakpoint: 1700,
+                options: {
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 10,
+                      columnWidth: '32%'
+                    }
+                  }
+                }
+              },
+              {
+                breakpoint: 1580,
+                options: {
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 10,
+                      columnWidth: '35%'
+                    }
+                  }
+                }
+              },
+              {
+                breakpoint: 1440,
+                options: {
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 10,
+                      columnWidth: '42%'
+                    }
+                  }
+                }
+              },
+              {
+                breakpoint: 1300,
+                options: {
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 10,
+                      columnWidth: '48%'
+                    }
+                  }
+                }
+              },
+              {
+                breakpoint: 1200,
+                options: {
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 10,
+                      columnWidth: '40%'
+                    }
+                  }
+                }
+              },
+              {
+                breakpoint: 1040,
+                options: {
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 11,
+                      columnWidth: '48%'
+                    }
+                  }
+                }
+              },
+              {
+                breakpoint: 991,
+                options: {
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 10,
+                      columnWidth: '30%'
+                    }
+                  }
+                }
+              },
+              {
+                breakpoint: 840,
+                options: {
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 10,
+                      columnWidth: '35%'
+                    }
+                  }
+                }
+              },
+              {
+                breakpoint: 768,
+                options: {
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 10,
+                      columnWidth: '28%'
+                    }
+                  }
+                }
+              },
+              {
+                breakpoint: 640,
+                options: {
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 10,
+                      columnWidth: '32%'
+                    }
+                  }
+                }
+              },
+              {
+                breakpoint: 576,
+                options: {
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 10,
+                      columnWidth: '37%'
+                    }
+                  }
+                }
+              },
+              {
+                breakpoint: 480,
+                options: {
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 10,
+                      columnWidth: '45%'
+                    }
+                  }
+                }
+              },
+              {
+                breakpoint: 420,
+                options: {
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 10,
+                      columnWidth: '52%'
+                    }
+                  }
+                }
+              },
+              {
+                breakpoint: 380,
+                options: {
+                  plotOptions: {
+                    bar: {
+                      borderRadius: 10,
+                      columnWidth: '60%'
+                    }
+                  }
+                }
+              }
+            ],
+            states: {
+              hover: {
+                filter: {
+                  type: 'none'
+                }
+              },
+              active: {
+                filter: {
+                  type: 'none'
+                }
+              }
+            }
+          };
         
         if (typeof totalRevenueChartEl2 !== undefined && totalRevenueChartEl2 !== null) {
             const totalRevenueChart2 = new ApexCharts(totalRevenueChartEl2, totalRevenueChartOptions2);
@@ -835,7 +849,7 @@
         series: [
           {
             name: 'Average Water Condition(%)',
-            data: [1,2,3,4]
+            data: []
           }
         ],
         chart: {
@@ -890,7 +904,7 @@
           }
         },
         xaxis: {
-          categories: ['2023'],
+          categories: ['2024'],
           labels: {
             style: {
               fontSize: '13px',
