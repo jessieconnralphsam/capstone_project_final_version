@@ -271,6 +271,11 @@
               <div id="contentToPrint" style="display:none;">
                   <h3 class="text-center mt-5">Republic of the Philippines</h3>
                   <h5 class="text-center mt-2">NFT Hydroponics System</h5>
+                  <div class="d-flex justify-content-center">
+                    <div class="mx-auto">
+                      <img src="../assets/img/backgrounds/hydroponicslogo.jpeg" alt="Description of the image" width="100" height="100">
+                    </div>
+                  </div>
                   <h5 class="text-center mt-2 mb-5">Report</h5>
                   <div class="row mt-5">
                     <div class="col">
@@ -292,6 +297,7 @@
                         <p>Average Total Dissolved Solids:</p>
                     </div>
                   </div>
+                  <div style="margin: 4rem;"></div>
                   <div class="row mt-5">
                     <div class="col">
                         <h3><strong>Water Flow Report</strong></h3>
@@ -306,7 +312,7 @@
                         <p>Average Water Level:</p>
                     </div>
                   </div>
-                  <div style="margin: 6rem;"></div>
+                  <div style="margin: 4rem;"></div>
                   <div>
                     <h3 class="text-center mt-5"><strong>Water Quality Summary</strong></h3>
                   </div>
@@ -330,7 +336,7 @@
                         <p>Average Water Condition:</p>
                     </div>
                   </div>
-                  <div style="margin: 2rem;"></div>
+                  <div style="margin: 600px;"></div>
                   <h3><strong>Overall Water Quality Monitoring Table</strong></h3>
                   <table class="table card-table">
                       <thead>

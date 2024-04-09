@@ -245,38 +245,58 @@ if(!isset($_SESSION['user_id'])){
                         <div class="card-body">
                           <h5 class="card-title text-primary">Hi Welcome!</h5>
                           <p class="mb-4">
-                            You have  <span class="fw-bold" style="color: red;"><?php echo mysqli_num_rows($res); ?></span> notifications  today! Check details📋 below...</a>
+                              You have <span id="notification-count" class="fw-bold" style="color: red;"><?php echo mysqli_num_rows($res); ?></span> notifications today! Check details📋 below...
                           </p>
-                          
+                          <audio id="notification-sound" src="../audio/ting.mp3" preload="auto"></audio>
+                          <script>
+                              function updateNotificationCount() {
+                                  var xhttp = new XMLHttpRequest();
+                                  xhttp.onreadystatechange = function() {
+                                      if (this.readyState == 4 && this.status == 200) {
+                                          var notificationCountElement = document.getElementById("notification-count");
+                                          var currentCount = parseInt(notificationCountElement.innerText);
+                                          var newCount = parseInt(this.responseText);
+                                          
+                                          if (newCount > currentCount) {
+                                              var notificationSound = document.getElementById("notification-sound");
+                                              notificationSound.play();
+                                          }
+
+                                          notificationCountElement.innerText = newCount;
+                                      }
+                                  };
+                                  xhttp.open("GET", "get_notification_count.php", true);
+                                  xhttp.send();
+                              }
+
+                              setInterval(updateNotificationCount, 5000);
+                          </script>
                           <a href="javascript:;" class="btn btn-sm btn-outline-primary"  id="viewBadges">View Notifications</a>
                           <div class="popup" id="popup">
                               <div class="popup-content col-sm-3 text-center text-sm-left">
                                   <h5><i class="fa-regular fa-bell"></i> NOTIFICATIONS!</h5>
                                   <hr>
-                                  <ul  style="max-height: 200px; overflow-y: auto;">
-                                      <?php
-                                      if (mysqli_num_rows($res) > 0) {
-                                          foreach ($res as $item) {
-                                              $formatted_date = date("F-d-Y h:i A", strtotime($item["cdate"]));
-                                              ?>
-                                              <li>
-                                                  <span style="color: red;">Critical <?php echo $item["notif_sname"]; ?>! <span style="color: blue;">Reading:</span> <?php echo $item["readings"]; ?></span>
-                                                  <?php echo $formatted_date; ?>
-                                                  <?php echo '<hr>'; ?>
-                                              </li>
-                                              
-                                              <?php
-                                          }
-                                      } else {
-                                          ?>                                         
-                                          <li><i class="fa-sharp fa-solid fa-circle-exclamation fa-sm"></i> no notifications</li>
-                                          <?php
-                                      }
-                                      ?>
+                                  <ul id="notification-list" style="max-height: 200px; overflow-y: auto;">
+                                      <!-- Notification items will be dynamically added here -->
                                   </ul>
                                   <button id="closePopup" class="close-button"><i class="fa-sharp fa-regular fa-x fa-md"></i></button>
                               </div>
                           </div>
+                          <script>
+                              function updateNotificationList() {
+                                  var xhttp = new XMLHttpRequest();
+                                  xhttp.onreadystatechange = function() {
+                                      if (this.readyState == 4 && this.status == 200) {
+                                          var notificationList = document.getElementById("notification-list");
+                                          notificationList.innerHTML = this.responseText;
+                                      }
+                                  };
+                                  xhttp.open("GET", "get_notification_list.php", true);
+                                  xhttp.send();
+                              }
+
+                              setInterval(updateNotificationList, 5000); // Update every 5 seconds
+                          </script>
                         </div>
                       </div>
                       <div class="col-sm-5 text-center text-sm-left">
@@ -344,7 +364,7 @@ if(!isset($_SESSION['user_id'])){
                               <h3 class="card-title mb-2"><?php echo $flowvalue; ?> L/min</h3>
                               <small class="<?php echo $class; ?> fw-semibold"><i class="<?php echo $icon; ?>"></i> <?php echo $flowvalue_comp; ?> L/min</small>
                           </div>
-                          <!-- <script>
+                          <script>
                               function updateWaterFlow() {
                                   $.ajax({
                                       url: '../includes/flow.php',
@@ -356,13 +376,13 @@ if(!isset($_SESSION['user_id'])){
                                           $('#waterflow small').removeClass().addClass(data.class + ' fw-semibold');
                                       },
                                       error: function (error) {
-                                          console.error('Error updating water flow:', error);
+                                          // console.error('Error updating water flow:', error);
                                       }
                                   });
                               }
 
                               setInterval(updateWaterFlow, 100);
-                          </script> -->
+                          </script>
 
                         </div>
                       </div>
@@ -416,7 +436,7 @@ if(!isset($_SESSION['user_id'])){
                               <h3 class="card-title mb-2"><?php echo $levelvalue; ?> m</h3>
                               <small class="<?php echo $levelclass; ?> fw-semibold"><i class="<?php echo $levelicon; ?>"></i> <?php echo $levelvalue_comp; ?> m</small>
                           </div>
-                          <!-- <script>
+                          <script>
                               function updateWaterLevel() {
                                   $.ajax({
                                       url: '../includes/level.php',
@@ -434,7 +454,7 @@ if(!isset($_SESSION['user_id'])){
                               }
 
                               setInterval(updateWaterLevel, 100);
-                          </script> -->
+                          </script>
                         </div>
                       </div>
                     </div>
@@ -543,7 +563,7 @@ if(!isset($_SESSION['user_id'])){
                               <h3 class="card-title mb-2">pH of <?php echo $acidvalue; ?></h3>
                               <small class="<?php echo $acidclass; ?> fw-semibold"><i class="<?php echo $acidicon; ?>"></i><?php echo $acidvalue_comp; ?> pH</small>
                           </div>
-                          <!-- <script>
+                          <script>
                               function updateAcidity() {
                                   $.ajax({
                                       url: '../includes/acid.php',
@@ -561,7 +581,7 @@ if(!isset($_SESSION['user_id'])){
                               }
 
                               setInterval(updateAcidity, 100);
-                          </script> -->
+                          </script>
                         </div>
                       </div>
                     </div>
@@ -612,7 +632,7 @@ if(!isset($_SESSION['user_id'])){
                               <h5 class="card-title mb-2"><?php echo $tdsvalue; ?> ppm</h5>
                               <small class="<?php echo $tdsclass; ?> fw-semibold"><i class="<?php echo $tdsicon; ?>"></i><?php echo $tdsvalue_comp; ?> ppm</small>
                           </div>
-                          <!-- <script>
+                          <script>
                               function updateTds() {
                                   $.ajax({
                                       url: '../includes/tds.php',
@@ -630,7 +650,7 @@ if(!isset($_SESSION['user_id'])){
                               }
 
                               setInterval(updateTds, 100);
-                          </script> -->
+                          </script>
                         </div>
                       </div>
                     </div>
@@ -651,7 +671,7 @@ if(!isset($_SESSION['user_id'])){
                                 >
                                 <h3 class="mb-0"><?php echo $tempvalue; ?> °C</h3>
                               </div>
-                              <!-- <script>
+                              <script>
                                   function updateTemperature() {
                                       $.ajax({
                                           url: '../includes/temperature.php',
@@ -673,7 +693,7 @@ if(!isset($_SESSION['user_id'])){
                                   }
 
                                   setInterval(updateTemperature, 100);
-                              </script> -->
+                              </script>
                             </div>
                             <div id="profileReportChart"></div>
                           </div>
@@ -1327,7 +1347,7 @@ if(!isset($_SESSION['user_id'])){
           }
         },
         xaxis: {
-          categories: ['2023'],
+          categories: ['2024'],
           labels: {
             style: {
               fontSize: '13px',
@@ -1675,7 +1695,7 @@ if(!isset($_SESSION['user_id'])){
     </script>
     <script>
       $(document).ready(function() {
-        $("#viewBadges").on("click", function() {
+        $("#closePopup").on("click", function() {
           $.ajax({
             url: "readNotifications.php",
             success: function(res) {
