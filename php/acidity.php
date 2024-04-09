@@ -110,7 +110,7 @@
               <ul class="menu-sub">
                 <li class="menu-item">
                   <a href="report.php" class="menu-link">
-                    <div data-i18n="Account">Fourly Readings</div>
+                    <div data-i18n="Account">Four-hourly Readings</div>
                   </a>
                 </li>
                 <li class="menu-item">
@@ -225,7 +225,7 @@
           </nav>
           <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hydroponics /</span> Fourly Acidity Readings</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hydroponics /</span> Four-hourly Acidity Readings</h4>
               <div class="table-responsive text-nowrap">
                 <table id="datatables" class="table card-table">
                   <thead>

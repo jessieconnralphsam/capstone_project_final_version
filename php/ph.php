@@ -106,7 +106,7 @@ if(!isset($_SESSION['user_id'])){
               <ul class="menu-sub">
                 <li class="menu-item">
                   <a href="report.php" class="menu-link">
-                    <div data-i18n="Account">Fourly Readings</div>
+                    <div data-i18n="Account">Four-hourly Readings</div>
                   </a>
                 </li>
                 <li class="menu-item">
@@ -446,8 +446,8 @@ if(!isset($_SESSION['user_id'])){
                     <div class="row row-bordered g-0">
                       <div class="col-md-8">
                         <h5 class="card-header m-0 me-2 pb-3">
-                          <p class="card-title text-primary">Overall Water Conditions</p>
-                          <select id="monthDropdown" class="form-select form-select-sm"" >
+                          <p class="card-title text-primary">Summary</p>
+                          <select id="monthDropdown" class="form-select form-select-sm" >
                               <option value="Day">Four-hourly</option>
                               <option value="Month">Quarterly</option>
                               <option value="Year">Yearly</option>
@@ -461,7 +461,7 @@ if(!isset($_SESSION['user_id'])){
                       </div>                   
                       <div class="col-md-4">
                         <div id="growthChart"></div>
-                        <div class="text-center fw-bold pt-3 mb-2"> Overall Water <br> Condition as of <span class="text-primary"><?php echo date("F j, Y g:i A", strtotime($averages[0]['date'])); ?></span>: <span class="text-success"><?php echo $averages[0]['label']; ?></span></div>
+                        <div class="text-center fw-bold pt-3 mb-2"> Current Water <br> Condition as of <span class="text-primary"><?php echo date("F j, Y g:i A", strtotime($averages[0]['date'])); ?></span>: <span><?php echo $averages[0]['label']; ?></span></div>
 
                         <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
                           <div class="d-flex">
@@ -736,6 +736,7 @@ if(!isset($_SESSION['user_id'])){
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- chart -->
+    </script>
     <script>
       /**
        * Dashboard Analytics
