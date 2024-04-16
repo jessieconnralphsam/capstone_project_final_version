@@ -271,16 +271,43 @@ if(!isset($_SESSION['user_id'])){
 
                               setInterval(updateNotificationCount, 5000);
                           </script>
-                          <a href="javascript:;" class="btn btn-sm btn-outline-primary"  id="viewBadges">View Notifications</a>
-                          <div class="popup" id="popup">
-                              <div class="popup-content col-sm-3 text-center text-sm-left">
-                                  <h5><i class="fa-regular fa-bell"></i> NOTIFICATIONS!</h5>
-                                  <hr>
+                          <!-- <a href="javascript:;" class="btn btn-sm btn-outline-primary"  id="viewBadges">View Notifications</a> -->
+                          <button class="btn btn-sm btn-outline-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">View Notifications</button>
+                          <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5 text-center" id="exampleModalToggleLabel">Notifications</h1>
+                                  <button id="closePopup" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
                                   <ul id="notification-list" style="max-height: 200px; overflow-y: auto;">
                                       <!-- Notification items will be dynamically added here -->
                                   </ul>
-                                  <button id="closePopup" class="close-button"><i class="fa-sharp fa-regular fa-x fa-md"></i></button>
+                                </div>
+                                <div class="modal-footer">
+                                  <button class="btn btn-sm btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">View Notification History</button>
+                                </div>
                               </div>
+                            </div>
+                          </div>
+                          <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5 text-center" id="exampleModalToggleLabel">Read History</h1>
+                                  <button id="closePopup" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <ul id="notification-history" style="max-height: 200px; overflow-y: auto;">
+                                      <!-- Notification history here -->
+                                  </ul>
+                                </div>
+                                <div class="modal-footer">
+                                  <button class="btn btn-sm btn-success" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">View Current Notifications</button>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                           <script>
                               function updateNotificationList() {
@@ -296,6 +323,21 @@ if(!isset($_SESSION['user_id'])){
                               }
 
                               setInterval(updateNotificationList, 5000); // Update every 5 seconds
+                          </script>
+                          <script>
+                              function updatenotificationHistory() {
+                                  var xhttp = new XMLHttpRequest();
+                                  xhttp.onreadystatechange = function() {
+                                      if (this.readyState == 4 && this.status == 200) {
+                                          var notificationHistory = document.getElementById("notification-history");
+                                          notificationHistory.innerHTML = this.responseText;
+                                      }
+                                  };
+                                  xhttp.open("GET", "get_all_notif.php", true);
+                                  xhttp.send();
+                              }
+
+                              setInterval(updatenotificationHistory, 5000); // Update every 5 seconds
                           </script>
                         </div>
                       </div>
@@ -443,8 +485,8 @@ if(!isset($_SESSION['user_id'])){
                                       type: 'GET',
                                       dataType: 'json',
                                       success: function (data) {
-                                          $('#waterlevel .card-title').text(data.levelvalue + ' L/min');
-                                          $('#waterlevel small').html('<i class="' + data.levelicon + '"></i> ' + data.levelvalue_comp + ' L/min');
+                                          $('#waterlevel .card-title').text(data.levelvalue + ' m');
+                                          $('#waterlevel small').html('<i class="' + data.levelicon + '"></i> ' + data.levelvalue_comp + ' m');
                                           $('#waterlevel small').removeClass().addClass(data.levelclass + ' fw-semibold');
                                       },
                                       error: function (error) {
@@ -466,7 +508,7 @@ if(!isset($_SESSION['user_id'])){
                     <div class="row row-bordered g-0">
                       <div class="col-md-8">
                         <h5 class="card-header m-0 me-2 pb-3">
-                          <p class="card-title text-primary">Summary</p>
+                          <p class="card-title text-primary">Summary of Readings</p>
                           <select id="monthDropdown" class="form-select form-select-sm" >
                               <option value="Day">Four-hourly</option>
                               <option value="Month">Quarterly</option>
@@ -482,6 +524,8 @@ if(!isset($_SESSION['user_id'])){
                       <div class="col-md-4">
                         <div id="growthChart"></div>
                         <div class="text-center fw-bold pt-3 mb-2"> Current Water Condition<br><span class="text-primary">(<?php echo date("F j, Y g:i A", strtotime($averages[0]['date'])); ?>)</span><br><span><?php echo $averages[0]['label']; ?></span></div>
+                        <hr>
+                        <h6 class="text-center mb-0">Label</h6>
                         <div class="d-flex px-xxl-4 px-lg-2 p-4 gap-xxl-3 gap-lg-1 gap-3 justify-content-between">
                           <div class="d-flex">
                             <div class="me-2">
@@ -495,6 +539,7 @@ if(!isset($_SESSION['user_id'])){
                               <h6 class="mb-0">90-100</h6>
                             </div>
                           </div>
+                          
                           <div class="d-flex">
                             <div class="me-2">
                               
@@ -569,8 +614,8 @@ if(!isset($_SESSION['user_id'])){
                                       type: 'GET',
                                       dataType: 'json',
                                       success: function (data) {
-                                          $('#acidity .card-title').text(data.acidvalue + ' L/min');
-                                          $('#acidity small').html('<i class="' + data.acidicon + '"></i> ' + data.acidvalue_comp + ' L/min');
+                                          $('#acidity .card-title').text('pH of ' + data.acidvalue );
+                                          $('#acidity small').html('<i class="' + data.acidicon + '"></i> ' + data.acidvalue_comp + ' ph');
                                           $('#acidity small').removeClass().addClass(data.acidclass + ' fw-semibold');
                                       },
                                       error: function (error) {
@@ -638,8 +683,8 @@ if(!isset($_SESSION['user_id'])){
                                       type: 'GET',
                                       dataType: 'json',
                                       success: function (data) {
-                                          $('#tds .card-title').text(data.tdsvalue + ' L/min');
-                                          $('#tds small').html('<i class="' + data.tdsicon + '"></i> ' + data.tdsvalue_comp + ' L/min');
+                                          $('#tds .card-title').text(data.tdsvalue + ' ppm');
+                                          $('#tds small').html('<i class="' + data.tdsicon + '"></i> ' + data.tdsvalue_comp + ' ppm');
                                           $('#tds small').removeClass().addClass(data.tdsclass + ' fw-semibold');
                                       },
                                       error: function (error) {
@@ -694,7 +739,12 @@ if(!isset($_SESSION['user_id'])){
                                   setInterval(updateTemperature, 100);
                               </script>
                             </div>
-                            <div id="profileReportChart"></div>
+                            <div class="row">
+                              <div class="col">
+                                <div id="profileReportChart"></div>
+                              </div>
+                              <div class="col">Last 6 Readings</div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -1632,7 +1682,7 @@ if(!isset($_SESSION['user_id'])){
           profileReportChartConfig = {
             chart: {
               height: 155,
-              // width: 175,
+              width: 150,
               type: 'line',
               toolbar: {
                 show: false

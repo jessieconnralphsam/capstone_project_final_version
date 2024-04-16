@@ -1,7 +1,7 @@
 <?php
 include "../data_con.php";
 
-$sql = "SELECT * FROM notifications WHERE status='0' ORDER BY id DESC";
+$sql = "SELECT * FROM notifications WHERE status='1' ORDER BY id DESC";
 $res = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($res) > 0) {

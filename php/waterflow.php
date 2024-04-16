@@ -591,7 +591,7 @@ foreach ($temperaturedate as $index => $date) {
           totalRevenueChartOptions2 = {
             series: [
               {
-                name: 'Water Condition(%)',
+                name: 'Water Flow',
                 data: <?php echo json_encode($chart_flow_data); ?>
               }
             ],
