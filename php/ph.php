@@ -295,8 +295,8 @@ if(!isset($_SESSION['user_id'])){
                             <div class="modal-dialog modal-dialog-centered">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h1 class="modal-title fs-5 text-center" id="exampleModalToggleLabel">Read History</h1>
-                                  <button id="closePopup" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  <h1 class="modal-title fs-5 text-center" id="exampleModalToggleLabel">Notification History</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                   <ul id="notification-history" style="max-height: 200px; overflow-y: auto;">
