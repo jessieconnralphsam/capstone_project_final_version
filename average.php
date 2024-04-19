@@ -33,7 +33,17 @@ for ($i = 1; $i <= 100; $i++) {
 }
 
 while ($row = mysqli_fetch_assoc($result)) {
+
     $date = $row['reading_cdate'];
+    $dateParts = explode(' ', $date);
+    $dateOnly = $dateParts[0];
+    $timeOnly = $dateParts[1];
+    $dateComponents = explode('-', $dateOnly);
+    $year = $dateComponents[0];
+    $month = $dateComponents[1];
+    $day = $dateComponents[2];
+    $month_format = date("F", mktime(0, 0, 0, $month, 1));
+
     $weightedValue = $row['weighted_value'];
 
     if (!isset($sums[$date])) {
