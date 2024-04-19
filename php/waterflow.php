@@ -14,6 +14,56 @@ foreach ($temperaturedate as $index => $date) {
         $chart_flow_data[] = 'N/A';
     }
 }
+
+$query_a_temp = "SELECT AVG(temp_readings) AS average_temp FROM temperature";
+$result_a_temp = mysqli_query($conn, $query_a_temp);
+$a_temp = "";
+if ($result_a_temp && mysqli_num_rows($result_a_temp) > 0) {
+    $arow = mysqli_fetch_assoc($result_a_temp);
+    $a_temp = $arow['average_temp'];
+} else {
+    echo "No data";
+}
+
+$query_a_ph = "SELECT AVG(acid_readings) AS average_acid FROM acidity";
+$result_a_ph = mysqli_query($conn, $query_a_ph);
+$a_ph = "";
+if ($result_a_ph && mysqli_num_rows($result_a_ph) > 0) {
+    $phrow = mysqli_fetch_assoc($result_a_ph);
+    $a_ph = $phrow['average_acid'];
+} else {
+    echo "No data";
+}
+
+$query_tds_ph = "SELECT AVG(tds_readings) AS average_tds FROM total_dissolved_solids";
+$result_tds_ph = mysqli_query($conn, $query_tds_ph);
+$tds_ph = "";
+if ($result_tds_ph && mysqli_num_rows($result_tds_ph) > 0) {
+    $tdsrow = mysqli_fetch_assoc($result_tds_ph);
+    $tds_ph = $tdsrow['average_tds'];
+} else {
+    echo "No data";
+}
+
+$query_f_ph = "SELECT AVG(flow_readings) AS average_flow FROM waterflow";
+$result_f_ph = mysqli_query($conn, $query_f_ph);
+$f_ph = "";
+if ($result_f_ph && mysqli_num_rows($result_f_ph) > 0) {
+    $frow = mysqli_fetch_assoc($result_f_ph);
+    $f_ph = $frow['average_flow'];
+} else {
+    echo "No data";
+}
+
+$query_l_ph = "SELECT AVG(level_readings) AS average_level FROM waterlevel";
+$result_l_ph = mysqli_query($conn, $query_l_ph);
+$l_ph = "";
+if ($result_f_ph && mysqli_num_rows($result_f_ph) > 0) {
+    $lrow = mysqli_fetch_assoc($result_l_ph);
+    $l_ph = $lrow['average_level'];
+} else {
+    echo "No data";
+}
 ?>
 
 <!DOCTYPE html>
@@ -336,7 +386,7 @@ foreach ($temperaturedate as $index => $date) {
             series: [
               {
                 name: 'Average Water Condition(%)',
-                data: []
+                data: [0, 0, 0, <?php echo json_encode($f_ph); ?>, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0]
               }
             ],
             chart: {
@@ -849,7 +899,7 @@ foreach ($temperaturedate as $index => $date) {
         series: [
           {
             name: 'Average Water Condition(%)',
-            data: []
+            data: [<?php echo json_encode($f_ph); ?>]
           }
         ],
         chart: {
