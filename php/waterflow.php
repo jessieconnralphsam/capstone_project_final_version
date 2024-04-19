@@ -385,7 +385,7 @@ if ($result_f_ph && mysqli_num_rows($result_f_ph) > 0) {
           totalRevenueChartOptions = {
             series: [
               {
-                name: 'Average Water Condition(%)',
+                name: 'Average Water Flow(%)',
                 data: [0, 0, 0, <?php echo json_encode($f_ph); ?>, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0]
               }
             ],
@@ -898,7 +898,7 @@ if ($result_f_ph && mysqli_num_rows($result_f_ph) > 0) {
       totalRevenueChartOptions3 = {
         series: [
           {
-            name: 'Average Water Condition(%)',
+            name: 'Average Water Flow(%)',
             data: [<?php echo json_encode($f_ph); ?>]
           }
         ],
