@@ -65,20 +65,3 @@ if (isset($_GET['temperature'])) {
 
 echo json_encode($response);
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Enter Water Data</title>
-</head>
-<body>
-    <h2>Enter Water Data</h2>
-    <form action="" method="get">
-        Water Flow: <input type="text" name="waterflow"><br>
-        Water Level: <input type="text" name="waterlevel"><br>
-        Acidity: <input type="text" name="acidity"><br>
-        TDS: <input type="text" name="tds"><br>
-        Temperature: <input type="text" name="temperature"><br>
-        <input type="submit" value="Submit">
-    </form>
-</body>
-</html>
