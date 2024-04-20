@@ -9,7 +9,7 @@ url = 'http://localhost/capstone_project_final_version/php/insert.php'
 
 try:
     while True:
-        data = ser.readline().decode().strip()
+        data = ser.readline().decode().strip() 
         water_flow, water_level, acidity, tds, temperature = data.split(',')
         
         
