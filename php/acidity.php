@@ -385,7 +385,7 @@ if ($result_f_ph && mysqli_num_rows($result_f_ph) > 0) {
           totalRevenueChartOptions = {
             series: [
               {
-                name: 'Average Water Flow(%)',
+                name: 'Average Water Acidity(%)',
                 data: [0, 0, 0, <?php echo json_encode($a_ph); ?>, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,0]
               }
             ],
@@ -641,7 +641,7 @@ if ($result_f_ph && mysqli_num_rows($result_f_ph) > 0) {
           totalRevenueChartOptions2 = {
             series: [
               {
-                name: 'Water Flow',
+                name: 'Water Acidity',
                 data: <?php echo json_encode($chart_flow_data); ?>
               }
             ],
@@ -898,7 +898,7 @@ if ($result_f_ph && mysqli_num_rows($result_f_ph) > 0) {
       totalRevenueChartOptions3 = {
         series: [
           {
-            name: 'Average Water Flow(%)',
+            name: 'Average Water Acidity(%)',
             data: [<?php echo json_encode($a_ph); ?>]
           }
         ],
