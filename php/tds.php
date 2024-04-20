@@ -889,6 +889,7 @@ if ($result_f_ph && mysqli_num_rows($result_f_ph) > 0) {
             }
           };
         
+          
         if (typeof totalRevenueChartEl2 !== undefined && totalRevenueChartEl2 !== null) {
             const totalRevenueChart2 = new ApexCharts(totalRevenueChartEl2, totalRevenueChartOptions2);
             totalRevenueChart2.render();
