@@ -134,6 +134,11 @@ if(!isset($_SESSION['user_id'])){
                     <div data-i18n="Connections">Total Dissolved Solids</div>
                   </a>
                 </li>
+                <li class="menu-item">
+                  <a href="reading_history.php" class="menu-link">
+                    <div data-i18n="Connections">Reading History</div>
+                  </a>
+                </li>
               </ul>
             </li>
             <!-- Misc -->
@@ -1757,6 +1762,28 @@ if(!isset($_SESSION['user_id'])){
         });
       });
     </script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+    $(function() {
+        $("#dateFilter").datepicker({
+            dateFormat: 'yy-mm-dd',
+            onSelect: function(selectedDate) {
+                var currentDate = new Date(selectedDate);
+                var endDate = new Date(currentDate);
+                endDate.setDate(endDate.getDate() + 1); // Set end date as next day
+
+                var formattedStartDate = $.datepicker.formatDate('yy-mm-dd', currentDate);
+                var formattedEndDate = $.datepicker.formatDate('yy-mm-dd', endDate);
+
+                // Redirect to the same page with date parameters
+                window.location.href = 'notifications.php?start_date=' + formattedStartDate + '&end_date=' + formattedEndDate;
+            }
+        });
+    });
+    </script>
+
 
   </body>
 </html>

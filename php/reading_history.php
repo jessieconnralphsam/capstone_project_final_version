@@ -268,11 +268,7 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hydroponics /</span> Four-hourly Water Condition</h4>
-              <div style="padding-bottom: 10px;">
-                <button id="downloadBtn" class="btn btn-md btn-success"><i class="fa-solid fa-download"></i> Download CSV</button>
-                <button id="printButton" class="btn btn-md btn-primary"><i class="fas fa-print"></i> Print</button>
-              </div>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hydroponics /</span> Reading History of Critical Parameters (Notifications)</h4>
               <div id="contentToPrint" style="display:none;">
                 <?php include "report_data.php"; ?>
               </div>
@@ -281,7 +277,7 @@
                   <thead>
                     <tr>
                       <th>Date & Time</th>
-                      <th>Readings</th>
+                      <th>Critical Readings</th>
                       <th>Average</th>
                       <th>Status</th>
                       <th>Normal Reading</th>
@@ -290,13 +286,13 @@
                     </tr>
                   </thead>
                   <tbody class="table-border-bottom-0">
+                  <?php                   
+                  foreach ($temperaturedate as $index => $date) {
+                      if ($averages[$index]['label'] === 'poor' || $averages[$index]['label'] === 'critical') {
+                          echo '<tr>';
+                          echo '<td><i class="text-danger"></i> <strong>' . $date . '</strong></td>';
 
-                    <?php                   
-                    foreach ($temperaturedate as $index => $date) {
-                        echo '<tr>';
-                        echo '<td><i class="text-danger"></i> <strong>' . $date . '</strong></td>';
-
-                        echo '<td>';
+                          echo '<td>';
                           $sensorTypeToData = [
                               'Acidity' => $data_acid,
                               'TDS' => $data_tds,
@@ -324,15 +320,17 @@
                         
                             echo '</li>';
                           }
-                        echo '</td>';
-                        echo '<td>' . round($averages[$index]['average']) . '%</td>';
-                        echo '<td><span class="badge bg-label-primary me-1">' . $averages[$index]['label'] . '</span></td>';
-                        echo '<td>' . '<strong>Acidity:</strong> pH of 7' . '<br>' . '<strong>TDS:</strong> 300 - 800 ppm' . '<br>' . '<strong>Temperature:</strong> 25 °C' . '<br>' . '<strong>Flow:</strong> 5 L/m' .  '<br>' . '<strong>Level:</strong> 500 m' .'</td>';
-                        echo '<td>' . $data_acid_action[$index].'</td>';
-                        echo '<td>' . $data_tds_action[$index].'</td>'; 
-                        echo '</tr>';
-                    }
-                    ?>
+                          echo '</td>';
+                          echo '<td>' . round($averages[$index]['average']) . '%</td>';
+                          echo '<td><span class="badge bg-label-danger me-1">' . $averages[$index]['label'] . '</span></td>';
+                          echo '<td>' . '<strong>Acidity:</strong> pH of 7' . '<br>' . '<strong>TDS:</strong> 300 - 800 ppm' . '<br>' . '<strong>Temperature:</strong> 25 °C' . '<br>' . '<strong>Flow:</strong> 5 L/m' .  '<br>' . '<strong>Level:</strong> 500 m' .'</td>';
+                          echo '<td>' . $data_acid_action[$index].'</td>';
+                          echo '<td>' . $data_tds_action[$index].'</td>';
+                          echo '</tr>';
+                      }
+                  }
+                  ?>
+
                   </tbody>
                 </table>
               </div>
@@ -355,28 +353,10 @@
     <script src="../assets/vendor/js/menu.js"></script>
     <script src="../assets/js/report-main.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script>
-        document.getElementById('downloadBtn').addEventListener('click', function() {
-            window.location.href = '../download.php';
-        });
-    </script>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script>
         new DataTable('#datatable');
-    </script>
-    <script>
-    document.getElementById("printButton").addEventListener("click", function() {
-        printDiv("contentToPrint");
-    });
-
-    function printDiv(divId) {
-        var printContents = document.getElementById(divId).innerHTML;
-        var originalContents = document.body.innerHTML;
-        document.body.innerHTML = printContents;
-        window.print();
-        document.body.innerHTML = originalContents;
-    }
     </script>
 
 

@@ -138,6 +138,11 @@
                     <div data-i18n="Connections">Total Dissolved Solids</div>
                   </a>
                 </li>
+                <li class="menu-item">
+                  <a href="reading_history.php" class="menu-link">
+                    <div data-i18n="Connections">Reading History</div>
+                  </a>
+                </li>
               </ul>
             </li>
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Miscellaneous</span></li>

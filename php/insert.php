@@ -4,6 +4,15 @@ include "..\data_con.php";
 
 $response = array("status" => "", "message" => "");
 
+$apiKey = "W5qM3sE7gP1aK9jR4fY6lC2zX8wB0vN3dF6xH1tG2uL4iV9oU5yJ7cQ8hT4nZ7eD9bI0pA3mR8kS6oV1fC2xN4uG5lW6jQ9dX2yH3tF7wE8zB1vM0iK";
+
+
+if (!isset($_GET['api_key']) || $_GET['api_key'] !== $apiKey) {
+    $response["status"] = "error";
+    $response["message"] = "Unauthorized access. Please provide a valid API key.";
+    echo json_encode($response);
+    exit; 
+}
 
 if (isset($_GET['waterflow'])) {
     $waterflow = $conn->real_escape_string($_GET['waterflow']);
