@@ -270,28 +270,35 @@
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hydroponics /</span> Four-hourly Water Condition</h4>
               <div style="padding-bottom: 10px;">
-                <button id="downloadBtn" class="btn btn-md btn-success"><i class="fa-solid fa-download"></i> Download CSV</button>
+                <!-- <button id="downloadBtn" class="btn btn-md btn-success"><i class="fa-solid fa-download"></i> Download CSV</button> -->
                 <!-- <button id="printButton" class="btn btn-md btn-primary"><i class="fas fa-print"></i> Print</button> -->
                 <button class="btn btn-md btn-primary" id="printBtn"><i class="fas fa-print"></i> Print</button>
 
                 <!-- Form for date interval select -->
-                <form class="mt-3" id="dateForm" style="display: none;"  action="print.php" method="POST" target="_blank">
+                <form class="mt-3" id="dateForm" style="display: none;" action="print.php" method="POST" target="_blank">
                     <label for="startDate">Start Date:</label>
                     <input type="date" id="startDate" name="startDate">
                     <label for="endDate">End Date:</label>
                     <input type="date" id="endDate" name="endDate">
-                    <button type="submit" class="btn btn-sm btn-primary mx-3">Submit</button>
+                    <button type="submit" class="btn btn-sm btn-primary mx-2">Submit</button>
+                    <button id="printCl" class="btn btn-sm btn-danger">Cancel</button>
                 </form>
-                <script>
-                  // JavaScript to toggle the visibility of the form
-                  const printBtn = document.getElementById('printBtn');
-                  const dateForm = document.getElementById('dateForm');
 
-                  printBtn.addEventListener('click', () => {
-                    dateForm.style.display = 'block';
-                  });
-                  
+                <script>
+                    // JavaScript to toggle the visibility of the form
+                    const printBtn = document.getElementById('printBtn');
+                    const printCl = document.getElementById('printCl');
+                    const dateForm = document.getElementById('dateForm');
+
+                    printBtn.addEventListener('click', () => {
+                        dateForm.style.display = 'block';
+                    });
+                    printCl.addEventListener('click', (event) => {
+                        event.preventDefault(); // Prevent form submission
+                        dateForm.style.display = 'none';
+                    });
                 </script>
+
               </div>
               <div id="contentToPrint" style="display:none;">
                 <?php include "report_data.php"; ?>
