@@ -271,7 +271,27 @@
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Hydroponics /</span> Four-hourly Water Condition</h4>
               <div style="padding-bottom: 10px;">
                 <button id="downloadBtn" class="btn btn-md btn-success"><i class="fa-solid fa-download"></i> Download CSV</button>
-                <button id="printButton" class="btn btn-md btn-primary"><i class="fas fa-print"></i> Print</button>
+                <!-- <button id="printButton" class="btn btn-md btn-primary"><i class="fas fa-print"></i> Print</button> -->
+                <button class="btn btn-md btn-primary" id="printBtn"><i class="fas fa-print"></i> Print</button>
+
+                <!-- Form for date interval select -->
+                <form class="mt-3" id="dateForm" style="display: none;"  action="print.php" method="POST" target="_blank">
+                    <label for="startDate">Start Date:</label>
+                    <input type="date" id="startDate" name="startDate">
+                    <label for="endDate">End Date:</label>
+                    <input type="date" id="endDate" name="endDate">
+                    <button type="submit" class="btn btn-sm btn-primary mx-3">Submit</button>
+                </form>
+                <script>
+                  // JavaScript to toggle the visibility of the form
+                  const printBtn = document.getElementById('printBtn');
+                  const dateForm = document.getElementById('dateForm');
+
+                  printBtn.addEventListener('click', () => {
+                    dateForm.style.display = 'block';
+                  });
+                  
+                </script>
               </div>
               <div id="contentToPrint" style="display:none;">
                 <?php include "report_data.php"; ?>
@@ -378,7 +398,15 @@
         document.body.innerHTML = originalContents;
     }
     </script>
+    <script>
+        // Check if the message query parameter is present
+        var urlParams = new URLSearchParams(window.location.search);
+        var message = urlParams.get('message');
 
+        if (message === 'NoTemperatureReadings') {
+            alert("No Readings! Nothing to Print");
+        }
+    </script>
 
   </body>
 </html>
