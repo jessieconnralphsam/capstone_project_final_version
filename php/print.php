@@ -250,7 +250,7 @@ if ($result_f_ph && mysqli_num_rows($result_f_ph) > 0) {
                   <h1 class="text-center mt-2 mb-5">Overall Water Quality Report</h1>
                   <p class="text-center"><?php echo "$fdte";?> to <?php echo "$fdtr";?></p>
                   <div class="row mt-5">
-                    <div class="col">
+                    <div class="col border">
                         <h3><strong>Temperature Report</strong></h3>
                         <p>Highest Temperature: <?php echo $highest_temperature;?>°C</p>
                         <p>Lowest temperature: <?php echo $lowest_temperature;?>°C</p>
